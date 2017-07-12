@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+
+	<!-- ======================== Facilities ======================= -->
+
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>SRV_Bellows</defName>
+		<thingClass>Building</thingClass>
+		<label>bellows</label>
+		<description>Increases forging speed. Needs to be placed adjacent to a forge or a crucible forge. One forge can be linked to only one bellows.</description>
+		<graphicData>
+			<texPath>Cupro/Object/Utility/Bellows/Bellows</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<canOverlapZones>false</canOverlapZones>
+		<pathCost>60</pathCost>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>0.5</fillPercent>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>800</WorkToMake>
+			<Flammability>1.0</Flammability>
+			<Mass>3</Mass>
+		</statBases>
+		<size>(1,1)</size>
+		<costList>
+			<WoodLog>20</WoodLog>
+		</costList>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>5</costStuffCount>
+		<designationCategory>Misc</designationCategory>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<comps>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<WorkTableWorkSpeedFactor>0.2</WorkTableWorkSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+				<mustBePlacedAdjacent>true</mustBePlacedAdjacent>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
+
+
+	<!-- ======================== Utility ======================= -->
+
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>SRV_VinegarBarrel</defName>
+		<thingClass>SurvivalistsAdditions.Building_VinegarBarrel</thingClass>
+		<label>barrel of vinegar</label>
+		<Description>A barrel of fermenting vinegar.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/FermentingBarrel/FermentingBarrel</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<damageData>
+				<rect>(0.05,0.1,0.9,0.9)</rect>
+			</damageData>
+		</graphicData>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<canOverlapZones>false</canOverlapZones>
+		<fillPercent>0.45</fillPercent>
+		<pathCost>60</pathCost>
+		<rotatable>true</rotatable>
+		<DesignationCategory>Production</DesignationCategory>
+		<statBases>
+			<WorkToBuild>600</WorkToBuild>
+			<Mass>10</Mass>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<costList>
+			<Steel>10</Steel>
+		</costList>
+		<costStuffCount>30</costStuffCount>
+		<stuffCategories>
+			<li>Woody</li>
+		</stuffCategories>
+		<useHitPoints>true</useHitPoints>
+		<Size>(1,1)</Size>
+		<Passability>PassThroughOnly</Passability>
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_TemperatureRuinable">
+				<minSafeTemperature>-1</minSafeTemperature>
+				<maxSafeTemperature>32</maxSafeTemperature>
+				<progressPerDegreePerTick>0.00001</progressPerDegreePerTick>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>Brewing</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>SRV_ShelterHeater</defName>
+		<label>shelter heater</label>
+		<thingClass>Building</thingClass>
+		<description>Burning logs used to produce heat. Burns out after two days. As with all heat sources, it must be placed indoors so it has a closed space to heat. Refuelable.</description>    
+		<category>Building</category>
+		<graphicData>
+			<texPath>Cupro/Object/Utility/ShelterHeater</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawRotated>false</drawRotated>
+			<allowFlip>false</allowFlip>
+			<damageData>
+				<rect>(0.2,0,0.6,0.1)</rect>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Cupro/Object/Utility/ShelterHeater_MenuIcon</uiIconPath>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<canOverlapZones>false</canOverlapZones>
+		<pathCost>50</pathCost>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<fillPercent>0.25</fillPercent>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<WorkToBuild>200</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Mass>9</Mass>
+		</statBases>
+		<selectable>true</selectable>
+		<stuffCategories>
+			<li>Woody</li>
+		</stuffCategories>
+		<costStuffCount>10</costStuffCount>
+		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+		<placeWorkers>
+			<li>PlaceWorker_Heater</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>5.0</fuelConsumptionRate>
+				<fuelCapacity>10.0</fuelCapacity>
+				<fuelConsumptionPerTickInRain>0.0002</fuelConsumptionPerTickInRain>
+				<fuelFilter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</fuelFilter>
+				<destroyOnNoFuel>true</destroyOnNoFuel>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>6</glowRadius>
+				<glowColor>(252,187,113,0)</glowColor>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>8</heatPerSecond>
+				<heatPushMaxTemperature>22</heatPushMaxTemperature>
+			</li>
+			<li Class="SurvivalistsAdditions.CompProperties_Smoker">
+				<smokeStyle>Triple</smokeStyle>
+				<frequencyMin>120</frequencyMin>
+				<frequencyMax>360</frequencyMax>
+				<size>0.25</size>
+			</li>
+			<li>
+				<compClass>CompGatherSpot</compClass>
+			</li>
+		</comps>
+		<designationCategory>Temperature</designationCategory>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<DefName>SRV_CharcoalPit</DefName>
+		<label>charcoal pit</label>
+		<ThingClass>SurvivalistsAdditions.Building_CharcoalPit</ThingClass>
+		<Description>A mound of burning wood covered with dirt to block oxygen.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Utility/DirtMound</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<color>(133,97,67)</color>
+		</graphicData>
+		<blockLight>false</blockLight>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<useHitPoints>false</useHitPoints>
+		<fillPercent>0</fillPercent>
+		<statBases>
+			<WorkToBuild>500</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<stuffCategories>
+			<li>Woody</li>
+		</stuffCategories>
+		<costStuffCount>25</costStuffCount>
+		<Size>(1,1)</Size>
+		<DesignationCategory>Production</DesignationCategory>
+		<Passability>PassThroughOnly</Passability>
+		<canOverlapZones>false</canOverlapZones>
+		<pathCost>60</pathCost>
+		<surfaceType>Item</surfaceType>
+		<tickerType>Rare</tickerType>
+		<building>
+			<soundAmbient>FireBurning</soundAmbient>
+			<isEdifice>false</isEdifice>
+		</building>
+		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+	</ThingDef>
+	
+</ThingDefs>

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WorkGivers>
+
+	<WorkGiverDef>
+		<defName>SRV_DoSimpleBills</defName>
+		<label>do simple crafting jobs</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>99</priorityInType>
+		<fixedBillGiverDefs>
+			<li>SRV_TableCamp</li>
+		</fixedBillGiverDefs>
+		<verb>craft at</verb>
+		<gerund>crafting at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>SRV_DoSimpleButcherBills</defName>
+		<label>butcher creatures</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Cooking</workType>
+		<priorityInType>91</priorityInType>
+		<fixedBillGiverDefs>
+			<li>SRV_TableButcherCamp</li>
+		</fixedBillGiverDefs>
+		<verb>butcher</verb>
+		<gerund>butchering at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>SRV_DoBillsGrill</defName>
+		<label>cook meals at grill</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Cooking</workType>
+		<priorityInType>96</priorityInType>
+		<fixedBillGiverDefs>
+			<li>SRV_Grill</li>
+		</fixedBillGiverDefs>
+		<verb>grill at</verb>
+		<gerund>grilling at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>SRV_DoBillsForge</defName>
+		<label>forge raw materials at forge</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>86</priorityInType>
+		<fixedBillGiverDefs>
+			<li>SRV_Forge</li>
+		</fixedBillGiverDefs>
+		<verb>forge at</verb>
+		<gerund>forging at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>SRV_WorkGiver_TakeVinegarOutOfVinegarBarrel</defName>
+		<label>take vinegar out of vinegar barrels</label>
+		<giverClass>SurvivalistsAdditions.WorkGiver_TakeVinegarOutOfVinegarBarrel</giverClass>
+		<workType>Hauling</workType>
+		<verb>take vinegar</verb>
+		<gerund>taking vinegar from</gerund>
+		<priorityInType>28</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>SRV_WorkGiver_FillVinegarBarrel</defName>
+		<label>fill vinegar barrels</label>
+		<giverClass>SurvivalistsAdditions.WorkGiver_FillVinegarBarrel</giverClass>
+		<workType>Hauling</workType>
+		<verb>fill</verb>
+		<gerund>filling</gerund>
+		<priorityInType>27</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>SRV_FillSmoker</defName>
+		<label>cook meat at smoker</label>
+		<giverClass>SurvivalistsAdditions.WorkGiver_FillSmoker</giverClass>
+		<workType>Cooking</workType>
+		<priorityInType>125</priorityInType>
+		<verb>fill</verb>
+		<gerund>filling</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>SRV_TendToSmoker</defName>
+		<label>tend to smoker</label>
+		<giverClass>SurvivalistsAdditions.WorkGiver_TendToSmoker</giverClass>
+		<workType>Cooking</workType>
+		<priorityInType>124</priorityInType>
+		<verb>tend to</verb>
+		<gerund>tending to</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>SRV_TakeMeatOutOfSmoker</defName>
+		<label>take meat out of smoker</label>
+		<giverClass>SurvivalistsAdditions.WorkGiver_TakeMeatOutOfSmoker</giverClass>
+		<workType>Cooking</workType>
+		<priorityInType>126</priorityInType>
+		<verb>take meat out of</verb>
+		<gerund>taking meat out of</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+
+</WorkGivers>

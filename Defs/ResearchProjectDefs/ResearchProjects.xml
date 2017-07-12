@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResearchProjectDefs>
+
+	<!--=============================== Tier 1: pre-electricity ===================================-->
+
+	<ResearchProjectDef>
+		<defName>SRV_Forge</defName>
+		<label>forge</label>
+		<description>Allows colonists to build a forge for turning raw metal ingredients into weapons.</description>
+		<tab>cP</tab>
+		<baseCost>500</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<tags>
+			<li>ClassicStart</li>
+		</tags>
+		<researchViewX>0</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
+
+</ResearchProjectDefs>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<JobDef>
+		<defName>SRV_FillVinegarBarrel</defName>
+		<driverClass>SurvivalistsAdditions.JobDriver_FillVinegarBarrel</driverClass>
+		<reportString>filling TargetA with vinegar juice.</reportString>
+	</JobDef>
+	
+	<JobDef>
+		<defName>SRV_TakeVinegarOutOfVinegarBarrel</defName>
+		<driverClass>SurvivalistsAdditions.JobDriver_TakeVinegarOutOfVinegarBarrel</driverClass>
+		<reportString>taking vinegar out of TargetA.</reportString>
+	</JobDef>
+	
+	<JobDef>
+		<defName>SRV_FillSmoker</defName>
+		<driverClass>SurvivalistsAdditions.JobDriver_FillSmoker</driverClass>
+		<reportString>filling TargetA with meat.</reportString>
+	</JobDef>
+	
+	<JobDef>
+		<defName>SRV_TendToSmoker</defName>
+		<driverClass>SurvivalistsAdditions.JobDriver_TendToSmoker</driverClass>
+		<reportString>tending to TargetA.</reportString>
+	</JobDef>
+	
+	<JobDef>
+		<defName>SRV_TakeMeatOutOfSmoker</defName>
+		<driverClass>SurvivalistsAdditions.JobDriver_TakeMeatOutOfSmoker</driverClass>
+		<reportString>taking meat out of TargetA.</reportString>
+	</JobDef>
+
+</Defs>

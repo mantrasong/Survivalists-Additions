@@ -1,0 +1,76 @@
+﻿using System.Collections.Generic;
+
+using RimWorld;
+using Verse;
+
+namespace SurvivalistsAdditions {
+
+  public class IncidentWorker_MushroomSprout : IncidentWorker {
+
+    private const int MinRoomCells = 25;
+    private const int SpawnRadius = 6;
+    private static readonly IntRange CountRange = new IntRange(10, 20);
+
+    protected override bool CanFireNowSub(IIncidentTarget target) {
+      if (!base.CanFireNowSub(target)) {
+        return false;
+      }
+      Map map = (Map)target;
+      IntVec3 intVec;
+      return TryFindRootCell(map, out intVec);
+    }
+
+
+    public override bool TryExecute(IncidentParms parms) {
+      Map map = (Map)parms.target;
+      IntVec3 root;
+      if (!TryFindRootCell(map, out root)) {
+        return false;
+      }
+      Thing thing = null;
+      int randomInRange = CountRange.RandomInRange;
+      for (int i = 0; i < randomInRange; i++) {
+        IntVec3 intVec;
+        if (!CellFinder.TryRandomClosewalkCellNear(root, map, SpawnRadius, out intVec, (IntVec3 x) => CanSpawnAt(x, map))) {
+          break;
+        }
+        Plant plant = intVec.GetPlant(map);
+        if (plant != null) {
+          plant.Destroy(DestroyMode.Vanish);
+        }
+        Thing thing2 = GenSpawn.Spawn(SrvDefOf.SRV_Mushroom, intVec, map);
+        if (thing == null) {
+          thing = thing2;
+        }
+      }
+      if (thing == null) {
+        return false;
+      }
+      SendStandardLetter(thing, new string[0]);
+      return true;
+    }
+
+
+    private bool TryFindRootCell(Map map, out IntVec3 cell) {
+      return CellFinderLoose.TryFindRandomNotEdgeCellWith(10, (IntVec3 x) => CanSpawnAt(x, map) && x.GetRoom(map, RegionType.Set_Passable).CellCount >= MinRoomCells, map, out cell);
+    }
+
+
+    private bool CanSpawnAt(IntVec3 c, Map map) {
+      if (!c.Standable(map) || c.Fogged(map) || c.GetEdifice(map) != null || c.GetRoom(map, RegionType.Set_Passable).OpenRoofCount > 0 || map.terrainGrid.TerrainAt(c).layerable || !map.terrainGrid.TerrainAt(c).defName.Contains("Rough")) {
+        return false;
+      }
+      Plant plant = c.GetPlant(map);
+      if (plant != null && plant.def.plant.growDays > 10f) {
+        return false;
+      }
+      List<Thing> thingList = c.GetThingList(map);
+      for (int i = 0; i < thingList.Count; i++) {
+        if (thingList[i].def == SrvDefOf.SRV_Mushroom) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+}

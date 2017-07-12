@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<Operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/DefPackage-TraderKindDef/TraderKindDef[defName = "Caravan_Outlander_BulkGoods"]/stockGenerators</xpath>
+				<value>
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>SRV_Charcoal</thingDef>
+						<countRange>
+							<min>25</min>
+							<max>100</max>
+						</countRange>
+					</li>
+					<li Class="StockGenerator_Tag">
+						<tradeTag>SRV_Meals</tradeTag>
+						<thingDefCountRange>
+							<min>1</min>
+							<max>6</max>
+						</thingDefCountRange>
+						<countRange>
+							<min>2</min>
+							<max>15</max>
+						</countRange>
+					</li>
+					<li Class="StockGenerator_Tag">
+						<tradeTag>SRV_RawFood</tradeTag>
+						<thingDefCountRange>
+							<min>1</min>
+							<max>4</max>
+						</thingDefCountRange>
+						<countRange>
+							<min>10</min>
+							<max>25</max>
+						</countRange>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/DefPackage-TraderKindDef/TraderKindDef[defName = "Orbital_BulkGoods"]/stockGenerators</xpath>
+				<value>
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>SRV_Charcoal</thingDef>
+						<countRange>
+							<min>125</min>
+							<max>500</max>
+						</countRange>
+					</li>
+					<li Class="StockGenerator_Tag">
+						<tradeTag>SRV_Meals</tradeTag>
+						<thingDefCountRange>
+							<min>1</min>
+							<max>6</max>
+						</thingDefCountRange>
+						<countRange>
+							<min>15</min>
+							<max>50</max>
+						</countRange>
+					</li>
+					<li Class="StockGenerator_Tag">
+						<tradeTag>SRV_RawFood</tradeTag>
+						<thingDefCountRange>
+							<min>1</min>
+							<max>4</max>
+						</thingDefCountRange>
+						<countRange>
+							<min>50</min>
+							<max>250</max>
+						</countRange>
+					</li>
+				</value>
+			</li>
+		</Operations>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Shiv"]/recipeMaker/recipeUsers</xpath>
+		<value>
+			<li>SRV_Forge</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Club"]/recipeMaker/recipeUsers</xpath>
+		<value>
+			<li>SRV_Forge</li>
+		</value>
+	</Operation>
+
+	<Operation Class="SurvivalistsAdditions.PatchOperation_Conditional">
+		<success>Always</success>
+		<testFor Class="PatchOperationTest">
+			<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Knife"]/recipeMaker/recipeUsers</xpath>
+		</testFor>
+		<operationTrue Class="PatchOperationAdd">
+			<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Knife"]/recipeMaker/recipeUsers</xpath>
+			<value>
+				<li>SRV_Forge</li>
+			</value>
+		</operationTrue>
+		<operationFalse Class="SurvivalistsAdditions.PatchOperation_Conditional">
+			<testFor Class="PatchOperationTest">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Knife"]/recipeMaker</xpath>
+			</testFor>
+			<operationTrue Class="PatchOperationAdd">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Knife"]/recipeMaker</xpath>
+				<value>
+					<recipeUsers>
+						<li>ElectricSmithy</li>
+						<li>FueledSmithy</li>
+						<li>SRV_Forge</li>
+					</recipeUsers>
+				</value>
+			</operationTrue>
+			<operationFalse Class="PatchOperationInsert">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Knife"]/label</xpath>
+				<value>
+					<recipeMaker>
+						<recipeUsers>
+							<li>ElectricSmithy</li>
+							<li>FueledSmithy</li>
+							<li>SRV_Forge</li>
+						</recipeUsers>
+					</recipeMaker>
+				</value>
+			</operationFalse>
+		</operationFalse>
+	</Operation>
+
+	<Operation Class="SurvivalistsAdditions.PatchOperation_Conditional">
+		<success>Always</success>
+		<testFor Class="PatchOperationTest">
+			<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Mace"]/recipeMaker/recipeUsers</xpath>
+		</testFor>
+		<operationTrue Class="PatchOperationAdd">
+			<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Mace"]/recipeMaker/recipeUsers</xpath>
+			<value>
+				<li>SRV_Forge</li>
+			</value>
+		</operationTrue>
+		<operationFalse Class="SurvivalistsAdditions.PatchOperation_Conditional">
+			<testFor Class="PatchOperationTest">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Mace"]/recipeMaker</xpath>
+			</testFor>
+			<operationTrue Class="PatchOperationAdd">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Mace"]/recipeMaker</xpath>
+				<value>
+					<recipeUsers>
+						<li>ElectricSmithy</li>
+						<li>FueledSmithy</li>
+						<li>SRV_Forge</li>
+					</recipeUsers>
+				</value>
+			</operationTrue>
+			<operationFalse Class="PatchOperationInsert">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Mace"]/label</xpath>
+				<value>
+					<recipeMaker>
+						<recipeUsers>
+							<li>ElectricSmithy</li>
+							<li>FueledSmithy</li>
+							<li>SRV_Forge</li>
+						</recipeUsers>
+					</recipeMaker>
+				</value>
+			</operationFalse>
+		</operationFalse>
+	</Operation>
+
+	<Operation Class="SurvivalistsAdditions.PatchOperation_Conditional">
+		<success>Always</success>
+		<testFor Class="PatchOperationTest">
+			<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Gladius"]/recipeMaker/recipeUsers</xpath>
+		</testFor>
+		<operationTrue Class="PatchOperationAdd">
+			<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Gladius"]/recipeMaker/recipeUsers</xpath>
+			<value>
+				<li>SRV_Forge</li>
+			</value>
+		</operationTrue>
+		<operationFalse Class="SurvivalistsAdditions.PatchOperation_Conditional">
+			<testFor Class="PatchOperationTest">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Gladius"]/recipeMaker</xpath>
+			</testFor>
+			<operationTrue Class="PatchOperationAdd">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Gladius"]/recipeMaker</xpath>
+				<value>
+					<recipeUsers>
+						<li>ElectricSmithy</li>
+						<li>FueledSmithy</li>
+						<li>SRV_Forge</li>
+					</recipeUsers>
+				</value>
+			</operationTrue>
+			<operationFalse Class="PatchOperationInsert">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Gladius"]/label</xpath>
+				<value>
+					<recipeMaker>
+						<recipeUsers>
+							<li>ElectricSmithy</li>
+							<li>FueledSmithy</li>
+							<li>SRV_Forge</li>
+						</recipeUsers>
+					</recipeMaker>
+				</value>
+			</operationFalse>
+		</operationFalse>
+	</Operation>
+
+	<Operation Class="SurvivalistsAdditions.PatchOperation_Conditional">
+		<success>Always</success>
+		<testFor Class="PatchOperationTest">
+			<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Spear"]/recipeMaker/recipeUsers</xpath>
+		</testFor>
+		<operationTrue Class="PatchOperationAdd">
+			<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Spear"]/recipeMaker/recipeUsers</xpath>
+			<value>
+				<li>SRV_Forge</li>
+			</value>
+		</operationTrue>
+		<operationFalse Class="SurvivalistsAdditions.PatchOperation_Conditional">
+			<testFor Class="PatchOperationTest">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Spear"]/recipeMaker</xpath>
+			</testFor>
+			<operationTrue Class="PatchOperationAdd">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Spear"]/recipeMaker</xpath>
+				<value>
+					<recipeUsers>
+						<li>ElectricSmithy</li>
+						<li>FueledSmithy</li>
+						<li>SRV_Forge</li>
+					</recipeUsers>
+				</value>
+			</operationTrue>
+			<operationFalse Class="PatchOperationInsert">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Spear"]/label</xpath>
+				<value>
+					<recipeMaker>
+						<recipeUsers>
+							<li>ElectricSmithy</li>
+							<li>FueledSmithy</li>
+							<li>SRV_Forge</li>
+						</recipeUsers>
+					</recipeMaker>
+				</value>
+			</operationFalse>
+		</operationFalse>
+	</Operation>
+
+	<Operation Class="SurvivalistsAdditions.PatchOperation_Conditional">
+		<success>Always</success>
+		<testFor Class="PatchOperationTest">
+			<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Longsword"]/recipeMaker/recipeUsers</xpath>
+		</testFor>
+		<operationTrue Class="PatchOperationAdd">
+			<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Longsword"]/recipeMaker/recipeUsers</xpath>
+			<value>
+				<li>SRV_Forge</li>
+			</value>
+		</operationTrue>
+		<operationFalse Class="SurvivalistsAdditions.PatchOperation_Conditional">
+			<testFor Class="PatchOperationTest">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Longsword"]/recipeMaker</xpath>
+			</testFor>
+			<operationTrue Class="PatchOperationAdd">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Longsword"]/recipeMaker</xpath>
+				<value>
+					<recipeUsers>
+						<li>ElectricSmithy</li>
+						<li>FueledSmithy</li>
+						<li>SRV_Forge</li>
+					</recipeUsers>
+				</value>
+			</operationTrue>
+			<operationFalse Class="PatchOperationInsert">
+				<xpath>ThingDefs/ThingDef[defName="MeleeWeapon_Longsword"]/label</xpath>
+				<value>
+					<recipeMaker>
+						<recipeUsers>
+							<li>ElectricSmithy</li>
+							<li>FueledSmithy</li>
+							<li>SRV_Forge</li>
+						</recipeUsers>
+					</recipeMaker>
+				</value>
+			</operationFalse>
+		</operationFalse>
+	</Operation>
+
+</Patch>

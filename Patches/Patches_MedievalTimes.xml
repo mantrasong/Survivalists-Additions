@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- If Medieval Times is found, unify coal -->
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<Operations>
+			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+				<modName>Medieval Times</modName>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/ThingDefs/ThingDef[DefName = "SRV_Forge"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+				<value>
+					<li>MedTimes_Resource_Coal</li>
+				</value>
+			</li>
+		</Operations>
+	</Operation>
+	
+	<!-- If Medieval Times is found, unify charcoal -->
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<Operations>
+			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+				<modName>Medieval Times</modName>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/ThingDefs/ThingDef[@Name = "MedTimes_BlacksmithsForgeBase"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+				<value>
+					<li>SRV_Charcoal</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/ThingDefs/ThingDef[defName = "MedTimes_StoneHearth"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+				<value>
+					<li>SRV_Charcoal</li>
+				</value>
+			</li>
+			<!-- Coal gives off poisonous gas, so let's make food production use charcoal -->
+			<!-- Food prep station is skipped since the coal doesn't directly affect the food -->
+			<li Class="PatchOperationReplace">
+				<xpath>/ThingDefs/ThingDef[defName = "MedTimes_Smokehouse"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+				<value>
+					<thingDefs>
+						<li>SRV_Charcoal</li>
+						<li>WoodLog</li>
+					</thingDefs>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/ThingDefs/ThingDef[DefName = "MedTimes_FueledSmelter"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+				<value>
+					<li>SRV_Charcoal</li>
+				</value>
+			</li>
+		</Operations>
+	</Operation>
+
+	<!-- If Medieval Times is found, add recipes -->
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<Operations>
+			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+				<modName>Medieval Times</modName>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/ThingDefs/ThingDef[defName = "MedTimes_StoneHearth"]/recipes</xpath>
+				<value>
+					<li>SRV_GrillMealMeat</li>
+					<li>SRV_GrillMealVeg</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/ThingDefs/ThingDef[defName = "MedTimes_Smokehouse"]</xpath>
+				<value>
+					<recipes>
+						<li>SRV_SmokePreserveMeatLarge</li>
+						<li>SRV_SmokePreserveMeatSmall</li>
+						<li>SRV_SmokePreserveMeatSingle</li>
+					</recipes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/ThingDefs/ThingDef[DefName = "MedTimes_FoodPrepStation"]</xpath>
+				<value>
+					<recipes>
+						<li>SRV_PrepSalad</li>
+						<li>SRV_PrepSaladCabbage</li>
+						<li>SRV_PickleTurnip</li>
+						<li>SRV_PickleCabbage</li>
+					</recipes>
+				</value>
+			</li>
+		</Operations>
+	</Operation>
+
+</Patch>

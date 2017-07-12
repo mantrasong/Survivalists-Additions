@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<ThingDef Name="SRV_BedBase" ParentName="FurnitureBase" Abstract="True">
+		<category>Building</category>
+		<ThingClass>Building_Bed</ThingClass>
+		<graphicData>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<DesignationCategory>Furniture</DesignationCategory>
+		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+		<altitudeLayer>Building</altitudeLayer>
+		<statBases>
+			<Flammability>1.0</Flammability>
+			<BedRestEffectiveness>1</BedRestEffectiveness>
+			<Comfort>0.75</Comfort>
+			<ImmunityGainSpeedFactor>1.1</ImmunityGainSpeedFactor>
+		</statBases>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<building>
+			<Bed_ShowSleeperBody>False</Bed_ShowSleeperBody>
+			<bed_healPerDay>2.75</bed_healPerDay>
+		</building>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VitalsMonitor</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_RoomIdentifier">
+				<roomStat>Impressiveness</roomStat>
+			</li>
+		</comps>
+		<fillPercent>0.2</fillPercent>
+		<PathCost>50</PathCost>
+		<StaticSunShadowHeight>0.1</StaticSunShadowHeight>
+		<CastEdgeShadows>True</CastEdgeShadows>
+		<Passability>PassThroughOnly</Passability>
+		<canOverlapZones>false</canOverlapZones>
+		<DrawGUIOverlay>True</DrawGUIOverlay>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
+
+
+	<!-- ========================== Inheritors ============================== -->
+
+
+	<ThingDef ParentName="SRV_BedBase">
+		<defName>SRV_HideBed</defName>
+		<Label>bed</Label>
+		<Description>A primitive bed for sleeping in.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Furniture/Bed/HideBed</texPath>
+			<drawSize>(3,4)</drawSize>
+			<damageData>
+				<rect>(0,0.05,1,1.95)</rect>
+			</damageData>
+		</graphicData>
+		<Size>(1,2)</Size>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Beauty>4</Beauty>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+		</statBases>
+		<costStuffCount>20</costStuffCount>
+		<costList>
+			<WoodLog>15</WoodLog>
+		</costList>
+	</ThingDef>
+
+	<ThingDef ParentName="SRV_BedBase">
+		<defName>SRV_HideDoubleBed</defName>
+		<Label>double bed</Label>
+		<Description>A primitive bed for two people to sleep in.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Furniture/Bed/HideDoubleBed</texPath>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<rect>(0,0.05,2,1.95)</rect>
+			</damageData>
+		</graphicData>
+		<Size>(2,2)</Size>
+		<statBases>
+			<MaxHitPoints>140</MaxHitPoints>
+			<Beauty>8</Beauty>
+			<WorkToBuild>1600</WorkToBuild>
+			<Mass>35</Mass>
+		</statBases>
+		<costStuffCount>40</costStuffCount>
+		<costList>
+			<WoodLog>30</WoodLog>
+		</costList>
+	</ThingDef>
+
+	<ThingDef ParentName="FurnitureBase">
+		<defName>SRV_TableSimple</defName>
+		<label>simple table</label>
+		<description>A small table made from bough wood. Just big enough for one person to eat at.</description>
+		<graphicData>
+			<texPath>Cupro/Object/Furniture/SimpleTable/SimpleTable</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>500</WorkToBuild>
+			<Mass>4</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>3</Beauty>
+		</statBases>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<canOverlapZones>false</canOverlapZones>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<socialPropernessMatters>false</socialPropernessMatters>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<surfaceType>Eat</surfaceType>
+		<constructEffect>ConstructDirt</constructEffect>
+		<CostList>
+			<WoodLog>10</WoodLog>
+		</CostList>
+		<size>(1,1)</size>
+		<rotatable>true</rotatable>
+	</ThingDef>
+
+	<ThingDef ParentName="FurnitureBase"> 
+		<defName>SRV_StumpChair</defName>
+		<label>stump chair</label>
+		<description>A stump that has been flattened to sit on.</description>
+		<graphicData>
+			<texPath>Cupro/Object/Furniture/StumpChair</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shadowData>
+				<volume>(0.3, 0.6, 0.3)</volume>
+			</shadowData>
+		</graphicData>
+		<blockLight>false</blockLight>
+		<altitudeLayer>Building</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToBuild>250</WorkToBuild>
+			<Mass>5</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>1</Beauty>
+			<Comfort>0.35</Comfort>
+		</statBases>
+		<CostList>
+			<WoodLog>5</WoodLog>
+		</CostList>
+		<socialPropernessMatters>false</socialPropernessMatters>
+		<rotatable>false</rotatable>
+		<pathCost>30</pathCost>
+		<canOverlapZones>false</canOverlapZones>
+		<fillPercent>0.30</fillPercent>
+		<constructEffect>ConstructDirt</constructEffect>
+		<building>
+			<isSittable>true</isSittable>
+		</building>
+	</ThingDef>
+
+</ThingDefs>

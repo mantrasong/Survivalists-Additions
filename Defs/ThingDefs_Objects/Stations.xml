@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<ThingDef ParentName="BuildingBase">
+		<DefName>SRV_Grill</DefName>
+		<label>grill</label>
+		<ThingClass>Building_WorkTable_HeatPush</ThingClass>
+		<Description>A small grill used to cook food. Requires fuel to cook.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Station/Grill/Grill</texPath>
+			<shaderType>CutoutComplex</shaderType>
+			<graphicClass>Graphic_Multi</graphicClass>
+		</graphicData>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>50</costStuffCount>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>1200</WorkToBuild>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Beauty>1</Beauty>
+			<Flammability>0</Flammability>
+			<Mass>12</Mass>
+		</statBases>
+		<Size>(1,1)</Size>
+		<DesignationCategory>Production</DesignationCategory>
+		<Passability>PassThroughOnly</Passability>
+		<canOverlapZones>false</canOverlapZones>
+		<pathCost>60</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<recipes>
+			<li>SRV_GrillMealMeat</li>
+			<li>SRV_GrillMealMeatDouble</li>
+			<li>SRV_GrillMealVeg</li>
+			<li>SRV_GrillMealVegDouble</li>
+			<li>SRV_GrillMealFine</li>
+		</recipes>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>80.0</fuelConsumptionRate>
+				<fuelCapacity>25.0</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>SRV_Charcoal</li>
+					</thingDefs>
+				</fuelFilter>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+			</li>
+			<li Class="SurvivalistsAdditions.CompProperties_Smoker">
+				<smokeStyle>Single</smokeStyle>
+				<frequencyMin>240</frequencyMin>
+				<frequencyMax>640</frequencyMax>
+				<produceSmokeOnlyWhenUsed>true</produceSmokeOnlyWhenUsed>
+				<size>0.45</size>
+			</li>
+		</comps>
+		<building>
+			<isMealSource>true</isMealSource>
+			<heatPerTickWhileWorking>0.10</heatPerTickWhileWorking>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<DefName>SRV_Forge</DefName>
+		<label>forge</label>
+		<ThingClass>Building_WorkTable_HeatPush</ThingClass>
+		<Description>An ancient structure used for heating up metal and working it into useful tools.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Station/Forge/Forge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<fillPercent>0.25</fillPercent>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>50</costStuffCount>
+		<costList>
+			<Steel>30</Steel>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<UseHitPoints>true</UseHitPoints>
+		<destroyable>true</destroyable>
+		<rotatable>true</rotatable>
+		<statBases>
+			<MaxHitPoints>2000</MaxHitPoints>
+			<WorkToBuild>2000</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Cleanliness>-5</Cleanliness>
+			<Mass>50</Mass>
+			<!-- The forge is slower than the electric smelter, and the recipes use WorkToMake -->
+			<WorkTableWorkSpeedFactor>0.5</WorkTableWorkSpeedFactor>
+		</statBases>
+		<Size>(2,1)</Size>
+		<DesignationCategory>Production</DesignationCategory>
+		<Passability>PassThroughOnly</Passability>
+		<canOverlapZones>false</canOverlapZones>
+		<pathCost>60</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>SRV_Bellows</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>64.0</fuelConsumptionRate>
+				<fuelCapacity>40.0</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>SRV_Charcoal</li>
+					</thingDefs>
+				</fuelFilter>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+			</li>
+			<li Class="SurvivalistsAdditions.CompProperties_Smoker">
+				<smokeStyle>Single</smokeStyle>
+				<frequencyMin>1200</frequencyMin>
+				<frequencyMax>1600</frequencyMax>
+				<produceSmokeOnlyWhenUsed>true</produceSmokeOnlyWhenUsed>
+				<size>0.5</size>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<heatPerTickWhileWorking>0.25</heatPerTickWhileWorking>
+		</building>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>SRV_Forge</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<DefName>SRV_Smoker</DefName>
+		<label>smoker</label>
+		<ThingClass>SurvivalistsAdditions.Building_Smoker</ThingClass>
+		<Description>A large stone smoker built for cooking and preserving a large amount of meat. Takes a long time to cook.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Station/Smoker/Smoker</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<uiIconPath>Cupro/Object/Station/Smoker/Smoker_MenuIcon</uiIconPath>
+		<fillPercent>0.9</fillPercent>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>100</costStuffCount>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<UseHitPoints>true</UseHitPoints>
+		<rotatable>true</rotatable>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>2000</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>10</Beauty>
+			<Cleanliness>-5</Cleanliness>
+			<Mass>185</Mass>
+		</statBases>
+		<Size>(1,1)</Size>
+		<DesignationCategory>Production</DesignationCategory>
+		<Passability>PassThroughOnly</Passability>
+		<canOverlapZones>false</canOverlapZones>
+		<pathCost>80</pathCost>
+		<surfaceType>Item</surfaceType>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>75.0</fuelConsumptionRate>
+				<fuelCapacity>40.0</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>SRV_Charcoal</li>
+					</thingDefs>
+				</fuelFilter>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+			</li>
+			<li Class="SurvivalistsAdditions.CompProperties_Smoker">
+				<smokeStyle>None</smokeStyle>
+				<offset>(0.5,0,1)</offset>
+				<produceSmokeOnlyWhenUsed>true</produceSmokeOnlyWhenUsed>
+				<size>0.75</size>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+	</ThingDef>
+
+	<ThingDef Name="CampTableBase" ParentName="BuildingBase" Abstract="True">
+		<ThingClass>Building_WorkTable</ThingClass>
+		<graphicData>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,1)</drawSize>
+		</graphicData>
+		<CostList>
+			<WoodLog>15</WoodLog>
+		</CostList>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<constructEffect>ConstructWood</constructEffect>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>700</WorkToBuild>
+			<MaxHitPoints>90</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Mass>4.5</Mass>
+		</statBases>
+		<Size>(2,1)</Size>
+		<DesignationCategory>Production</DesignationCategory>
+		<Passability>PassThroughOnly</Passability>
+		<canOverlapZones>false</canOverlapZones>
+		<pathCost>60</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
+	
+	<ThingDef ParentName="CampTableBase">
+		<defName>SRV_TableCamp</defName>
+		<label>camp crafting table</label>
+		<Description>A lightweight collapsible table for doing simple tasks while traveling.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Station/CraftingTable/CraftingTable</texPath>
+		</graphicData>
+		<statBases>
+			<Beauty>1</Beauty>
+		</statBases>
+	</ThingDef>
+
+	<ThingDef ParentName="CampTableBase">
+		<defName>SRV_TableButcherCamp</defName>
+		<label>camp butcher table</label>
+		<Description>A lightweight collapsible table for butchering animals while traveling.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Station/ButcheringTable/ButcheringTable</texPath>
+		</graphicData>
+		<statBases>
+			<Beauty>-2</Beauty>
+			<Cleanliness>-18</Cleanliness>
+		</statBases>
+		<recipes>
+			<li>MakeKibble</li>
+			<li>ButcherCorpseFlesh</li>
+		</recipes>
+	</ThingDef>
+
+</ThingDefs>

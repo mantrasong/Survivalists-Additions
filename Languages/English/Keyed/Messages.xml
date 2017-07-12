@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<!-- Vinegar Barrel -->
+	<SRV_ContainsJuice>Contains {0} / {1} juice.</SRV_ContainsJuice>
+	<SRV_ContainsVinegar>Contains {0} / {1} vinegar.</SRV_ContainsVinegar>
+	<SRV_NoJuice>need juice</SRV_NoJuice>
+	
+	<!-- Smoker -->
+	<SRV_ContainsMeat>Contains {0} / {1} meat.</SRV_ContainsMeat>
+	<SRV_ContainsSmokedMeat>Contains {0} / {1} smoked meat.</SRV_ContainsSmokedMeat>
+	<SRV_Smoked>Smoked</SRV_Smoked>
+	<SRV_NoMeat>need meat</SRV_NoMeat>
+	<SRV_SmokerLocked>sealed for cooking</SRV_SmokerLocked>
+	<SRV_InspectSmokerTending>Needs tending. Smoking speed: 75%</SRV_InspectSmokerTending>
+	<SRV_SmokerOutOfIdealTemperature>Non-ideal temperature. Smoking speed: {0}</SRV_SmokerOutOfIdealTemperature>
+	<SRV_IdealSmokingTemperature>Ideal smoking temperature</SRV_IdealSmokingTemperature>
+	<SRV_Rot>Rot: {0}</SRV_Rot>
+
+</LanguageData>

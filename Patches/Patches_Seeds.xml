@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- If SeedsPlease is found, add seeds -->
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<Operations>
+			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+				<modName>SeedsPlease</modName>
+			</li>
+			<li Class="PatchOperationInsert">
+				<xpath>/Plants/ThingDef[@Name="SRV_PlantDefInsertion"]</xpath>
+				<Order>Prepend</Order>
+				<value>
+					<SeedsPlease.SeedDef Name="SRV_SeedBase" ParentName="ResourceBase" Abstract="True">
+						<thingClass>SeedsPlease.Seed</thingClass>
+						<label>unspecified seed</label>
+						<description>These are genetically engineered seeds capable of thriving in a wide range of alien environments over multiple generations.</description>
+						<graphicData>
+							<texPath>Things/Item/Seeds/Seeds</texPath>
+							<graphicClass>Graphic_StackCount</graphicClass>
+						</graphicData>
+						<statBases>
+							<MaxHitPoints>15</MaxHitPoints>
+							<Mass>0.015</Mass>
+							<Flammability>1.0</Flammability>
+							<DeteriorationRate>1</DeteriorationRate>
+							<MarketValue>0</MarketValue>
+							<SellPriceFactor>0.01</SellPriceFactor>
+						</statBases>
+						<soundInteract>Grain_Drop</soundInteract>
+						<soundDrop>Grain_Drop</soundDrop>
+						<thingCategories>
+							<li>SeedsCategory</li>
+						</thingCategories>
+						<tradeTags>
+							<li>Seeds</li>
+						</tradeTags>
+						<seed>
+							<harvestFactor>1.0</harvestFactor>
+							<seedFactor>1.0</seedFactor>
+							<baseChance>0.95</baseChance>
+							<extraChance>0.15</extraChance>
+						</seed>
+						<stackLimit>500</stackLimit>
+					</SeedsPlease.SeedDef>
+
+					<SeedsPlease.SeedDef ParentName="SRV_SeedBase">
+						<defName>SRV_SeedTurnip</defName>
+						<label>turnip seeds</label>
+						<plant>SRV_PlantTurnip</plant>
+					</SeedsPlease.SeedDef>
+					
+					<SeedsPlease.SeedDef ParentName="SRV_SeedBase">
+						<defName>SRV_SeedCabbage</defName>
+						<label>cabbage seeds</label>
+						<plant>SRV_PlantCabbage</plant>
+					</SeedsPlease.SeedDef>
+				</value>
+			</li>
+		</Operations>
+	</Operation>
+
+</Patch>
