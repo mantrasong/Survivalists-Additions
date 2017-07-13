@@ -9,7 +9,7 @@ namespace SurvivalistsAdditions {
 
     public override void Generate(Map map) {
       // Adjust the amount of plants to spawn
-      int timesToSpawn = (int)((map.Size.x / 25) * map.Biome.plantDensity * ((map.TileInfo.VisibleRivers.NullOrEmpty()) ? 1f : 2f));
+      int timesToSpawn = (int)((map.Size.x / 25) * map.Biome.plantDensity * ((map.TileInfo.VisibleRivers.NullOrEmpty()) ? 1f : 2f) * SrvSettings.GenStep_PlantDensity);
 
       // Validate water cells
       Predicate<IntVec3> validWater = ((IntVec3 c) => (

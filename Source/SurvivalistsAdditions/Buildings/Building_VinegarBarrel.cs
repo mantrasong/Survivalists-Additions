@@ -9,10 +9,9 @@ namespace SurvivalistsAdditions {
   [StaticConstructorOnStartup]
   public class Building_VinegarBarrel : Building {
 
-    public const int MaxCapacity = 25;
-    public const float MinIdealTemperature = 7f;
-
-    private const int BaseFermentationDuration = 600000;
+    private const float MinIdealTemperature = 7f;
+    private readonly int MaxCapacity = SrvSettings.VinegarBarrel_MaxCapacity;
+    private readonly int BaseFermentationDuration = SrvSettings.VinegarBarrel_FermentTicks;
 
     private int juiceCount;
     private float progressInt;

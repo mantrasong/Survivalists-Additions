@@ -9,9 +9,9 @@ namespace SurvivalistsAdditions {
   [StaticConstructorOnStartup]
   public class Building_CharcoalPit : Building {
 
-    public const int MaxCapacity = 25;
-    public const float CharcoalPerWoodLog = 3f;
-    private int baseBurnTicks = 20000;
+    private readonly int MaxCapacity = SrvSettings.CharcoalPit_MaxCapacity;
+    private readonly int BaseBurnDuration = SrvSettings.CharcoalPit_BurnTicks;
+    private readonly float CharcoalPerWoodLog = SrvSettings.CharcoalPit_CharcoalPerWoodLog;
 
     private int woodCount;
     private float progressInt;
@@ -60,7 +60,7 @@ namespace SurvivalistsAdditions {
 
     private float ProgressPerTick {
       get {
-        return 1f / baseBurnTicks;
+        return 1f / BaseBurnDuration;
       }
     }
 

@@ -22,5 +22,19 @@
 	<SRV_ContainsCharcoal>Contains {0} / {1} charcoal.</SRV_ContainsCharcoal>
 	<SRV_Charred>Charred</SRV_Charred>
 	<SRV_NoWood>need wood</SRV_NoWood>
+	
+	<!-- Settings -->
+	<SRV_Label_VinegarBarrel_MaxCapacity>Vinegar barrel, max capacity: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_VinegarBarrel_MaxCapacity>
+	<SRV_Label_VinegarBarrel_FermentDays>Vinegar barrel, ferment days: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_VinegarBarrel_FermentDays>
+	
+	<SRV_Label_Smoker_MaxCapacity>Smoker, max capacity: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_Smoker_MaxCapacity>
+	<SRV_Label_Smoker_SmokeHours>Smoker, hours to cook: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt; </SRV_Label_Smoker_SmokeHours>
+	<SRV_Label_Smoker_TendHours>Smoker, hours before tending: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_Smoker_TendHours>
+	
+	<SRV_Label_CharcoalPit_MaxCapacity>Charcoal pit, max capacity: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_CharcoalPit_MaxCapacity>
+	<SRV_Label_CharcoalPit_BurnHours>Charcoal pit, hours to burn: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_CharcoalPit_BurnHours>
+	<SRV_Label_CharcoalPit_CharcoalPerWoodLog>Charcoal pit, charcoal per wood log: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_CharcoalPit_CharcoalPerWoodLog>
+	
+	<SRV_Label_GenStep_PlantDensity>WorldGen, jute and hayreed spawn multiplier: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_GenStep_PlantDensity>
 
 </LanguageData>

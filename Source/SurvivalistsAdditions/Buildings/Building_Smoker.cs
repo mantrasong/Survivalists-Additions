@@ -9,17 +9,16 @@ namespace SurvivalistsAdditions {
   [StaticConstructorOnStartup]
   public class Building_Smoker : Building {
     #region Fields
-    public const int MaxCapacity = 60;
-    public const float MinIdealTemperature = 7f;
-
-    private const int BaseSmokeDuration = 60000;
+    private const float MinIdealTemperature = 7f;
     private const float MeatAddingPct = 0.045f;
+    private readonly int MaxCapacity = SrvSettings.Smoker_MaxCapacity;
+    private readonly int BaseSmokeDuration = SrvSettings.Smoker_SmokeTicks;
+    private readonly int TicksUntilTending = SrvSettings.Smoker_TendTicks;
 
     private int ticksSinceTending = 0;
     private int rottingTicks = 0;
     private int smokeTimer;
     private float progressInt;
-    private int cachedMeatCount;
     private Material barFilledCachedMat;
     private CompSmoker smokerComp;
     private CompRefuelable fuelComp;
@@ -61,7 +60,7 @@ namespace SurvivalistsAdditions {
 
     public bool NeedsTending {
       get {
-        return ticksSinceTending >= 5000;
+        return ticksSinceTending >= TicksUntilTending;
       }
     }
 
@@ -170,8 +169,6 @@ namespace SurvivalistsAdditions {
           Messages.Message("MessageRottedAwayInStorage".Translate("FoodTypeFlags_Meat".Translate()), this, MessageSound.Negative);
           LessonAutoActivator.TeachOpportunity(ConceptDefOf.SpoilageAndFreezers, OpportunityType.GoodToKnow);
         }
-        // Recalculate the meatCount so Draw works correctly
-        cachedMeatCount = MeatCount;
       }
     }
 
@@ -250,7 +247,7 @@ namespace SurvivalistsAdditions {
       }
 
       // Adjust the rotting ticks based on the meat added
-      float t = (float)countAccepted / (MaxCapacity + countAccepted);
+      float t = (float)countAccepted / (MeatCount + countAccepted);
       int newItemRottingTicks = (int)(((ThingWithComps)meat).GetComp<CompRottable>().RotProgressPct * GenDate.TicksPerDay);
       rottingTicks = (int)(Mathf.Lerp(rottingTicks, newItemRottingTicks, t));
 
@@ -280,11 +277,6 @@ namespace SurvivalistsAdditions {
         meatSources.Add(new ThingCountExposable(sourceDef, count));
       }
 
-      // Tend to the smoker while adding meat
-      Tend();
-
-      cachedMeatCount = MeatCount;
-
       // Adjust the progress to account for the new meat
       Progress = GenMath.WeightedAverage(0f, num, Progress, MeatCount);
     }
@@ -308,7 +300,6 @@ namespace SurvivalistsAdditions {
       if (meatSources.Count <= 0) {
         Reset();
       }
-      cachedMeatCount = MeatCount;
 
       return smokedMeat;
     }
@@ -320,7 +311,6 @@ namespace SurvivalistsAdditions {
       Progress = 0f;
       meatSources.Clear();
       rottingTicks = 0;
-      cachedMeatCount = 0;
     }
     #endregion MethodGroup_Signalling
 
@@ -335,7 +325,7 @@ namespace SurvivalistsAdditions {
         GenDraw.DrawFillableBar(new GenDraw.FillableBarRequest {
           center = drawPos,
           size = Static.BarSize_Generic,
-          fillPercent = cachedMeatCount / (float)MaxCapacity,
+          fillPercent = MeatCount / (float)MaxCapacity,
           filledMat = BarFilledMat,
           unfilledMat = Static.BarUnfilledMat_Generic,
           margin = 0.1f,
