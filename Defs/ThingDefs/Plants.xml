@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Plants>
 
-	<ThingDef Name="SRV_PlantDefInsertion" ParentName="PlantBase">
+	<ThingDef ParentName="PlantBase">
 		<defName>SRV_PlantTurnip</defName>
 		<label>turnip plant</label>
 		<description>A root vegetable with edible leaves. Grows quickly and is able to survive a cold snap.</description>

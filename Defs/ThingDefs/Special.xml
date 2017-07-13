@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ThingDefinitions>
-	
+<Defs>
+
+	<Def Name="SRV_DefInsertion" Abstract="True" />
+
 	<ThingDef Name="ItemSpawnerBase" Abstract="True">
 		<description>null</description>
 		<graphicData>
@@ -12,11 +14,20 @@
 			<MarketValue>0</MarketValue>
 		</statBases>
 	</ThingDef>
-	
+
 	<ThingDef ParentName="ItemSpawnerBase">
 		<defName>SRV_TurnipItemSpawner</defName>
 		<thingClass>SurvivalistsAdditions.TurnipItemSpawner</thingClass>
 		<label>turnip spawner</label>
 	</ThingDef>
 
-</ThingDefinitions>
+	<ThingDef ParentName="UnfinishedBase">
+		<defName>SRV_UnfinishedSmelt</defName>
+		<label>Unfinished smelt</label>
+		<graphicData>
+			<texPath>Cupro/Item/Unfinished/UnfinishedSmelt</texPath>
+		</graphicData>
+		<stuffCategories />
+	</ThingDef>
+
+</Defs>

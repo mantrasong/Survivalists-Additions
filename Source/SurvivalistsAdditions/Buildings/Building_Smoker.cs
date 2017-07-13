@@ -205,7 +205,7 @@ namespace SurvivalistsAdditions {
 
       // Remove some of the rotting bits of the meat
       while (RotProgressPct >= 0.05f) {
-        int i = Rand.RangeInclusive(0, meatSources.Count);
+        int i = Rand.Range(0, meatSources.Count);
         int amountToTrim = (int)(MeatCount * 0.05);
         int trimmedAmount = amountToTrim * 1000;
 
