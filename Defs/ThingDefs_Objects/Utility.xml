@@ -186,11 +186,11 @@
 		<ThingClass>SurvivalistsAdditions.Building_CharcoalPit</ThingClass>
 		<Description>A mound of burning wood covered with dirt to block oxygen.</Description>
 		<graphicData>
-			<texPath>Cupro/Object/Utility/DirtMound</texPath>
+			<texPath>Cupro/Object/Utility/CharcoalPit/EmptyPit</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(3,3)</drawSize>
-			<color>(133,97,67)</color>
 		</graphicData>
+		<constructEffect>ConstructDirt</constructEffect>
 		<blockLight>false</blockLight>
 		<altitudeLayer>Building</altitudeLayer>
 		<rotatable>false</rotatable>
@@ -200,10 +200,6 @@
 			<WorkToBuild>500</WorkToBuild>
 			<Flammability>0</Flammability>
 		</statBases>
-		<stuffCategories>
-			<li>Woody</li>
-		</stuffCategories>
-		<costStuffCount>25</costStuffCount>
 		<Size>(1,1)</Size>
 		<DesignationCategory>Production</DesignationCategory>
 		<Passability>PassThroughOnly</Passability>
@@ -211,14 +207,13 @@
 		<pathCost>60</pathCost>
 		<surfaceType>Item</surfaceType>
 		<tickerType>Rare</tickerType>
-		<building>
-			<soundAmbient>FireBurning</soundAmbient>
-			<isEdifice>false</isEdifice>
-		</building>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+		</comps>
 		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
 		<placeWorkers>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
 	</ThingDef>
-	
+
 </ThingDefs>

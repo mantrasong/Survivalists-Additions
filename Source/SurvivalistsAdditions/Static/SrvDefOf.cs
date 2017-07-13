@@ -19,11 +19,15 @@ namespace SurvivalistsAdditions {
 
     public static JobDef SRV_FillVinegarBarrel;
     public static JobDef SRV_FillSmoker;
+    public static JobDef SRV_FillCharcoalPit;
     public static JobDef SRV_TendToSmoker;
     public static JobDef SRV_TakeVinegarOutOfVinegarBarrel;
     public static JobDef SRV_TakeMeatOutOfSmoker;
+    public static JobDef SRV_TakeCharcoalOutOfPit;
 
     public static TerrainDef Marsh;
     public static TerrainDef Mud;
+
+    public static SoundDef FireBurning;
   }
 }

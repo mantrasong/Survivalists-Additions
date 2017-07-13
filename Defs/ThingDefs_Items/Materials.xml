@@ -55,7 +55,7 @@
 	<ThingDef ParentName="ResourceBase">
 		<defName>SRV_Burlap</defName>
 		<label>burlap</label>
-		<description>Thick fibrous cloth woven from plant matter. It is a somewhat itchy material.</description>
+		<description>Thick fibrous cloth woven from plant matter. It is a somewhat itchy material, and is best used for outer garments.</description>
 		<graphicData>
 			<texPath>Cupro/Item/Material/Burlap</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -79,8 +79,8 @@
 			</statOffsets>
 			<statFactors>
 				<WorkToMake>0.8</WorkToMake>
-				<Insulation_Cold>0.9</Insulation_Cold>
-				<Insulation_Heat>1.1</Insulation_Heat>
+				<Insulation_Cold>0.85</Insulation_Cold>
+				<Insulation_Heat>1.15</Insulation_Heat>
 			</statFactors>
 		</stuffProps>
 		<thingCategories>

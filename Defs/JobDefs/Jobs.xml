@@ -30,5 +30,17 @@
 		<driverClass>SurvivalistsAdditions.JobDriver_TakeMeatOutOfSmoker</driverClass>
 		<reportString>taking meat out of TargetA.</reportString>
 	</JobDef>
+	
+	<JobDef>
+		<defName>SRV_FillCharcoalPit</defName>
+		<driverClass>SurvivalistsAdditions.JobDriver_FillCharcoalPit</driverClass>
+		<reportString>filling TargetA with wood.</reportString>
+	</JobDef>
+	
+	<JobDef>
+		<defName>SRV_TakeCharcoalOutOfPit</defName>
+		<driverClass>SurvivalistsAdditions.JobDriver_TakeCharcoalOutOfPit</driverClass>
+		<reportString>taking charcoal out of TargetA.</reportString>
+	</JobDef>
 
 </Defs>

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 using UnityEngine;
@@ -20,6 +19,7 @@ namespace SurvivalistsAdditions {
     private int rottingTicks = 0;
     private int smokeTimer;
     private float progressInt;
+    private int cachedMeatCount;
     private Material barFilledCachedMat;
     private CompSmoker smokerComp;
     private CompRefuelable fuelComp;
@@ -170,6 +170,8 @@ namespace SurvivalistsAdditions {
           Messages.Message("MessageRottedAwayInStorage".Translate("FoodTypeFlags_Meat".Translate()), this, MessageSound.Negative);
           LessonAutoActivator.TeachOpportunity(ConceptDefOf.SpoilageAndFreezers, OpportunityType.GoodToKnow);
         }
+        // Recalculate the meatCount so Draw works correctly
+        cachedMeatCount = MeatCount;
       }
     }
 
@@ -281,6 +283,8 @@ namespace SurvivalistsAdditions {
       // Tend to the smoker while adding meat
       Tend();
 
+      cachedMeatCount = MeatCount;
+
       // Adjust the progress to account for the new meat
       Progress = GenMath.WeightedAverage(0f, num, Progress, MeatCount);
     }
@@ -303,8 +307,9 @@ namespace SurvivalistsAdditions {
       meatSources.Remove(selectedMeat);
       if (meatSources.Count <= 0) {
         Reset();
-      } 
-      
+      }
+      cachedMeatCount = MeatCount;
+
       return smokedMeat;
     }
     #endregion MethodGroup_Smoking
@@ -315,6 +320,7 @@ namespace SurvivalistsAdditions {
       Progress = 0f;
       meatSources.Clear();
       rottingTicks = 0;
+      cachedMeatCount = 0;
     }
     #endregion MethodGroup_Signalling
 
@@ -329,7 +335,7 @@ namespace SurvivalistsAdditions {
         GenDraw.DrawFillableBar(new GenDraw.FillableBarRequest {
           center = drawPos,
           size = Static.BarSize_Generic,
-          fillPercent = MeatCount / MaxCapacity,
+          fillPercent = cachedMeatCount / (float)MaxCapacity,
           filledMat = BarFilledMat,
           unfilledMat = Static.BarUnfilledMat_Generic,
           margin = 0.1f,

@@ -10,9 +10,12 @@ namespace SurvivalistsAdditions {
     public static string TemperatureTrans = "BadTemperature".Translate().ToLower();
     public static string NoJuice = "SRV_NoJuice".Translate();
     public static string NoMeat = "SRV_NoMeat".Translate();
+    public static string NoWood = "SRV_NoWood".Translate();
     public static string SmokerLocked = "SRV_SmokerLocked".Translate();
 
-    public static readonly Material BarUnfilledMat_Generic = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.3f, 0.3f, 0.3f), false);
+    public static Graphic Graphic_CharcoalPitFilled = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/CharcoalPit/FullPit", ShaderDatabase.DefaultShader , new Vector2(3,3), Color.white);
+
+    public static readonly Material BarUnfilledMat_Generic = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.2f, 0.22f, 0.22f), false);
     public static readonly Vector2  BarSize_Generic = new Vector2(0.55f, 0.1f);
     public static readonly Color    BarZeroProgressColor_Generic = new Color(0.4f, 0.27f, 0.22f);
     public static readonly Color    BarZeroProgressColor_Smoker = new Color(0.9f, 0.2f, 0.2f);

@@ -70,13 +70,39 @@
 	</WorkGiverDef>
 	
 	<WorkGiverDef>
+		<defName>SRV_WorkGiver_TakeCharcoalOutOfPit</defName>
+		<label>take charcoal out of charcoal pit</label>
+		<giverClass>SurvivalistsAdditions.WorkGiver_TakeCharcoalOutOfPit</giverClass>
+		<workType>Hauling</workType>
+		<verb>take charcoal</verb>
+		<gerund>taking charcoal from</gerund>
+		<priorityInType>28</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
+		<defName>SRV_WorkGiver_FillCharcoalPit</defName>
+		<label>fill charcoal pit</label>
+		<giverClass>SurvivalistsAdditions.WorkGiver_FillCharcoalPit</giverClass>
+		<workType>Hauling</workType>
+		<verb>fill</verb>
+		<gerund>filling</gerund>
+		<priorityInType>27</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+	<WorkGiverDef>
 		<defName>SRV_WorkGiver_TakeVinegarOutOfVinegarBarrel</defName>
 		<label>take vinegar out of vinegar barrels</label>
 		<giverClass>SurvivalistsAdditions.WorkGiver_TakeVinegarOutOfVinegarBarrel</giverClass>
 		<workType>Hauling</workType>
 		<verb>take vinegar</verb>
 		<gerund>taking vinegar from</gerund>
-		<priorityInType>28</priorityInType>
+		<priorityInType>26</priorityInType>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -89,7 +115,7 @@
 		<workType>Hauling</workType>
 		<verb>fill</verb>
 		<gerund>filling</gerund>
-		<priorityInType>27</priorityInType>
+		<priorityInType>25</priorityInType>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>

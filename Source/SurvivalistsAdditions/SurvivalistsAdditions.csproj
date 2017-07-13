@@ -55,6 +55,8 @@
     <Compile Include="Buildings\Building_VinegarBarrel.cs" />
     <Compile Include="Components\CompProperties_Smoker.cs" />
     <Compile Include="Components\CompSmoker.cs" />
+    <Compile Include="AI\JobDriver_FillCharcoalPit.cs" />
+    <Compile Include="AI\JobDriver_TakeCharcoalOutOfPit.cs" />
     <Compile Include="Map\GenStep_Plants.cs" />
     <Compile Include="Map\IncidentWorker_MushroomSprout.cs" />
     <Compile Include="Items\ItemSpawner.cs" />
@@ -67,6 +69,8 @@
     <Compile Include="AI\ThoughtWorker_WearingBurlapApparel.cs" />
     <Compile Include="Util\ThingCountExposable.cs" />
     <Compile Include="Util\PatchOperationFindMod.cs" />
+    <Compile Include="AI\WorkGiver_FillCharcoalPit.cs" />
+    <Compile Include="AI\WorkGiver_TakeCharcoalOutOfPit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

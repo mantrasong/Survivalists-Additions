@@ -38,7 +38,7 @@ namespace SurvivalistsAdditions {
       if (pawn.Map.designationManager.DesignationOn(t, DesignationDefOf.Deconstruct) != null) {
         return false;
       }
-      if (FindIngredient(pawn, vinegarBarrel) == null) {
+      if (FindIngredient(pawn) == null) {
         JobFailReason.Is(Static.NoJuice);
         return false;
       }
@@ -47,17 +47,16 @@ namespace SurvivalistsAdditions {
 
 
     public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false) {
-      Building_VinegarBarrel building_AlcoholBarrel = (Building_VinegarBarrel)t;
-      Thing t2 = FindIngredient(pawn, building_AlcoholBarrel);
+      Building_VinegarBarrel barrel = (Building_VinegarBarrel)t;
+      Thing t2 = FindIngredient(pawn);
       return new Job(SrvDefOf.SRV_FillVinegarBarrel, t, t2) {
-        count = building_AlcoholBarrel.SpaceLeftForJuice
+        count = barrel.SpaceLeftForJuice
       };
     }
 
 
-    private Thing FindIngredient(Pawn pawn, Building_VinegarBarrel barrel) {
-      Predicate<Thing> predicate = (Thing x) => !x.IsForbidden(pawn) && pawn.CanReserve(x);
-      Predicate<Thing> validator = predicate;
+    private Thing FindIngredient(Pawn pawn) {
+      Predicate<Thing> validator = (Thing x) => !x.IsForbidden(pawn) && pawn.CanReserve(x);
       return GenClosest.ClosestThingReachable(pawn.Position, pawn.Map, ThingRequest.ForDef(SrvDefOf.SRV_VinegarJuice), PathEndMode.ClosestTouch, TraverseParms.For(pawn, Danger.Deadly, TraverseMode.ByPawn, false), 9999f, validator);
     }
   }

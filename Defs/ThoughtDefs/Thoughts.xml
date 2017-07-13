@@ -4,15 +4,34 @@
 	<ThoughtDef>
 		<defName>SRV_WearingBurlapApparel</defName>
 		<workerClass>SurvivalistsAdditions.ThoughtWorker_WearingBurlapApparel</workerClass>
+		<validWhileDespawned>true</validWhileDespawned>
 		<stages>
 			<li>
-				<label>wearing burlap apparel</label>
-				<description>My apparel is itchy and uncomfortable.</description>
+				<label>wearing burlap {0}</label>
+				<description>I am wearing burlap apparel. It's itchy and uncomfortable.</description>
+				<baseMoodEffect>-2</baseMoodEffect>
+			</li>
+			<li>
+				<label>wearing burlap {0} (+1)</label>
+				<description>I am wearing two pieces of burlap apparel. They are itchy and uncomfortable.</description>
+				<baseMoodEffect>-4</baseMoodEffect>
+			</li>
+			<li>
+				<label>wearing burlap {0} (+2)</label>
+				<description>I am wearing three pieces of burlap apparel. They are itchy and uncomfortable.</description>
 				<baseMoodEffect>-5</baseMoodEffect>
 			</li>
+			<li>
+				<label>wearing burlap {0} etc</label>
+				<description>I am wearing more than three pieces of burlap apparel. They are itchy and uncomfortable.</description>
+				<baseMoodEffect>-6</baseMoodEffect>
+			</li>
 		</stages>
+		<nullifyingTraits>
+			<li>Ascetic</li>
+		</nullifyingTraits>
 	</ThoughtDef>
-	
+
 	<ThoughtDef>
 		<defName>SRV_AteSmokedMeat</defName>
 		<workerClass>ThoughtWorker_Hediff</workerClass>
@@ -31,7 +50,7 @@
 			</li>
 		</stages>
 	</ThoughtDef>
-	
+
 	<ThoughtDef>
 		<defName>SRV_FoodMadeWithSmokedMeat</defName>
 		<durationDays>1</durationDays>

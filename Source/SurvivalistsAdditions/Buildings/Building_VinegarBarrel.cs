@@ -43,7 +43,7 @@ namespace SurvivalistsAdditions {
         if (Fermented) {
           return 0;
         }
-        return 25 - juiceCount;
+        return MaxCapacity - juiceCount;
       }
     }
 
@@ -66,8 +66,8 @@ namespace SurvivalistsAdditions {
         if (ambientTemperature < compProperties.minSafeTemperature) {
           return 0.1f;
         }
-        if (ambientTemperature < 7f) {
-          return GenMath.LerpDouble(compProperties.minSafeTemperature, 7f, 0.1f, 1f, ambientTemperature);
+        if (ambientTemperature < MinIdealTemperature) {
+          return GenMath.LerpDouble(compProperties.minSafeTemperature, MinIdealTemperature, 0.1f, 1f, ambientTemperature);
         }
         return 1f;
       }
@@ -95,7 +95,7 @@ namespace SurvivalistsAdditions {
         GenDraw.DrawFillableBar(new GenDraw.FillableBarRequest {
           center = drawPos,
           size = Static.BarSize_Generic,
-          fillPercent = juiceCount / 25f,
+          fillPercent = juiceCount / (float)MaxCapacity,
           filledMat = BarFilledMat,
           unfilledMat = Static.BarUnfilledMat_Generic,
           margin = 0.1f,
@@ -141,7 +141,7 @@ namespace SurvivalistsAdditions {
         Log.Warning("Survivalist's Additions:: Tried to add juice to a vinegar barrel full of vinegar. Colonists should take the vinegar first.");
         return;
       }
-      int num = Mathf.Min(count, 25 - juiceCount);
+      int num = Mathf.Min(count, MaxCapacity - juiceCount);
       if (num <= 0) {
         return;
       }
@@ -179,7 +179,7 @@ namespace SurvivalistsAdditions {
 
       // Add button for finishing the fermenting
       Command_Action DevFinish = new Command_Action() {
-        defaultLabel = "DEBUG: Finish",
+        defaultLabel = "Debug: Finish",
         activateSound = SoundDefOf.Click,
         action = () => { Progress = 1f; },
       };
@@ -206,14 +206,14 @@ namespace SurvivalistsAdditions {
           stringBuilder.AppendLine("SRV_ContainsVinegar".Translate(new object[]
           {
             juiceCount,
-            25
+            MaxCapacity
           }));
         }
         else {
           stringBuilder.AppendLine("SRV_ContainsJuice".Translate(new object[]
           {
             juiceCount,
-            25
+            MaxCapacity
           }));
         }
       }
@@ -240,7 +240,7 @@ namespace SurvivalistsAdditions {
       {
         "IdealFermentingTemperature".Translate(),
         ": ",
-        7f.ToStringTemperature("F0"),
+        MinIdealTemperature.ToStringTemperature("F0"),
         " ~ ",
         comp.Props.maxSafeTemperature.ToStringTemperature("F0")
       }));
