@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -7,7 +8,7 @@ using Verse;
 
 namespace SurvivalistsAdditions {
   [StaticConstructorOnStartup]
-  public class Building_CharcoalPit : Building {
+  public class Building_CharcoalPit : Building, IItemProcessor {
 
     private readonly int MaxCapacity = SrvSettings.CharcoalPit_MaxCapacity;
     private readonly int BaseBurnDuration = SrvSettings.CharcoalPit_BurnTicks;
@@ -28,6 +29,14 @@ namespace SurvivalistsAdditions {
       }
     }
 
+    public ThingRequest InputRequest {
+      get { return ThingRequest.ForDef(ThingDefOf.WoodLog); }
+    }
+
+    public bool TemperatureAcceptable {
+      get { return true; }
+    }
+
     private Material BarFilledMat {
       get {
         if (barFilledCachedMat == null) {
@@ -37,22 +46,22 @@ namespace SurvivalistsAdditions {
       }
     }
 
-    public int SpaceLeftForWood {
+    public int SpaceLeftForItem {
       get {
-        if (Charred) {
+        if (Finished) {
           return 0;
         }
         return MaxCapacity - woodCount;
       }
     }
 
-    private bool Empty {
+    public bool Empty {
       get {
         return woodCount <= 0;
       }
     }
 
-    public bool Charred {
+    public bool Finished {
       get {
         return !Empty && Progress >= 1f;
       }
@@ -64,7 +73,7 @@ namespace SurvivalistsAdditions {
       }
     }
 
-    private int EstimatedTicksLeft {
+    public int EstimatedTicksLeft {
       get {
         return Mathf.Max(Mathf.RoundToInt((1f - Progress) / ProgressPerTick), 0);
       }
@@ -113,34 +122,39 @@ namespace SurvivalistsAdditions {
       if (!Empty) {
         Progress = Mathf.Min(Progress + (250f * ProgressPerTick), 1f);
         // Occasionally throw smoke motes
-        if (!Charred && Rand.Bool && Position.ShouldSpawnMotesAt(Map) && !Map.moteCounter.SaturatedLowPriority) {
+        if (!Finished && Rand.Bool && Position.ShouldSpawnMotesAt(Map) && !Map.moteCounter.SaturatedLowPriority) {
           MoteMaker.ThrowSmoke(Position.ToVector3Shifted(), Map, 1f);
         }
       }
     }
 
 
-    public int AddWood(Thing wood) {
+    public Predicate<Thing> ItemValidator(Pawn pawn) {
+      return null;
+    }
+
+
+    public int AddItem(Thing wood) {
       int count = 0;
 
-      if (wood.stackCount <= SpaceLeftForWood) {
+      if (wood.stackCount <= SpaceLeftForItem) {
         count = wood.stackCount;
       }
       else {
-        count = SpaceLeftForWood;
+        count = SpaceLeftForItem;
       }
-      AddWood(count);
+      AddItem(count);
       return count;
     }
 
 
-    public void AddWood(int count) {
+    public void AddItem(int count) {
       bool needsUpdate = false;
       if (Empty) {
         needsUpdate = true;
       }
 
-      if (Charred) {
+      if (Finished) {
         Log.Warning("Survivalist's Additions:: Tried to add wood to a charcoal pit full of charcoal. Colonists should take the charcoal first.");
         return;
       }
@@ -156,7 +170,7 @@ namespace SurvivalistsAdditions {
     }
 
 
-    private void Reset() {
+    public void Reset() {
       woodCount = 0;
       Progress = 0f;
       Map.mapDrawer.MapMeshDirty(Position, MapMeshFlag.Things);
@@ -164,7 +178,7 @@ namespace SurvivalistsAdditions {
 
 
     public Thing TakeOutProduct() {
-      if (!Charred) {
+      if (!Finished) {
         Log.Warning("Survivalist's Additions:: Tried to get charcoal but it's not yet charred.");
         return null;
       }
@@ -197,7 +211,7 @@ namespace SurvivalistsAdditions {
     public override string GetInspectString() {
       StringBuilder stringBuilder = new StringBuilder();
       if (!Empty) {
-        if (Charred) {
+        if (Finished) {
           stringBuilder.AppendLine("SRV_ContainsCharcoal".Translate(new object[]
           {
             (int)(woodCount * CharcoalPerWoodLog),

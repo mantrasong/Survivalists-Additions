@@ -195,6 +195,7 @@
 		<surfaceType>Item</surfaceType>
 		<tickerType>Normal</tickerType>
 		<comps>
+			<li Class="CompProperties_Forbiddable" />
 			<li Class="CompProperties_Refuelable">
 				<fuelConsumptionRate>75.0</fuelConsumptionRate>
 				<fuelCapacity>40.0</fuelCapacity>

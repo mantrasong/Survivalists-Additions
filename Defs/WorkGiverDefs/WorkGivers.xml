@@ -70,12 +70,12 @@
 	</WorkGiverDef>
 	
 	<WorkGiverDef>
-		<defName>SRV_WorkGiver_TakeCharcoalOutOfPit</defName>
-		<label>take charcoal out of charcoal pit</label>
-		<giverClass>SurvivalistsAdditions.WorkGiver_TakeCharcoalOutOfPit</giverClass>
+		<defName>SRV_WorkGiver_TakeItemOutOfProcessor</defName>
+		<label>remove processed items from processors</label>
+		<giverClass>SurvivalistsAdditions.WorkGiver_TakeItemOutOfProcessor</giverClass>
 		<workType>Hauling</workType>
-		<verb>take charcoal</verb>
-		<gerund>taking charcoal from</gerund>
+		<verb>take item</verb>
+		<gerund>taking item from</gerund>
 		<priorityInType>28</priorityInType>
 		<requiredCapacities>
 			<li>Manipulation</li>
@@ -83,9 +83,9 @@
 	</WorkGiverDef>
 	
 	<WorkGiverDef>
-		<defName>SRV_WorkGiver_FillCharcoalPit</defName>
-		<label>fill charcoal pit</label>
-		<giverClass>SurvivalistsAdditions.WorkGiver_FillCharcoalPit</giverClass>
+		<defName>SRV_WorkGiver_FillProcessor</defName>
+		<label>fill item processor</label>
+		<giverClass>SurvivalistsAdditions.WorkGiver_FillProcessor</giverClass>
 		<workType>Hauling</workType>
 		<verb>fill</verb>
 		<gerund>filling</gerund>
@@ -93,46 +93,6 @@
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
-	</WorkGiverDef>
-	
-	<WorkGiverDef>
-		<defName>SRV_WorkGiver_TakeVinegarOutOfVinegarBarrel</defName>
-		<label>take vinegar out of vinegar barrels</label>
-		<giverClass>SurvivalistsAdditions.WorkGiver_TakeVinegarOutOfVinegarBarrel</giverClass>
-		<workType>Hauling</workType>
-		<verb>take vinegar</verb>
-		<gerund>taking vinegar from</gerund>
-		<priorityInType>26</priorityInType>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>
-	
-	<WorkGiverDef>
-		<defName>SRV_WorkGiver_FillVinegarBarrel</defName>
-		<label>fill vinegar barrels</label>
-		<giverClass>SurvivalistsAdditions.WorkGiver_FillVinegarBarrel</giverClass>
-		<workType>Hauling</workType>
-		<verb>fill</verb>
-		<gerund>filling</gerund>
-		<priorityInType>25</priorityInType>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>
-
-	<WorkGiverDef>
-		<defName>SRV_FillSmoker</defName>
-		<label>cook meat at smoker</label>
-		<giverClass>SurvivalistsAdditions.WorkGiver_FillSmoker</giverClass>
-		<workType>Cooking</workType>
-		<priorityInType>125</priorityInType>
-		<verb>fill</verb>
-		<gerund>filling</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-		<prioritizeSustains>true</prioritizeSustains>
 	</WorkGiverDef>
 
 	<WorkGiverDef>
@@ -146,20 +106,6 @@
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
-	</WorkGiverDef>
-
-	<WorkGiverDef>
-		<defName>SRV_TakeMeatOutOfSmoker</defName>
-		<label>take meat out of smoker</label>
-		<giverClass>SurvivalistsAdditions.WorkGiver_TakeMeatOutOfSmoker</giverClass>
-		<workType>Cooking</workType>
-		<priorityInType>126</priorityInType>
-		<verb>take meat out of</verb>
-		<gerund>taking meat out of</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-		<prioritizeSustains>true</prioritizeSustains>
 	</WorkGiverDef>
 
 </WorkGivers>

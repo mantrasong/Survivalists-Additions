@@ -8,9 +8,7 @@ namespace SurvivalistsAdditions {
     public const int GenericWaitDuration = 200;
 
     public static string TemperatureTrans = "BadTemperature".Translate().ToLower();
-    public static string NoJuice = "SRV_NoJuice".Translate();
-    public static string NoMeat = "SRV_NoMeat".Translate();
-    public static string NoWood = "SRV_NoWood".Translate();
+    public static string NoIngredient = "SRV_NoIngredient".Translate();
     public static string SmokerLocked = "SRV_SmokerLocked".Translate();
 
     public static Graphic Graphic_CharcoalPitFilled = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/CharcoalPit/FullPit", ShaderDatabase.DefaultShader , new Vector2(3,3), Color.white);

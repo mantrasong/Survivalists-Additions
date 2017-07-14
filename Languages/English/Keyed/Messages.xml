@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
-
+	
+	<SRV_NoIngredient>need ingredients</SRV_NoIngredient>
+	
 	<!-- Vinegar Barrel -->
 	<SRV_ContainsJuice>Contains {0} / {1} juice.</SRV_ContainsJuice>
 	<SRV_ContainsVinegar>Contains {0} / {1} vinegar.</SRV_ContainsVinegar>
-	<SRV_NoJuice>need juice</SRV_NoJuice>
 	
 	<!-- Smoker -->
 	<SRV_ContainsMeat>Contains {0} / {1} meat.</SRV_ContainsMeat>
 	<SRV_ContainsSmokedMeat>Contains {0} / {1} smoked meat.</SRV_ContainsSmokedMeat>
 	<SRV_Smoked>Smoked</SRV_Smoked>
-	<SRV_NoMeat>need meat</SRV_NoMeat>
 	<SRV_SmokerLocked>sealed for cooking</SRV_SmokerLocked>
 	<SRV_InspectSmokerTending>Needs tending. Smoking speed: 75%</SRV_InspectSmokerTending>
 	<SRV_SmokerOutOfIdealTemperature>Non-ideal temperature. Smoking speed: {0}</SRV_SmokerOutOfIdealTemperature>
@@ -21,7 +21,6 @@
 	<SRV_ContainsWood>Contains {0} / {1} wood.</SRV_ContainsWood>
 	<SRV_ContainsCharcoal>Contains {0} / {1} charcoal.</SRV_ContainsCharcoal>
 	<SRV_Charred>Charred</SRV_Charred>
-	<SRV_NoWood>need wood</SRV_NoWood>
 	
 	<!-- Settings -->
 	<SRV_Label_VinegarBarrel_MaxCapacity>Vinegar barrel, max capacity: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_VinegarBarrel_MaxCapacity>

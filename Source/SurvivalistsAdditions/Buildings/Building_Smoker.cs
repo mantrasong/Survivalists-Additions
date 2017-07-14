@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 using UnityEngine;
 using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace SurvivalistsAdditions {
   [StaticConstructorOnStartup]
-  public class Building_Smoker : Building {
+  public class Building_Smoker : Building, IItemProcessor {
     #region Fields
     private const float MinIdealTemperature = 7f;
     private const float MeatAddingPct = 0.045f;
@@ -37,21 +39,29 @@ namespace SurvivalistsAdditions {
       }
     }
 
-    public bool Smoked {
+    public ThingRequest InputRequest {
+      get { return ThingRequest.ForGroup(ThingRequestGroup.FoodSourceNotPlantOrTree); }
+    }
+
+    public bool Finished {
       get {
         return !Empty && Progress >= 1f;
       }
+    }
+
+    public bool TemperatureAcceptable {
+      get { return true; }
     }
 
     public bool CanAddMeat {
       get {
         return Progress < MeatAddingPct;
       }
-    }
+    }    
 
-    public int SpaceLeftForMeat {
+    public int SpaceLeftForItem {
       get {
-        if (Smoked || !CanAddMeat) {
+        if (Finished || !CanAddMeat) {
           return 0;
         }
         return MaxCapacity - MeatCount;
@@ -106,7 +116,7 @@ namespace SurvivalistsAdditions {
       }
     }
 
-    private bool Empty {
+    public bool Empty {
       get {
         return MeatCount <= 0;
       }
@@ -127,7 +137,7 @@ namespace SurvivalistsAdditions {
       }
     }
 
-    private int EstimatedTicksLeft {
+    public int EstimatedTicksLeft {
       get {
         return Mathf.Max(Mathf.RoundToInt((1f - Progress) / ProgressPerTickAtCurrentTemp), 0);
       }
@@ -139,7 +149,7 @@ namespace SurvivalistsAdditions {
     public override void Tick() {
       base.Tick();
 
-      if (!Empty && !Smoked) {
+      if (!Empty && !Finished) {
         if (fuelComp.HasFuel) {
           // The smoker has stored meat and fuel
           Progress = Mathf.Min(Progress + ProgressPerTickAtCurrentTemp, 1f);
@@ -230,7 +240,16 @@ namespace SurvivalistsAdditions {
     }
 
 
-    public int AddMeat(Thing meat) {
+    public Predicate<Thing> ItemValidator(Pawn pawn) {
+      return ((Thing meat) =>
+        !meat.IsForbidden(pawn) && pawn.CanReserve(meat) &&
+        meat.def.IsNutritionGivingIngestible && (meat.def.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None &&
+        meat.TryGetComp<CompRottable>() != null && meat.TryGetComp<CompRottable>().Stage == RotStage.Fresh && meat.def != SrvDefOf.SRV_SmokedMeat
+      );
+    }
+
+
+    public int AddItem(Thing meat) {
       int countAccepted = 0;
 
       // Make sure the meat isn't rotten - there's no point in preserving meat that has already rotted
@@ -239,11 +258,11 @@ namespace SurvivalistsAdditions {
       }
       
       // Determine how much meat to add
-      if (meat.stackCount <= SpaceLeftForMeat) {
+      if (meat.stackCount <= SpaceLeftForItem) {
         countAccepted = meat.stackCount;
       }
       else {
-        countAccepted = SpaceLeftForMeat;
+        countAccepted = SpaceLeftForItem;
       }
 
       // Adjust the rotting ticks based on the meat added
@@ -252,14 +271,14 @@ namespace SurvivalistsAdditions {
       rottingTicks = (int)(Mathf.Lerp(rottingTicks, newItemRottingTicks, t));
 
       // Add meat, then return the amount to the JobDriver
-      AddMeat(countAccepted, meat.def);
+      AddItem(countAccepted, meat.def);
       return countAccepted;
     }
 
 
-    public void AddMeat(int count, ThingDef sourceDef) {
+    public void AddItem(int count, ThingDef sourceDef) {
       // Additional integrity checks
-      if (Smoked) {
+      if (Finished) {
         Log.Warning("Survivalist's Additions:: Tried to add meat to a full smoker. Colonists should take the smoked meat out first.");
         return;
       }
@@ -284,7 +303,7 @@ namespace SurvivalistsAdditions {
 
     public Thing TakeOutProduct() {
       // Integrity check for the meat being ready
-      if (!Smoked) {
+      if (!Finished) {
         Log.Warning("Survivalist's Additions:: Tried to get smoked meat but it's not yet smoked.");
         return null;
       }
@@ -307,7 +326,7 @@ namespace SurvivalistsAdditions {
 
 
     #region MethodGroup_Signalling
-    private void Reset() {
+    public void Reset() {
       Progress = 0f;
       meatSources.Clear();
       rottingTicks = 0;
@@ -362,7 +381,7 @@ namespace SurvivalistsAdditions {
       }
       else {
         stringBuilder.Append(" ~ ");
-        if (Smoked) {
+        if (Finished) {
           stringBuilder.AppendLine("SRV_ContainsSmokedMeat".Translate(new object[]
           {
             MeatCount,

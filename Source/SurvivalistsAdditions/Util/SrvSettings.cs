@@ -40,7 +40,7 @@ namespace SurvivalistsAdditions {
       Scribe_Values.Look(ref VinegarBarrel_MaxCapacity, "VinegarBarrel_MaxCapacity", 25);
       Scribe_Values.Look(ref VinegarBarrel_FermentDays, "VinegarBarrel_FermentDays", 10);
 
-      Scribe_Values.Look(ref Smoker_MaxCapacity, "Smoker_MaxCapacity", 25);
+      Scribe_Values.Look(ref Smoker_MaxCapacity, "Smoker_MaxCapacity", 60);
       Scribe_Values.Look(ref Smoker_SmokeHours, "Smoker_SmokeHours", 24);
       Scribe_Values.Look(ref Smoker_TendHours, "Smoker_TendHours", 2);
 

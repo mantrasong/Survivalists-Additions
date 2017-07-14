@@ -17,13 +17,9 @@ namespace SurvivalistsAdditions {
     public static ThingDef SRV_Burlap;
     public static ThingDef SRV_Mushroom;
 
-    public static JobDef SRV_FillVinegarBarrel;
-    public static JobDef SRV_FillSmoker;
-    public static JobDef SRV_FillCharcoalPit;
+    public static JobDef SRV_FillProcessor;
     public static JobDef SRV_TendToSmoker;
-    public static JobDef SRV_TakeVinegarOutOfVinegarBarrel;
-    public static JobDef SRV_TakeMeatOutOfSmoker;
-    public static JobDef SRV_TakeCharcoalOutOfPit;
+    public static JobDef SRV_TakeItemOutOfProcessor;
 
     public static TerrainDef Marsh;
     public static TerrainDef Mud;

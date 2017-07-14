@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 using UnityEngine;
@@ -7,15 +8,16 @@ using Verse;
 
 namespace SurvivalistsAdditions {
   [StaticConstructorOnStartup]
-  public class Building_VinegarBarrel : Building {
+  public class Building_VinegarBarrel : Building, IItemProcessor {
 
     private const float MinIdealTemperature = 7f;
     private readonly int MaxCapacity = SrvSettings.VinegarBarrel_MaxCapacity;
     private readonly int BaseFermentationDuration = SrvSettings.VinegarBarrel_FermentTicks;
 
-    private int juiceCount;
+    private int itemCount;
     private float progressInt;
     private Material barFilledCachedMat;
+    private CompTemperatureRuinable temperatureComp;
 
     public float Progress {
       get { return progressInt; }
@@ -37,24 +39,37 @@ namespace SurvivalistsAdditions {
       }
     }
 
-    public int SpaceLeftForJuice {
+    public ThingRequest InputRequest {
+      get { return ThingRequest.ForDef(SrvDefOf.SRV_VinegarJuice); }
+    }
+
+    public int SpaceLeftForItem {
       get {
-        if (Fermented) {
+        if (Finished) {
           return 0;
         }
-        return MaxCapacity - juiceCount;
+        return MaxCapacity - itemCount;
       }
     }
 
-    private bool Empty {
+    public bool Empty {
       get {
-        return juiceCount <= 0;
+        return itemCount <= 0;
       }
     }
 
-    public bool Fermented {
+    public bool Finished {
       get {
         return !Empty && Progress >= 1f;
+      }
+    }
+
+    public bool TemperatureAcceptable {
+      get {
+        if (AmbientTemperature < temperatureComp.Props.minSafeTemperature + 2f || AmbientTemperature > temperatureComp.Props.maxSafeTemperature - 2f) {
+          return false;
+        }
+        return true;
       }
     }
 
@@ -78,7 +93,7 @@ namespace SurvivalistsAdditions {
       }
     }
 
-    private int EstimatedTicksLeft {
+    public int EstimatedTicksLeft {
       get {
         return Mathf.Max(Mathf.RoundToInt((1f - Progress) / ProgressPerTickAtCurrentTemp), 0);
       }
@@ -94,7 +109,7 @@ namespace SurvivalistsAdditions {
         GenDraw.DrawFillableBar(new GenDraw.FillableBarRequest {
           center = drawPos,
           size = Static.BarSize_Generic,
-          fillPercent = juiceCount / (float)MaxCapacity,
+          fillPercent = itemCount / (float)MaxCapacity,
           filledMat = BarFilledMat,
           unfilledMat = Static.BarUnfilledMat_Generic,
           margin = 0.1f,
@@ -106,8 +121,14 @@ namespace SurvivalistsAdditions {
 
     public override void ExposeData() {
       base.ExposeData();
-      Scribe_Values.Look(ref juiceCount, "juiceCount", 0, false);
+      Scribe_Values.Look(ref itemCount, "itemCount", 0, false);
       Scribe_Values.Look(ref progressInt, "progress", 0f, false);
+    }
+
+
+    public override void SpawnSetup(Map map, bool respawningAfterLoad) {
+      base.SpawnSetup(map, respawningAfterLoad);
+      temperatureComp = GetComp<CompTemperatureRuinable>();
     }
 
 
@@ -120,32 +141,37 @@ namespace SurvivalistsAdditions {
     }
 
 
-    public int AddJuice(Thing juice) {
+    public Predicate<Thing> ItemValidator(Pawn pawn) {
+      return null;
+    }
+
+
+    public int AddItem(Thing item) {
       int count = 0;
 
-      if (juice.stackCount <= SpaceLeftForJuice) {
-        count = juice.stackCount;
+      if (item.stackCount <= SpaceLeftForItem) {
+        count = item.stackCount;
       }
       else {
-        count = SpaceLeftForJuice;
+        count = SpaceLeftForItem;
       }
-      AddJuice(count);
+      AddItem(count);
       return count;
     }
 
 
-    public void AddJuice(int count) {
+    public void AddItem(int count) {
       GetComp<CompTemperatureRuinable>().Reset();
-      if (Fermented) {
+      if (Finished) {
         Log.Warning("Survivalist's Additions:: Tried to add juice to a vinegar barrel full of vinegar. Colonists should take the vinegar first.");
         return;
       }
-      int num = Mathf.Min(count, MaxCapacity - juiceCount);
+      int num = Mathf.Min(count, MaxCapacity - itemCount);
       if (num <= 0) {
         return;
       }
-      Progress = GenMath.WeightedAverage(0f, num, Progress, juiceCount);
-      juiceCount += num;
+      Progress = GenMath.WeightedAverage(0f, num, Progress, itemCount);
+      itemCount += num;
     }
 
 
@@ -156,19 +182,19 @@ namespace SurvivalistsAdditions {
     }
 
 
-    private void Reset() {
-      juiceCount = 0;
+    public void Reset() {
+      itemCount = 0;
       Progress = 0f;
     }
 
 
     public Thing TakeOutProduct() {
-      if (!Fermented) {
+      if (!Finished) {
         Log.Warning("Survivalist's Additions:: Tried to get vinegar but it's not yet fermented.");
         return null;
       }
       Thing thing = ThingMaker.MakeThing(SrvDefOf.SRV_Vinegar, null);
-      thing.stackCount = juiceCount;
+      thing.stackCount = itemCount;
       Reset();
       return thing;
     }
@@ -199,25 +225,25 @@ namespace SurvivalistsAdditions {
       if (stringBuilder.Length != 0) {
         stringBuilder.AppendLine();
       }
-      CompTemperatureRuinable comp = GetComp<CompTemperatureRuinable>();
-      if (!Empty && !comp.Ruined) {
-        if (Fermented) {
+      
+      if (!Empty && !temperatureComp.Ruined) {
+        if (Finished) {
           stringBuilder.AppendLine("SRV_ContainsVinegar".Translate(new object[]
           {
-            juiceCount,
+            itemCount,
             MaxCapacity
           }));
         }
         else {
           stringBuilder.AppendLine("SRV_ContainsJuice".Translate(new object[]
           {
-            juiceCount,
+            itemCount,
             MaxCapacity
           }));
         }
       }
       if (!Empty) {
-        if (Fermented) {
+        if (Finished) {
           stringBuilder.AppendLine("Fermented".Translate());
         }
         else {
@@ -241,7 +267,7 @@ namespace SurvivalistsAdditions {
         ": ",
         MinIdealTemperature.ToStringTemperature("F0"),
         " ~ ",
-        comp.Props.maxSafeTemperature.ToStringTemperature("F0")
+        temperatureComp.Props.maxSafeTemperature.ToStringTemperature("F0")
       }));
       return stringBuilder.ToString().TrimEndNewlines();
     }
