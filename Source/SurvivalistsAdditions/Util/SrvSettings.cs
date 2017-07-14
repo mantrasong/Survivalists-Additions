@@ -8,6 +8,9 @@ namespace SurvivalistsAdditions {
     internal static int VinegarBarrel_MaxCapacity = 25;
     internal static int VinegarBarrel_FermentDays = 10;
 
+    internal static int CheeseBarrel_MaxCapacity = 25;
+    internal static int CheeseBarrel_AgingDays = 12;
+
     internal static int Smoker_MaxCapacity = 60;
     internal static int Smoker_SmokeHours = 24;
     internal static int Smoker_TendHours = 2;
@@ -20,6 +23,10 @@ namespace SurvivalistsAdditions {
 
     public static int VinegarBarrel_FermentTicks {
       get { return GenDate.TicksPerDay * VinegarBarrel_FermentDays; }
+    }
+
+    public static int CheeseBarrel_AgingTicks {
+      get { return GenDate.TicksPerDay * CheeseBarrel_AgingDays; }
     }
 
     public static int Smoker_SmokeTicks {
@@ -39,6 +46,9 @@ namespace SurvivalistsAdditions {
       base.ExposeData();
       Scribe_Values.Look(ref VinegarBarrel_MaxCapacity, "VinegarBarrel_MaxCapacity", 25);
       Scribe_Values.Look(ref VinegarBarrel_FermentDays, "VinegarBarrel_FermentDays", 10);
+
+      Scribe_Values.Look(ref CheeseBarrel_MaxCapacity, "CheeseBarrel_MaxCapacity", 25);
+      Scribe_Values.Look(ref CheeseBarrel_AgingDays, "CheeseBarrel_AgingDays", 12);
 
       Scribe_Values.Look(ref Smoker_MaxCapacity, "Smoker_MaxCapacity", 60);
       Scribe_Values.Look(ref Smoker_SmokeHours, "Smoker_SmokeHours", 24);

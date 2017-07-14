@@ -114,11 +114,38 @@
 			</li>
 		</comps>
 	</ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>SRV_CurdledMilk</defName>
+		<label>curdled milk</label>
+		<description>Milk that has been safely curdled. This substance needs to ferment and age in a cheese barrel before it becomes edible cheese.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/CurdledMilk</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<MarketValue>3.3</MarketValue>
+			<DeteriorationRate>1</DeteriorationRate>
+			<Mass>0.75</Mass>
+		</statBases>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>2</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+	</ThingDef>
 
 	<ThingDef ParentName="ResourceBase">
 		<defName>SRV_Vinegar</defName>
 		<label>vinegar</label>
-		<description>A mildly acidic liquid used for pickling vegetables.</description>
+		<description>A mildly acidic liquid used for pickling vegetables or curdling milk for cheesemaking.</description>
 		<graphicData>
 			<texPath>Cupro/Item/Material/Vinegar</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>

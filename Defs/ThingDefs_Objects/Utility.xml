@@ -56,11 +56,11 @@
 	<!-- ======================== Utility ======================= -->
 
 
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef Name="SRV_Barrel" ParentName="BuildingBase">
 		<defName>SRV_VinegarBarrel</defName>
 		<thingClass>SurvivalistsAdditions.Building_VinegarBarrel</thingClass>
-		<label>barrel of vinegar</label>
-		<Description>A barrel of fermenting vinegar.</Description>
+		<label>vinegar barrel</label>
+		<Description>A barrel for fermenting vinegar.</Description>
 		<graphicData>
 			<texPath>Cupro/Object/FermentingBarrel/FermentingBarrel</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -103,6 +103,13 @@
 		<researchPrerequisites>
 			<li>Brewing</li>
 		</researchPrerequisites>
+	</ThingDef>
+	
+	<ThingDef ParentName="SRV_Barrel">
+		<defName>SRV_CheeseBarrel</defName>
+		<thingClass>SurvivalistsAdditions.Building_CheeseBarrel</thingClass>
+		<label>cheese barrel</label>
+		<Description>A barrel for fermenting and aging cheese.</Description>
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">

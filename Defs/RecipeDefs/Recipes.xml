@@ -97,5 +97,96 @@
 		</recipeUsers>
     <researchPrerequisite>SRV_Crucible</researchPrerequisite>
 	</RecipeDef>
+	
+	<RecipeDef>
+		<defName>SRV_MakeVinegarJuice</defName>
+		<label>make juice for vinegar</label>
+		<description>Make concentrated juice for fermenting into vinegar.</description>
+		<jobString>Making vinegar juice.</jobString>
+		<workSpeedStat>BrewingSpeed</workSpeedStat>
+		<workSkill>Cooking</workSkill>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Brewing</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<workAmount>1000</workAmount>
+		<targetCountAdjustment>5</targetCountAdjustment>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawBerries</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawBerries</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<SRV_VinegarJuice>5</SRV_VinegarJuice>
+		</products>
+		<recipeUsers>
+			<li>Brewery</li>
+		</recipeUsers>
+		<skillRequirements>
+			<li>
+				<skill>Cooking</skill>
+				<minLevel>6</minLevel>
+			</li>
+		</skillRequirements>
+	</RecipeDef>
+	
+	<RecipeDef>
+		<defName>SRV_MakeCurdledMilk</defName>
+		<label>make curdled milk for cheese</label>
+		<description>Make curdled milk for fermenting and aging into cheese.</description>
+		<jobString>Making curdled milk.</jobString>
+		<workSpeedStat>BrewingSpeed</workSpeedStat>
+		<workSkill>Cooking</workSkill>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Brewing</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<workAmount>1000</workAmount>
+		<targetCountAdjustment>5</targetCountAdjustment>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Milk</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>SRV_Vinegar</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Milk</li>
+				<li>SRV_Vinegar</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<SRV_CurdledMilk>5</SRV_CurdledMilk>
+		</products>
+		<recipeUsers>
+			<li>Brewery</li>
+		</recipeUsers>
+		<skillRequirements>
+			<li>
+				<skill>Cooking</skill>
+				<minLevel>8</minLevel>
+			</li>
+		</skillRequirements>
+	</RecipeDef>
 
 </RecipeDefs>

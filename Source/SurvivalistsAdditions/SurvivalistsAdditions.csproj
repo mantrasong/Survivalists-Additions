@@ -45,6 +45,7 @@
     <Compile Include="Buildings\Building_CharcoalPit.cs" />
     <Compile Include="Buildings\Building_Smoker.cs" />
     <Compile Include="Buildings\Building_VinegarBarrel.cs" />
+    <Compile Include="Buildings\Building_CheeseBarrel.cs" />
     <Compile Include="Components\CompProperties_Smoker.cs" />
     <Compile Include="Components\CompSmoker.cs" />
     <Compile Include="IItemProcessor.cs" />

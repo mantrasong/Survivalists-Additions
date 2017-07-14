@@ -12,7 +12,7 @@ namespace SurvivalistsAdditions {
 
 
     public override string SettingsCategory() {
-      return "Survivalist's Additions";
+      return Static.ModName;
     }
 
 
@@ -39,6 +39,24 @@ namespace SurvivalistsAdditions {
 
         Widgets.Label(leftRect, "SRV_Label_VinegarBarrel_FermentDays".Translate(SrvSettings.VinegarBarrel_FermentDays));
         SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.VinegarBarrel_FermentDays, 1, 30);
+      }
+      list.Gap(25);
+      {
+        Rect fullRect = list.GetRect(Text.LineHeight);
+        Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
+        Rect rightRect = fullRect.RightHalf().Rounded();
+
+        Widgets.Label(leftRect, "SRV_Label_CheeseBarrel_MaxCapacity".Translate(SrvSettings.CheeseBarrel_MaxCapacity));
+        SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.CheeseBarrel_MaxCapacity, 1, 75, 5);
+      }
+      list.Gap();
+      {
+        Rect fullRect = list.GetRect(Text.LineHeight);
+        Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
+        Rect rightRect = fullRect.RightHalf().Rounded();
+
+        Widgets.Label(leftRect, "SRV_Label_CheeseBarrel_AgingDays".Translate(SrvSettings.CheeseBarrel_AgingDays));
+        SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.CheeseBarrel_AgingDays, 1, 30);
       }
       list.Gap(25);
       {

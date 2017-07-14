@@ -1,11 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 	
+	<SRV_ModName>Survivalist's Additions</SRV_ModName>
+	
 	<SRV_NoIngredient>need ingredients</SRV_NoIngredient>
 	
 	<!-- Vinegar Barrel -->
 	<SRV_ContainsJuice>Contains {0} / {1} juice.</SRV_ContainsJuice>
 	<SRV_ContainsVinegar>Contains {0} / {1} vinegar.</SRV_ContainsVinegar>
+	
+	<!-- Cheese Barrel -->
+	<SRV_ContainsCurdledMilk>Contains {0} / {1} curdled milk.</SRV_ContainsCurdledMilk>
+	<SRV_ContainsCheese>Contains {0} / {1} cheese.</SRV_ContainsCheese>
+	<SRV_Aged>Aged</SRV_Aged>
 	
 	<!-- Smoker -->
 	<SRV_ContainsFood>Contains {0} / {1} food.</SRV_ContainsFood>
@@ -26,6 +33,9 @@
 	<!-- Settings -->
 	<SRV_Label_VinegarBarrel_MaxCapacity>Vinegar barrel, max capacity: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_VinegarBarrel_MaxCapacity>
 	<SRV_Label_VinegarBarrel_FermentDays>Vinegar barrel, ferment days: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_VinegarBarrel_FermentDays>
+	
+	<SRV_Label_CheeseBarrel_MaxCapacity>Cheese barrel, max capacity: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_CheeseBarrel_MaxCapacity>
+	<SRV_Label_CheeseBarrel_AgingDays>Cheese barrel, aging days: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_CheeseBarrel_AgingDays>
 	
 	<SRV_Label_Smoker_MaxCapacity>Smoker, max capacity: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_Smoker_MaxCapacity>
 	<SRV_Label_Smoker_SmokeHours>Smoker, hours to cook: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt; </SRV_Label_Smoker_SmokeHours>
