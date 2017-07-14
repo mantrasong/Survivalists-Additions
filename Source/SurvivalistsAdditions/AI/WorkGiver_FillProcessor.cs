@@ -35,7 +35,7 @@ namespace SurvivalistsAdditions {
         if (smoker.Finished) {
           return false;
         }
-        if (!smoker.CanAddMeat) {
+        if (!smoker.CanAddFood) {
           JobFailReason.Is(Static.SmokerLocked);
           return false;
         }

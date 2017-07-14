@@ -12,7 +12,7 @@ namespace SurvivalistsAdditions {
   public class Building_Smoker : Building, IItemProcessor {
     #region Fields
     private const float MinIdealTemperature = 7f;
-    private const float MeatAddingPct = 0.045f;
+    private const float FoodAddingPct = 0.045f;
     private readonly int MaxCapacity = SrvSettings.Smoker_MaxCapacity;
     private readonly int BaseSmokeDuration = SrvSettings.Smoker_SmokeTicks;
     private readonly int TicksUntilTending = SrvSettings.Smoker_TendTicks;
@@ -24,7 +24,7 @@ namespace SurvivalistsAdditions {
     private Material barFilledCachedMat;
     private CompSmoker smokerComp;
     private CompRefuelable fuelComp;
-    private List<ThingCountExposable> meatSources;
+    private List<ThingCountExposable> foodSources;
     #endregion Fields
 
     #region Properties
@@ -53,18 +53,18 @@ namespace SurvivalistsAdditions {
       get { return true; }
     }
 
-    public bool CanAddMeat {
+    public bool CanAddFood {
       get {
-        return Progress < MeatAddingPct;
+        return Progress < FoodAddingPct;
       }
     }    
 
     public int SpaceLeftForItem {
       get {
-        if (Finished || !CanAddMeat) {
+        if (Finished || !CanAddFood) {
           return 0;
         }
-        return MaxCapacity - MeatCount;
+        return MaxCapacity - FoodCount;
       }
     }
 
@@ -92,18 +92,18 @@ namespace SurvivalistsAdditions {
       }
     }
 
-    private int MeatCount {
+    private int FoodCount {
       get {
-        if (meatSources == null || meatSources.Count <= 0) {
+        if (foodSources == null || foodSources.Count <= 0) {
           return 0;
         }
         int num = 0;
-        for (int i = 0; i < meatSources.Count; i++) {
-          num += meatSources[i].count;
+        for (int i = 0; i < foodSources.Count; i++) {
+          num += foodSources[i].count;
         }
 
-        if (num > 60) {
-          Log.Error($"Survivalist's Additions:: Smoker at {Position} has more than 60 meat stored inside. Current count: {num}");
+        if (num > MaxCapacity) {
+          Log.Error($"Survivalist's Additions:: Smoker at {Position} has more than {MaxCapacity} food stored inside. Current count: {num}");
         }
 
         return num;
@@ -118,7 +118,7 @@ namespace SurvivalistsAdditions {
 
     public bool Empty {
       get {
-        return MeatCount <= 0;
+        return FoodCount <= 0;
       }
     }
 
@@ -151,7 +151,7 @@ namespace SurvivalistsAdditions {
 
       if (!Empty && !Finished) {
         if (fuelComp.HasFuel) {
-          // The smoker has stored meat and fuel
+          // The smoker has stored food and fuel
           Progress = Mathf.Min(Progress + ProgressPerTickAtCurrentTemp, 1f);
           fuelComp.Notify_UsedThisTick();
           // Throw smoke manually
@@ -161,7 +161,7 @@ namespace SurvivalistsAdditions {
           }
         }
         else {
-          // Simulate rotting from the meat being left uncooked
+          // Simulate rotting from the food being left uncooked
           Progress = Mathf.Max(Progress - ProgressPerTickAtCurrentTemp, 0.0f);
           rottingTicks++;
         }
@@ -172,11 +172,11 @@ namespace SurvivalistsAdditions {
       }
 
       if (this.IsHashIntervalTick(250)) {
-        // Rot the meat if it has been left uncooked for too long
+        // Rot the food if it has been left uncooked for too long
         // This prevents players from using the smoker to store food indefinitely until needed
         if (rottingTicks >= GenDate.TicksPerDay) {
           Reset();
-          Messages.Message("MessageRottedAwayInStorage".Translate("FoodTypeFlags_Meat".Translate()), this, MessageSound.Negative);
+          Messages.Message("MessageRottedAwayInStorage".Translate(Static.Food), this, MessageSound.Negative);
           LessonAutoActivator.TeachOpportunity(ConceptDefOf.SpoilageAndFreezers, OpportunityType.GoodToKnow);
         }
       }
@@ -189,7 +189,7 @@ namespace SurvivalistsAdditions {
       Scribe_Values.Look(ref ticksSinceTending, "ticksSinceTending", 0, false);
       Scribe_Values.Look(ref rottingTicks, "rottingTicks", 0, false);
       Scribe_Values.Look(ref progressInt, "progress", 0f, false);
-      Scribe_Collections.Look(ref meatSources, "meatSources", LookMode.Deep);
+      Scribe_Collections.Look(ref foodSources, "foodSources", LookMode.Deep);
     }
 
 
@@ -199,34 +199,34 @@ namespace SurvivalistsAdditions {
       fuelComp = GetComp<CompRefuelable>();
       smokeTimer = Rand.RangeInclusive(120, 360);
 
-      // Create the list for meat sources
-      if (meatSources == null) {
-        meatSources = new List<ThingCountExposable>();
+      // Create the list for food sources
+      if (foodSources == null) {
+        foodSources = new List<ThingCountExposable>();
       }
     }
     #endregion MethodGroup_SaveLoad
 
 
     #region MethodGroup_Smoking
-    // Tending implies rotating the meat, removing rotten bits, adjusting the coals, etc.
+    // Tending implies rotating the food, removing rotten bits, adjusting the coals, etc.
     public void Tend() {
       ticksSinceTending = 0;
 
-      // Remove some of the rotting bits of the meat
+      // Remove some of the rotting bits of the food
       while (RotProgressPct >= 0.05f) {
-        int i = Rand.Range(0, meatSources.Count);
-        int amountToTrim = (int)(MeatCount * 0.05);
+        int i = Rand.Range(0, foodSources.Count);
+        int amountToTrim = (int)(FoodCount * 0.05);
         int trimmedAmount = amountToTrim * 1000;
 
         if (amountToTrim > 0) {
-          ThingCountExposable rottingMeat = meatSources.RandomElement();
-          int trimmedCount = rottingMeat.count - amountToTrim;
+          ThingCountExposable rottingFood = foodSources.RandomElement();
+          int trimmedCount = rottingFood.count - amountToTrim;
           if (trimmedCount <= 0) {
-            trimmedAmount = rottingMeat.count * 1000;
-            meatSources.Remove(rottingMeat);
+            trimmedAmount = rottingFood.count * 1000;
+            foodSources.Remove(rottingFood);
           }
           else {
-            meatSources.Find((ThingCountExposable c) => c == rottingMeat).count = trimmedCount;
+            foodSources.Find((ThingCountExposable c) => c == rottingFood).count = trimmedCount;
           }
         }
 
@@ -241,37 +241,37 @@ namespace SurvivalistsAdditions {
 
 
     public Predicate<Thing> ItemValidator(Pawn pawn) {
-      return ((Thing meat) =>
-        !meat.IsForbidden(pawn) && pawn.CanReserve(meat) &&
-        meat.def.IsNutritionGivingIngestible && (meat.def.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None &&
-        meat.TryGetComp<CompRottable>() != null && meat.TryGetComp<CompRottable>().Stage == RotStage.Fresh && meat.def != SrvDefOf.SRV_SmokedMeat
+      return ((Thing item) =>
+        !item.IsForbidden(pawn) && pawn.CanReserve(item) &&
+        item.def.IsNutritionGivingIngestible && ((item.def.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None || item.def == SrvDefOf.SRV_Cheese) && 
+        item.TryGetComp<CompRottable>() != null && item.TryGetComp<CompRottable>().Stage == RotStage.Fresh && item.def != SrvDefOf.SRV_SmokedMeat
       );
     }
 
 
-    public int AddItem(Thing meat) {
+    public int AddItem(Thing food) {
       int countAccepted = 0;
 
-      // Make sure the meat isn't rotten - there's no point in preserving meat that has already rotted
-      if (meat.TryGetComp<CompRottable>() != null && meat.TryGetComp<CompRottable>().Stage > RotStage.Fresh) {
+      // Make sure the food isn't rotten - there's no point in preserving food that has already rotted
+      if (food.TryGetComp<CompRottable>() != null && food.TryGetComp<CompRottable>().Stage > RotStage.Fresh) {
         return countAccepted;
       }
       
-      // Determine how much meat to add
-      if (meat.stackCount <= SpaceLeftForItem) {
-        countAccepted = meat.stackCount;
+      // Determine how much food to add
+      if (food.stackCount <= SpaceLeftForItem) {
+        countAccepted = food.stackCount;
       }
       else {
         countAccepted = SpaceLeftForItem;
       }
 
-      // Adjust the rotting ticks based on the meat added
-      float t = (float)countAccepted / (MeatCount + countAccepted);
-      int newItemRottingTicks = (int)(((ThingWithComps)meat).GetComp<CompRottable>().RotProgressPct * GenDate.TicksPerDay);
+      // Adjust the rotting ticks based on the food added
+      float t = (float)countAccepted / (FoodCount + countAccepted);
+      int newItemRottingTicks = (int)(((ThingWithComps)food).GetComp<CompRottable>().RotProgressPct * GenDate.TicksPerDay);
       rottingTicks = (int)(Mathf.Lerp(rottingTicks, newItemRottingTicks, t));
 
-      // Add meat, then return the amount to the JobDriver
-      AddItem(countAccepted, meat.def);
+      // Add food, then return the amount to the JobDriver
+      AddItem(countAccepted, food.def);
       return countAccepted;
     }
 
@@ -279,48 +279,55 @@ namespace SurvivalistsAdditions {
     public void AddItem(int count, ThingDef sourceDef) {
       // Additional integrity checks
       if (Finished) {
-        Log.Warning("Survivalist's Additions:: Tried to add meat to a full smoker. Colonists should take the smoked meat out first.");
+        Log.Warning("Survivalist's Additions:: Tried to add food to a full smoker. Colonists should take the smoked food out first.");
         return;
       }
-      int num = Mathf.Min(count, MaxCapacity - MeatCount);
+      int num = Mathf.Min(count, MaxCapacity - FoodCount);
       if (num <= 0) {
         return;
       }
 
-      // If this type of meat is already in the smoker, add this stack to it
-      if (meatSources.Find((ThingCountExposable c) => c.thingDef == sourceDef) != null) {
-        meatSources.Find((ThingCountExposable c) => c.thingDef == sourceDef).count += count;
+      // If this type of food is already in the smoker, add this stack to it
+      if (foodSources.Find((ThingCountExposable c) => c.thingDef == sourceDef) != null) {
+        foodSources.Find((ThingCountExposable c) => c.thingDef == sourceDef).count += count;
       }
-      // otherwise, add a new stack of meat
+      // otherwise, add a new stack of food
       else {
-        meatSources.Add(new ThingCountExposable(sourceDef, count));
+        foodSources.Add(new ThingCountExposable(sourceDef, count));
       }
 
-      // Adjust the progress to account for the new meat
-      Progress = GenMath.WeightedAverage(0f, num, Progress, MeatCount);
+      // Adjust the progress to account for the new food
+      Progress = GenMath.WeightedAverage(0f, num, Progress, FoodCount);
     }
 
 
     public Thing TakeOutProduct() {
-      // Integrity check for the meat being ready
+      // Integrity check for the food being ready
       if (!Finished) {
-        Log.Warning("Survivalist's Additions:: Tried to get smoked meat but it's not yet smoked.");
+        Log.Warning("Survivalist's Additions:: Tried to get smoked food but it's not yet smoked.");
         return null;
       }
 
-      // Create the meat
-      Thing smokedMeat = ThingMaker.MakeThing(SrvDefOf.SRV_SmokedMeat, null);
-      ThingCountExposable selectedMeat = meatSources.RandomElement();
-      smokedMeat.stackCount = selectedMeat.count;
-      smokedMeat.TryGetComp<CompIngredients>().RegisterIngredient(selectedMeat.thingDef);
+      // Create the food
+      Thing smokedFood;
+      ThingCountExposable selectedFood = foodSources.RandomElement();
+      if (selectedFood.thingDef == SrvDefOf.SRV_Cheese) {
+        smokedFood = ThingMaker.MakeThing(SrvDefOf.SRV_SmokedCheese, null);
+      }
+      else {
+        smokedFood = ThingMaker.MakeThing(SrvDefOf.SRV_SmokedMeat, null);
+        smokedFood.TryGetComp<CompIngredients>().RegisterIngredient(selectedFood.thingDef);
+      }
 
-      // Remove this meat from the list, resetting if this is the last one
-      meatSources.Remove(selectedMeat);
-      if (meatSources.Count <= 0) {
+      smokedFood.stackCount = selectedFood.count;
+
+      // Remove this food from the list, resetting if this is the last one
+      foodSources.Remove(selectedFood);
+      if (foodSources.Count <= 0) {
         Reset();
       }
 
-      return smokedMeat;
+      return smokedFood;
     }
     #endregion MethodGroup_Smoking
 
@@ -328,7 +335,7 @@ namespace SurvivalistsAdditions {
     #region MethodGroup_Signalling
     public void Reset() {
       Progress = 0f;
-      meatSources.Clear();
+      foodSources.Clear();
       rottingTicks = 0;
     }
     #endregion MethodGroup_Signalling
@@ -344,7 +351,7 @@ namespace SurvivalistsAdditions {
         GenDraw.DrawFillableBar(new GenDraw.FillableBarRequest {
           center = drawPos,
           size = Static.BarSize_Generic,
-          fillPercent = MeatCount / (float)MaxCapacity,
+          fillPercent = FoodCount / (float)MaxCapacity,
           filledMat = BarFilledMat,
           unfilledMat = Static.BarUnfilledMat_Generic,
           margin = 0.1f,
@@ -382,18 +389,18 @@ namespace SurvivalistsAdditions {
       else {
         stringBuilder.Append(" ~ ");
         if (Finished) {
-          stringBuilder.AppendLine("SRV_ContainsSmokedMeat".Translate(new object[]
+          stringBuilder.AppendLine("SRV_ContainsSmokedFood".Translate(new object[]
           {
-            MeatCount,
+            FoodCount,
             MaxCapacity
           }));
           stringBuilder.AppendLine("SRV_Smoked".Translate());
         }
         else {
           
-          stringBuilder.AppendLine("SRV_ContainsMeat".Translate(new object[]
+          stringBuilder.AppendLine("SRV_ContainsFood".Translate(new object[]
           {
-            MeatCount,
+            FoodCount,
             MaxCapacity
           }));
           if (NeedsTending) {

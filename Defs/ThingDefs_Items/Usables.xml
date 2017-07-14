@@ -341,4 +341,72 @@
 		</comps>
 	</ThingDef>
 
+	<ThingDef Name="SRV_CheeseBase" ParentName="ResourceBase" Abstract="True">
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Mass>0.22</Mass>
+		</statBases>
+		<stackLimit>25</stackLimit>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<ingestible>
+			<preferability>RawTasty</preferability>
+			<foodType>AnimalProduct, Processed</foodType>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+			<nutrition>0.25</nutrition>
+		</ingestible>
+		<thingCategories>
+			<li>AnimalProductRaw</li>
+		</thingCategories>
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_FoodPoisonable" />
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="SRV_CheeseBase">
+		<defName>SRV_Cheese</defName>
+		<label>cheese</label>
+		<description>A food made by coagulating curdled milk. Has a good flavor and lasts for 21 days without refrigeration.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Usable/Cheese</texPath>
+		</graphicData>
+		<statBases>
+			<DeteriorationRate>3</DeteriorationRate>
+		</statBases>
+		<ingestible>
+			<optimalityOffset>5</optimalityOffset>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>21</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="SRV_CheeseBase">
+		<defName>SRV_SmokedCheese</defName>
+		<label>smoked cheese</label>
+		<description>Cheese that has been smoked to preserve it and enhance its flavor. Lasts a long time without refrigeration.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Usable/SmokedCheese</texPath>
+		</graphicData>
+		<statBases>
+			<DeteriorationRate>2</DeteriorationRate>
+		</statBases>
+		<ingestible>
+			<optimalityOffset>8</optimalityOffset>
+			<specialThoughtDirect>SRV_AteSmokedCheese</specialThoughtDirect>
+			<specialThoughtAsIngredient>SRV_FoodMadeWithSmokedCheese</specialThoughtAsIngredient>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>40</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+
 </ThingDefs>

@@ -10,6 +10,7 @@ namespace SurvivalistsAdditions {
     public static string TemperatureTrans = "BadTemperature".Translate().ToLower();
     public static string NoIngredient = "SRV_NoIngredient".Translate();
     public static string SmokerLocked = "SRV_SmokerLocked".Translate();
+    public static string Food = "SRV_Food".Translate();
 
     public static Graphic Graphic_CharcoalPitFilled = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/CharcoalPit/FullPit", ShaderDatabase.DefaultShader , new Vector2(3,3), Color.white);
 

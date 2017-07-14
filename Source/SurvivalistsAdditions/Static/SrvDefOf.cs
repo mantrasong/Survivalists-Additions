@@ -16,6 +16,8 @@ namespace SurvivalistsAdditions {
     public static ThingDef SRV_Hayreed;
     public static ThingDef SRV_Burlap;
     public static ThingDef SRV_Mushroom;
+    public static ThingDef SRV_Cheese;
+    public static ThingDef SRV_SmokedCheese;
 
     public static JobDef SRV_FillProcessor;
     public static JobDef SRV_TendToSmoker;
