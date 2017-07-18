@@ -297,6 +297,27 @@
 		</comps>
 	</ThingDef>
 
+	<ThingDef ParentName="PlantFoodRawBase">
+    <defName>SRV_PricklyPear</defName>
+    <label>prickly pear</label>
+    <description>Raw cactus fruit.</description>
+    <graphicData>
+      <texPath>Cupro/Item/Usable/PricklyPear</texPath>
+    </graphicData>
+    <statBases>
+      <MarketValue>1.5</MarketValue>
+    </statBases>
+    <ingestible>
+      <foodType>VegetableOrFruit</foodType>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>15</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+    </comps>
+  </ThingDef>
+
 	<ThingDef ParentName="OrganicProductBase">
 		<defName>SRV_SmokedMeat</defName>
 		<label>smoked meat</label>

@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
 
+	<!--<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<Operations>
+			<li Class="PatchOperationInsert">
+			<xpath>/ThingDefs/ThingDef[defName = "PlantSaguaroCactus"]/label</xpath>
+			<value>
+				<thingClass>CorePanda.PlantWithSecondary</thingClass>
+			</value>
+			</li>
+			<li Class="PatchOperationAddModExtension">
+				<xpath>/ThingDefs/ThingDef[defName = "PlantSaguaroCactus"]</xpath>
+				<value>
+					<li Class=CorePanda.SecondaryResource>
+						<growDays>4.4</growDays>
+						<parentMinGrowth>0.75</parentMinGrowth>
+						<harvestedThingDef>SRV_PricklyPear</harvestedThingDef>
+						<minToHarvest>10</minToHarvest>
+						<maxToHarvest>15</maxToHarvest>
+					</li>
+				</value>
+			</li>
+		</Operations>
+	</Operation> -->
+
+	<Operation Class="PatchOperationAdd">
+		<success>Always</success>
+		<xpath>ThingDefs/ThingDef[defName = "PlantPincushionCactus"]/plant</xpath>
+		<value>
+			<harvestedThingDef>SRV_PricklyPear</harvestedThingDef>
+			<harvestTag>Standard</harvestTag>
+			<harvestYield>6</harvestYield>
+			<harvestWork>700</harvestWork>
+	  </value>
+	</Operation>
+
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
 		<Operations>
