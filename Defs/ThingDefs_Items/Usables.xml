@@ -120,7 +120,7 @@
 	<ThingDef ParentName="PlantFoodRawBase">
 		<defName>SRV_Turnip</defName>
 		<label>turnip</label>
-		<description>A root vegetable that lasts a long time even without refrigeration.</description>
+		<description>Raw turnips.</description>
 		<graphicData>
 			<texPath>Cupro/Item/Usable/Turnip</texPath>
 		</graphicData>
@@ -135,9 +135,7 @@
 		</comps>
 		<ingestible>
 			<foodType>VegetableOrFruit</foodType>
-			<preferability>RawBad</preferability>
 			<nutrition>0.04</nutrition>
-			<tasteThought/>
 			<specialThoughtDirect>SRV_AteRawTurnip</specialThoughtDirect>
 		</ingestible>
 		<tradeTags>
@@ -148,7 +146,7 @@
 	<ThingDef ParentName="OrganicProductBase">
 		<defName>SRV_Turnip_Green</defName>
 		<label>turnip greens</label>
-		<description>Edible leaves from the turnip plant. Can be eaten raw.</description>
+		<description>Edible leaves from the turnip plant.</description>
 		<graphicData>
 			<texPath>Cupro/Item/Usable/Turnip_Green</texPath>
 		</graphicData>
@@ -162,7 +160,7 @@
 			<foodType>VegetableOrFruit</foodType>
 			<preferability>RawBad</preferability>
 			<nutrition>0.03</nutrition>
-			<tasteThought/>
+			<tasteThought>AteRawFood</tasteThought>
 		</ingestible>
 		<thingCategories>
 			<li>FoodRaw</li>
@@ -193,7 +191,7 @@
 			<foodType>VegetableOrFruit</foodType>
 			<preferability>RawBad</preferability>
 			<nutrition>0.02</nutrition>
-			<tasteThought/>
+			<tasteThought>AteRawFood</tasteThought>
 		</ingestible>
 		<thingCategories>
 			<li>FoodRaw</li>

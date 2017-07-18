@@ -4,7 +4,8 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>SRV_PlantTurnip</defName>
 		<label>turnip plant</label>
-		<description>A root vegetable with edible leaves. Grows quickly and is able to survive a cold snap.</description>
+		<thingClass>SurvivalistsAdditions.HardyPlant</thingClass>
+		<description>A hardy root vegetable with edible leaves. Requires good soil, but is able to grow in lower temperatures than normal plants.</description>
 		<statBases>
 			<MaxHitPoints>85</MaxHitPoints>
 		</statBases>
@@ -26,8 +27,9 @@
 				<li>Ground</li>
 			</sowTags>
 			<topWindExposure>0.2</topWindExposure>
-			<growDays>3</growDays>
-			<fertilitySensitivity>0.5</fertilitySensitivity>
+			<growDays>6</growDays>
+			<fertilityMin>1.0</fertilityMin>
+			<fertilitySensitivity>1.0</fertilitySensitivity>
 			<visualSizeRange>
 				<min>0.3</min>
 				<max>1</max>
@@ -38,7 +40,8 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>SRV_PlantCabbage</defName>
 		<label>cabbage plant</label>
-		<description>A plant with a large leafy bulb. Requires good soil, but is able to hibernate through winter temperatures.</description>
+		<thingClass>SurvivalistsAdditions.HardyPlant</thingClass>
+		<description>A hardy plant with a large leafy bulb. Requires good soil, but is able to grow in lower temperatures than normal plants.</description>
 		<statBases>
 			<MaxHitPoints>85</MaxHitPoints>
 		</statBases>
@@ -55,14 +58,14 @@
 			<dieIfLeafless>false</dieIfLeafless>
 			<harvestTag>Standard</harvestTag>
 			<harvestedThingDef>SRV_Cabbage</harvestedThingDef>
-			<harvestYield>12</harvestYield>
+			<harvestYield>10</harvestYield>
 			<sowTags>
 				<li>Ground</li>
 			</sowTags>
-			<growDays>5</growDays>
+			<growDays>10</growDays>
 			<lifespanFraction>20</lifespanFraction>
-			<fertilityMin>0.95</fertilityMin>
-			<fertilitySensitivity>0.8</fertilitySensitivity>
+			<fertilityMin>1.0</fertilityMin>
+			<fertilitySensitivity>1.0</fertilitySensitivity>
 			<wildCommonalityMaxFraction>0.005</wildCommonalityMaxFraction>
 			<wildBiomes>
 				<TropicalRainforest>0.005</TropicalRainforest>

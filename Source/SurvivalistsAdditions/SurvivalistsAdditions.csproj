@@ -49,6 +49,7 @@
     <Compile Include="Buildings\Building_Snare.cs" />
     <Compile Include="Components\CompProperties_Smoker.cs" />
     <Compile Include="Components\CompSmoker.cs" />
+    <Compile Include="HardyPlant.cs" />
     <Compile Include="IItemProcessor.cs" />
     <Compile Include="AI\JobDriver_FillProcessor.cs" />
     <Compile Include="AI\JobDriver_TakeItemOutOfProcessor.cs" />
