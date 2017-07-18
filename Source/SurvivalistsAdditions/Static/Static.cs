@@ -33,7 +33,8 @@ namespace SurvivalistsAdditions {
     public static readonly Material BarUnfilledMat_Generic = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.2f, 0.22f, 0.22f), false);
     public static readonly Vector2  BarSize_Generic = new Vector2(0.55f, 0.1f);
     public static readonly Color    BarZeroProgressColor_Generic = new Color(0.4f, 0.27f, 0.22f);
-    public static readonly Color    BarZeroProgressColor_Smoker = new Color(0.9f, 0.4f, 0.2f);
+    public static readonly Color    BarZeroProgressColor_CharcoalPit = new Color(0.522f, 0.38f, 0.263f);
+		public static readonly Color    BarZeroProgressColor_Smoker = new Color(0.9f, 0.4f, 0.2f);
     public static readonly Color    BarFullColor_Generic = new Color(0.9f, 0.85f, 0.2f);
     public static readonly Color    BarFullColor_Smoker = new Color(0.376f, 0.25f, 0.125f);
   }

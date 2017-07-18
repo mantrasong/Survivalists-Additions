@@ -15,6 +15,7 @@ namespace SurvivalistsAdditions {
 		private Pawn affectedPawn;
 		private int disabledTicks = 0;
 		private bool disabled;
+		private bool rearmAfterCleared;
 
 		public bool Disabled {
 			get { return disabled; }
@@ -43,6 +44,13 @@ namespace SurvivalistsAdditions {
 		}
 
 
+		public override void ExposeData() {
+			base.ExposeData();
+
+			Scribe_Values.Look(ref rearmAfterCleared, "rearmAfterCleared", false);
+		}
+
+
 		public override void Tick() {
 			if (!Disabled) {
 				if (affectedPawn != null) {
@@ -56,18 +64,29 @@ namespace SurvivalistsAdditions {
 				}
 
 				if (Armed) {
-					List<Thing> thingList = Position.GetThingList(Map);
-					for (int i = 0; i < thingList.Count; i++) {
-						Pawn pawn = thingList[i] as Pawn;
-						if (pawn != null) {
-							CheckSpring(pawn);
-						}
+					foreach (Pawn p in PawnsInCell()) {
+						CheckSpring(p);
 					}
 				}
 
 				if (this.IsHashIntervalTick(1000) && !Armed && !Disabled && Spawned) {
 					if (affectedPawn != null && affectedPawn.BodySize < 0.6f) {
 						ApplyHediff(affectedPawn);
+					}
+
+					if (rearmAfterCleared) {
+						bool ableToRearm = true;
+						foreach (Pawn pawn in PawnsInCell()) {
+							if (!pawn.Dead && (pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredLarge) || pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall))) {
+								ableToRearm = false;
+								break;
+							}
+							ableToRearm = true;
+						}
+						if (ableToRearm) {
+							Map.designationManager.AddDesignation(new Designation(this, DesignationDefOf.RearmTrap));
+							rearmAfterCleared = false;
+						}
 					}
 				}
 			}
@@ -85,6 +104,17 @@ namespace SurvivalistsAdditions {
 			/// No need to tick the comps, since the snare doesn't have any comps
 			/// No other override actions needed for A17
 			/// CHECKME: Future alphas may add/require comps
+		}
+
+
+		private List<Pawn> PawnsInCell() {
+			List<Pawn> list = new List<Pawn>();
+			foreach (Thing t in Position.GetThingList(Map)) {
+				if (t is Pawn) {
+					list.Add(t as Pawn);
+				}
+			}
+			return list;
 		}
 
 
@@ -190,7 +220,16 @@ namespace SurvivalistsAdditions {
 				affectedPawn = p;
 				ApplyHediff(p);
       }
-    }
+			if (Map.designationManager.DesignationOn(this, DesignationDefOf.RearmTrap) != null) {
+				foreach (Pawn pawn in PawnsInCell()) {
+					if (!pawn.Dead && (pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredLarge) || pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall))) {
+						Map.designationManager.RemoveAllDesignationsOn(this);
+						rearmAfterCleared = true;
+						break;
+					}
+				}
+			}
+		}
 
 
 		private void ApplyHediff(Pawn p) {

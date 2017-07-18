@@ -394,6 +394,7 @@
 			<texPath>Cupro/Item/Usable/Cheese</texPath>
 		</graphicData>
 		<statBases>
+			<MarketValue>16</MarketValue>
 			<DeteriorationRate>3</DeteriorationRate>
 		</statBases>
 		<ingestible>
@@ -414,6 +415,7 @@
 			<texPath>Cupro/Item/Usable/SmokedCheese</texPath>
 		</graphicData>
 		<statBases>
+			<MarketValue>18</MarketValue>
 			<DeteriorationRate>2</DeteriorationRate>
 		</statBases>
 		<ingestible>

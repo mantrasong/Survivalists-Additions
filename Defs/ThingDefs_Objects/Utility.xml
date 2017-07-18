@@ -191,7 +191,7 @@
 		<DefName>SRV_CharcoalPit</DefName>
 		<label>charcoal pit</label>
 		<ThingClass>SurvivalistsAdditions.Building_CharcoalPit</ThingClass>
-		<Description>A mound of burning wood covered with dirt to block oxygen.</Description>
+		<Description>A pit dug into the ground for burning wood in the absence of oxygen.</Description>
 		<graphicData>
 			<texPath>Cupro/Object/Utility/CharcoalPit/EmptyPit</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

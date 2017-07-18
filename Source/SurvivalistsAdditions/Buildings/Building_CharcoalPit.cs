@@ -40,7 +40,7 @@ namespace SurvivalistsAdditions {
     private Material BarFilledMat {
       get {
         if (barFilledCachedMat == null) {
-          barFilledCachedMat = SolidColorMaterials.SimpleSolidColorMaterial(Color.Lerp(Static.BarZeroProgressColor_Generic, Static.BarFullColor_Generic, Progress), false);
+          barFilledCachedMat = SolidColorMaterials.SimpleSolidColorMaterial(Color.Lerp(Static.BarZeroProgressColor_CharcoalPit, Color.grey, Progress), false);
         }
         return barFilledCachedMat;
       }
