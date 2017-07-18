@@ -104,7 +104,7 @@
 			<li>Brewing</li>
 		</researchPrerequisites>
 	</ThingDef>
-	
+
 	<ThingDef ParentName="SRV_Barrel">
 		<defName>SRV_CheeseBarrel</defName>
 		<thingClass>SurvivalistsAdditions.Building_CheeseBarrel</thingClass>
@@ -221,6 +221,44 @@
 		<placeWorkers>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>SRV_Snare</defName>
+		<label>snare trap</label>
+		<description>A simple snare for catching animals. Large animals will be temporarily caught by the trap, while small animals will be caught and suffocate.</description>
+		<thingClass>SurvivalistsAdditions.Building_Snare</thingClass>
+		<graphicData>
+			<texPath>Cupro/Object/Utility/SnareArmed</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<drawerType>RealtimeOnly</drawerType>
+		<rotatable>false</rotatable>
+		<tickerType>Normal</tickerType>
+		<stealable>false</stealable>
+		<statBases>
+			<MaxHitPoints>40</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Beauty>-4</Beauty>
+			<TrapMeleeDamage>1</TrapMeleeDamage>
+			<TrapSpringChance>0.9</TrapSpringChance>
+		</statBases>
+		<stuffCategories>
+			<li>Woody</li>
+		</stuffCategories>
+		<costStuffCount>30</costStuffCount>
+		<designationCategory>Security</designationCategory>
+		<passability>Standable</passability>
+		<building>
+			<isTrap>true</isTrap>
+			<trapDamageCategory>Sharp</trapDamageCategory>
+			<trapUnarmedGraphicData>
+				<texPath>Cupro/Object/Utility/SnareUnarmed</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<shaderType>Cutout</shaderType>
+			</trapUnarmedGraphicData>
+		</building>
 	</ThingDef>
 
 </ThingDefs>

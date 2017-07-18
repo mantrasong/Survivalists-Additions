@@ -19,4 +19,10 @@
 		<reportString>tending to TargetA.</reportString>
 	</JobDef>
 
+	<JobDef>
+		<defName>SRV_DisableSnare</defName>
+		<driverClass>SurvivalistsAdditions.JobDriver_DisableSnare</driverClass>
+		<reportString>disabling TargetA.</reportString>
+	</JobDef>
+
 </Defs>

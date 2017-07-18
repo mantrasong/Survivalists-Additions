@@ -19,7 +19,10 @@ namespace SurvivalistsAdditions {
     internal static int CharcoalPit_BurnHours = 8;
     internal static float CharcoalPit_CharcoalPerWoodLog = 3f;
 
-    internal static float GenStep_PlantDensity = 1f;
+		internal static int Snare_FailChance = 10;
+		internal static int Snare_BreakChance = 2;
+
+		internal static float GenStep_PlantDensity = 1f;
 
     public static int VinegarBarrel_FermentTicks {
       get { return GenDate.TicksPerDay * VinegarBarrel_FermentDays; }
@@ -58,7 +61,10 @@ namespace SurvivalistsAdditions {
       Scribe_Values.Look(ref CharcoalPit_BurnHours, "CharcoalPit_BurnHours", 8);
       Scribe_Values.Look(ref CharcoalPit_CharcoalPerWoodLog, "CharcoalPit_CharcoalPerWoodLog", 3f);
 
-      Scribe_Values.Look(ref GenStep_PlantDensity, "GenStep_PlantDensity", 1f);
+			Scribe_Values.Look(ref Snare_FailChance, "Snare_FailChance", 10);
+			Scribe_Values.Look(ref Snare_BreakChance, "Snare_BreakChance", 2);
+
+			Scribe_Values.Look(ref GenStep_PlantDensity, "GenStep_PlantDensity", 1f);
     }
   }
 }

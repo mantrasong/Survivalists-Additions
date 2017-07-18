@@ -20,11 +20,15 @@ namespace SurvivalistsAdditions {
     public static ThingDef SRV_Cheese;
     public static ThingDef SRV_SmokedCheese;
 
-    public static JobDef SRV_FillProcessor;
+		public static HediffDef SRV_SnaredLarge;
+		public static HediffDef SRV_SnaredSmall;
+
+		public static JobDef SRV_FillProcessor;
     public static JobDef SRV_TendToSmoker;
     public static JobDef SRV_TakeItemOutOfProcessor;
+		public static JobDef SRV_DisableSnare;
 
-    public static TerrainDef Marsh;
+		public static TerrainDef Marsh;
     public static TerrainDef Mud;
 
     public static SoundDef FireBurning;

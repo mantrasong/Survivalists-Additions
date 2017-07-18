@@ -4,17 +4,31 @@
 	<!--=============================== Tier 1: pre-electricity ===================================-->
 
 	<ResearchProjectDef>
+		<defName>SRV_Snare</defName>
+		<label>snares</label>
+		<description>Allows colonists to build snares for passive hunting.</description>
+		<tab>cP</tab>
+		<baseCost>400</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<tags>
+			<li>TribalStart</li>
+		</tags>
+		<researchViewX>0</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
 		<defName>SRV_Forge</defName>
 		<label>forge</label>
 		<description>Allows colonists to build a forge for turning raw metal ingredients into weapons.</description>
 		<tab>cP</tab>
-		<baseCost>500</baseCost>
+		<baseCost>700</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<tags>
 			<li>ClassicStart</li>
 		</tags>
-		<researchViewX>0</researchViewX>
-		<researchViewY>3</researchViewY>
+		<researchViewX>1</researchViewX>
+		<researchViewY>3.5</researchViewY>
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
@@ -22,14 +36,13 @@
 		<label>forge: crucible upgrade</label>
 		<description>Allows colonists to smelt metals at the forge.</description>
 		<tab>cP</tab>
-		<baseCost>1500</baseCost>
+		<baseCost>1000</baseCost>
 		<techLevel>Medieval</techLevel>
 		<prerequisites>
 			<li>SRV_Forge</li>
 		</prerequisites>
-		<researchViewX>1</researchViewX>
-		<researchViewY>3.5</researchViewY>
-		
-</ResearchProjectDef>
+		<researchViewX>2</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
 
 </ResearchProjectDefs>

@@ -46,11 +46,13 @@
     <Compile Include="Buildings\Building_Smoker.cs" />
     <Compile Include="Buildings\Building_VinegarBarrel.cs" />
     <Compile Include="Buildings\Building_CheeseBarrel.cs" />
+    <Compile Include="Buildings\Building_Snare.cs" />
     <Compile Include="Components\CompProperties_Smoker.cs" />
     <Compile Include="Components\CompSmoker.cs" />
     <Compile Include="IItemProcessor.cs" />
     <Compile Include="AI\JobDriver_FillProcessor.cs" />
     <Compile Include="AI\JobDriver_TakeItemOutOfProcessor.cs" />
+    <Compile Include="AI\JobDriver_DisableSnare.cs" />
     <Compile Include="Map\GenStep_Plants.cs" />
     <Compile Include="Map\IncidentWorker_MushroomSprout.cs" />
     <Compile Include="Items\ItemSpawner.cs" />
