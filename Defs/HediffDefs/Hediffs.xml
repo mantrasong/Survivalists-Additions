@@ -74,8 +74,8 @@
 		<comps>
 			<li Class="HediffCompProperties_Disappears">
 				<disappearsAfterTicks>
-					<min>1200</min>
-					<max>1250</max>
+					<min>600</min>
+					<max>650</max>
 				</disappearsAfterTicks>
 			</li>
 		</comps>

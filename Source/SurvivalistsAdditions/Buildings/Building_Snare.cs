@@ -69,7 +69,7 @@ namespace SurvivalistsAdditions {
 					}
 				}
 
-				if (this.IsHashIntervalTick(1000) && !Armed && !Disabled && Spawned) {
+				if (this.IsHashIntervalTick(500) && !Armed && !Disabled && Spawned) {
 					if (affectedPawn != null && affectedPawn.BodySize < 0.6f) {
 						ApplyHediff(affectedPawn);
 					}

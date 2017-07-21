@@ -16,5 +16,40 @@
 			</li>
 		</Operations>
 	</Operation>
+
+	<!-- If Zen Garden is found, add saguaro as a secondary plant -->
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<Operations>
+			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+				<modName>Zen Garden</modName>
+			</li>
+			<li Class="PatchOperationInsert">
+			<xpath>/ThingDefs/ThingDef[defName = "PlantSaguaroCactus"]/label</xpath>
+			<value>
+				<thingClass>ZenGarden.PlantWithSecondary</thingClass>
+			</value>
+			</li>
+			<li Class="PatchOperationAddModExtension">
+				<xpath>/ThingDefs/ThingDef[defName = "PlantSaguaroCactus"]</xpath>
+				<value>
+					<li Class="ZenGarden.SecondaryResource">
+						<growDays>6</growDays>
+						<parentMinGrowth>0.9</parentMinGrowth>
+						<bloomingGraphicPath>Cupro/Object/Plant/SaguaroCactus_Blooming</bloomingGraphicPath>
+						<harvestedThingDef>SRV_PricklyPear</harvestedThingDef>
+						<minToHarvest>10</minToHarvest>
+						<maxToHarvest>15</maxToHarvest>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+			<xpath>/ThingDefs/ThingDef[defName = "PlantSaguaroCactus"]/plant</xpath>
+			<value>
+				<blockAdjacentSow>true</blockAdjacentSow>
+			</value>
+			</li>
+		</Operations>
+	</Operation>
 	
 </Patch>
