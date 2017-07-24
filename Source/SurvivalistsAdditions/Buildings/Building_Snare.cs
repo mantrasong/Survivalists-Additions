@@ -46,8 +46,18 @@ namespace SurvivalistsAdditions {
 
 		public override void ExposeData() {
 			base.ExposeData();
-
 			Scribe_Values.Look(ref rearmAfterCleared, "rearmAfterCleared", false);
+		}
+
+
+		public override void SpawnSetup(Map map, bool respawningAfterLoad) {
+			base.SpawnSetup(map, respawningAfterLoad);
+			foreach (Pawn pawn in PawnsInCell()) {
+				if (!pawn.Dead && (pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredLarge) || pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall))) {
+					affectedPawn = pawn;
+					break;
+				}
+			}
 		}
 
 
