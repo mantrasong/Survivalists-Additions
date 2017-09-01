@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <RecipeDefs>
 
+	<RecipeDef Name="SRV_RecipeDefInsertion" Abstract="True" />
+
 	<RecipeDef Name="SRV_MakeBurlapBase" Abstract="True">
 		<jobString>Processing burlap.</jobString>
 		<workSpeedStat>TailoringSpeed</workSpeedStat>

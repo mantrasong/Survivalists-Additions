@@ -61,4 +61,83 @@
 		</Operations>
 	</Operation>
 
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<Operations>
+			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+				<modName>SeedsPlease</modName>
+			</li>
+			<li Class="PatchOperationInsert">
+				<xpath>/RecipeDefs/RecipeDef[@Name="SRV_RecipeDefInsertion"]</xpath>
+				<Order>Prepend</Order>
+				<value>
+					<RecipeDef ParentName="ProcessRaw">
+						<defName>SRV_ProcessRawTurnip</defName>
+						<label>process turnips into seeds</label>
+						<description>Cut turnips into starters for growing more turnips.</description>
+						<jobString>Processing plants.</jobString>
+						<workSpeedStat>TailoringSpeed</workSpeedStat>
+						<effectWorking>Tailor</effectWorking>
+						<soundWorking>Recipe_Tailor</soundWorking>
+						<workSkill>Crafting</workSkill>
+						<workAmount>800</workAmount>
+						<recipeUsers>
+							<li>PlantProcessingTable</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>SRV_Turnip</li>
+									</thingDefs>
+								</filter>
+								<count>2</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>SRV_Turnip</li>
+							</thingDefs>
+						</fixedIngredientFilter>
+						<products>
+							<SRV_SeedTurnip>2</SRV_SeedTurnip>
+						</products>
+					</RecipeDef>
+					
+					<RecipeDef>
+						<defName>SRV_ExtractSeedCabbage</defName>
+						<label>extract cabbage seeds</label>
+						<description>Extract seeds from cabbage.</description>
+						<jobString>Extracting seeds.</jobString>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<effectWorking>Cook</effectWorking>
+						<workSkill>Cooking</workSkill>
+						<workAmount>600</workAmount>
+						<recipeUsers>
+							<li>PlantProcessingTable</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>SRV_Cabbage</li>
+									</thingDefs>
+								</filter>
+								<count>10</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>SRV_Cabbage</li>
+							</thingDefs>
+						</fixedIngredientFilter>
+						<products>
+							<SRV_SeedCabbage>5</SRV_SeedCabbage>
+						</products>
+					</RecipeDef>
+				</value>
+			</li>
+		</Operations>
+	</Operation>
+
 </Patch>

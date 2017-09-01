@@ -218,6 +218,9 @@
 					<categories>
 						<li>PlantFoodRaw</li>
 					</categories>
+					<exceptedThingDefs>
+						<li>SRV_Turnip_Green</li>
+					</exceptedThingDefs>
 				</filter>
 				<count>5</count>
 			</li>
@@ -272,6 +275,9 @@
 					<categories>
 						<li>PlantFoodRaw</li>
 					</categories>
+					<exceptedThingDefs>
+						<li>SRV_Cabbage</li>
+					</exceptedThingDefs>
 				</filter>
 				<count>5</count>
 			</li>

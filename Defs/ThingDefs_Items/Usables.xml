@@ -143,7 +143,7 @@
 		</tradeTags>
 	</ThingDef>
 
-	<ThingDef ParentName="OrganicProductBase">
+	<ThingDef ParentName="PlantFoodRawBase">
 		<defName>SRV_Turnip_Green</defName>
 		<label>turnip greens</label>
 		<description>Edible leaves from the turnip plant.</description>
@@ -155,27 +155,20 @@
 			<SellPriceFactor>0.2</SellPriceFactor>
 			<Mass>0.02</Mass>
 		</statBases>
-		<socialPropernessMatters>true</socialPropernessMatters>
 		<ingestible>
 			<foodType>VegetableOrFruit</foodType>
 			<preferability>RawBad</preferability>
 			<nutrition>0.03</nutrition>
 			<tasteThought>AteRawFood</tasteThought>
 		</ingestible>
-		<thingCategories>
-			<li>FoodRaw</li>
-		</thingCategories>
 		<comps>
 			<li Class="CompProperties_Rottable">
 				<daysToRotStart>7</daysToRotStart>
 			</li>
-			<li Class="CompProperties_FoodPoisoningChance">
-				<humanlikeOnly>true</humanlikeOnly>
-			</li>
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="OrganicProductBase">
+	<ThingDef ParentName="PlantFoodRawBase">
 		<defName>SRV_Cabbage</defName>
 		<label>cabbage</label>
 		<description>Raw cabbage.</description>
@@ -186,22 +179,15 @@
 			<MarketValue>2</MarketValue>
 			<Mass>0.03</Mass>
 		</statBases>
-		<socialPropernessMatters>true</socialPropernessMatters>
 		<ingestible>
 			<foodType>VegetableOrFruit</foodType>
 			<preferability>RawBad</preferability>
 			<nutrition>0.02</nutrition>
 			<tasteThought>AteRawFood</tasteThought>
 		</ingestible>
-		<thingCategories>
-			<li>FoodRaw</li>
-		</thingCategories>
 		<comps>
 			<li Class="CompProperties_Rottable">
 				<daysToRotStart>40</daysToRotStart>
-			</li>
-			<li Class="CompProperties_FoodPoisoningChance">
-				<humanlikeOnly>true</humanlikeOnly>
 			</li>
 		</comps>
 		<tradeTags>
