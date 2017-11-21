@@ -176,7 +176,7 @@ namespace SurvivalistsAdditions {
         // This prevents players from using the smoker to store food indefinitely until needed
         if (rottingTicks >= GenDate.TicksPerDay) {
           Reset();
-          Messages.Message("MessageRottedAwayInStorage".Translate(Static.Food), this, MessageSound.Negative);
+          Messages.Message("MessageRottedAwayInStorage".Translate(Static.Food), this, MessageTypeDefOf.NegativeEvent);
           LessonAutoActivator.TeachOpportunity(ConceptDefOf.SpoilageAndFreezers, OpportunityType.GoodToKnow);
         }
       }

@@ -30,13 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\RimWorld1557Win\RimWorld1557Win_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp, Version=0.17.6362.34395, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\RimWorld_18.1700.762\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\RimWorld1557Win\RimWorld1557Win_Data\Managed\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\RimWorld_18.1700.762\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -49,8 +51,10 @@
     <Compile Include="Buildings\Building_Snare.cs" />
     <Compile Include="Components\CompProperties_Smoker.cs" />
     <Compile Include="Components\CompSmoker.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HardyPlant.cs" />
-    <Compile Include="IItemProcessor.cs" />
+    <Compile Include="HardyPlantStats.cs" />
+    <Compile Include="Interfaces\IItemProcessor.cs" />
     <Compile Include="AI\JobDriver_FillProcessor.cs" />
     <Compile Include="AI\JobDriver_TakeItemOutOfProcessor.cs" />
     <Compile Include="AI\JobDriver_DisableSnare.cs" />
@@ -58,17 +62,16 @@
     <Compile Include="Map\IncidentWorker_MushroomSprout.cs" />
     <Compile Include="Items\ItemSpawner.cs" />
     <Compile Include="Items\TurnipItemSpawner.cs" />
+    <Compile Include="Util\PatchOperationModDependent.cs" />
     <Compile Include="Static\SettingsWidgets.cs" />
     <Compile Include="Util\SrvMod.cs" />
     <Compile Include="Util\SrvSettings.cs" />
-    <Compile Include="Util\PatchOperation_Conditional.cs" />
     <Compile Include="PlaceWorkers\PlaceWorker_Roofed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Static\SrvDefOf.cs" />
     <Compile Include="Static\Static.cs" />
     <Compile Include="AI\ThoughtWorker_WearingBurlapApparel.cs" />
     <Compile Include="Util\ThingCountExposable.cs" />
-    <Compile Include="Util\PatchOperationFindMod.cs" />
     <Compile Include="AI\WorkGiver_FillProcessor.cs" />
     <Compile Include="AI\WorkGiver_TakeItemOutOfProcessor.cs" />
   </ItemGroup>

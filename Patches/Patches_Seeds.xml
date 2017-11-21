@@ -4,13 +4,13 @@
 	<!-- If SeedsPlease is found, add seeds -->
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
-		<Operations>
-			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+		<operations>
+			<li Class="SurvivalistsAdditions.PatchOperationModDependent">
 				<modName>SeedsPlease</modName>
 			</li>
 			<li Class="PatchOperationInsert">
-				<xpath>/Plants/ThingDef[@Name="SRV_PlantDefInsertion"]</xpath>
-				<Order>Prepend</Order>
+				<xpath>/Defs/ThingDef[@Name="SRV_PlantDefInsertion"]</xpath>
+				<order>Prepend</order>
 				<value>
 					<SeedsPlease.SeedDef Name="SRV_SeedBase" ParentName="ResourceBase" Abstract="True">
 						<thingClass>SeedsPlease.Seed</thingClass>
@@ -58,18 +58,18 @@
 					</SeedsPlease.SeedDef>
 				</value>
 			</li>
-		</Operations>
+		</operations>
 	</Operation>
 
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
-		<Operations>
-			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+		<operations>
+			<li Class="SurvivalistsAdditions.PatchOperationModDependent">
 				<modName>SeedsPlease</modName>
 			</li>
 			<li Class="PatchOperationInsert">
-				<xpath>/RecipeDefs/RecipeDef[@Name="SRV_RecipeDefInsertion"]</xpath>
-				<Order>Prepend</Order>
+				<xpath>/Defs/RecipeDef[@Name="SRV_RecipeDefInsertion"]</xpath>
+				<order>Prepend</order>
 				<value>
 					<RecipeDef ParentName="ProcessRaw">
 						<defName>SRV_ProcessRawTurnip</defName>
@@ -137,7 +137,7 @@
 					</RecipeDef>
 				</value>
 			</li>
-		</Operations>
+		</operations>
 	</Operation>
 
 </Patch>

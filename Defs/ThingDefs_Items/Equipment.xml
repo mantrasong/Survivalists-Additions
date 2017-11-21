@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
+<Defs>
 
 	<ThingDef ParentName="HatMakeableBase">
 		<defName>SRV_Apparel_Shemagh</defName>
@@ -27,7 +27,7 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-			<worngraphicPath>Cupro/Item/Equipment/Shemagh/Shemagh</worngraphicPath>
+			<wornGraphicPath>Cupro/Item/Equipment/Shemagh/Shemagh</wornGraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>
@@ -50,4 +50,4 @@
 		</colorGenerator>
 	</ThingDef>
 
-</ThingDefs>
+</Defs>

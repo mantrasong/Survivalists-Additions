@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RecipeDefs>
+<Defs>
 
 	<RecipeDef Name="GrilledMealBase" Abstract="True">
 		<jobString>Grilling.</jobString>
@@ -178,10 +178,7 @@
 			</exceptedThingDefs>
 		</defaultIngredientFilter>
 		<skillRequirements>
-			<li>
-				<skill>Cooking</skill>
-				<minLevel>5</minLevel>
-			</li>
+			<Cooking>5</Cooking>
 		</skillRequirements>
 	</RecipeDef>
 
@@ -395,4 +392,4 @@
 		</defaultIngredientFilter>
 	</RecipeDef>
 
-</RecipeDefs>
+</Defs>

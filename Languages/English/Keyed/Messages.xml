@@ -4,6 +4,7 @@
 	<SRV_ModName>Survivalist's Additions</SRV_ModName>
 	
 	<SRV_NoIngredient>need ingredients</SRV_NoIngredient>
+	<SRV_TemperatureRangeLower>temperature range</SRV_TemperatureRangeLower>
 
 	<!-- Snare -->
 	<SRV_LetterSnareTriggeredLabel>{0} Snared!</SRV_LetterSnareTriggeredLabel>

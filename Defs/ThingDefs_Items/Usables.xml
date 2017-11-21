@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
+<Defs>
 
 	<ThingDef Name="GrilledBase" ParentName="MealRottable" Abstract="True">
 		<description>A smoky meal slowly cooked over an open flame.</description>
@@ -40,7 +40,7 @@
 		<ingestible>
 			<preferability>MealSimple</preferability>
 			<nutrition>0.75</nutrition>
-			<optimalityOffset>1</optimalityOffset>
+			<optimalityOffsetHumanlikes>1</optimalityOffsetHumanlikes>
 			<ingestEffect>EatVegetarian</ingestEffect>
 			<ingestSound>Meal_Eat</ingestSound>
 		</ingestible>
@@ -66,7 +66,7 @@
 		<ingestible>
 			<preferability>MealSimple</preferability>
 			<nutrition>0.7</nutrition>
-			<optimalityOffset>1</optimalityOffset>
+			<optimalityOffsetHumanlikes>1</optimalityOffsetHumanlikes>
 			<ingestEffect>EatVegetarian</ingestEffect>
 			<ingestSound>Meal_Eat</ingestSound>
 		</ingestible>
@@ -137,6 +137,13 @@
 			<foodType>VegetableOrFruit</foodType>
 			<nutrition>0.04</nutrition>
 			<specialThoughtDirect>SRV_AteRawTurnip</specialThoughtDirect>
+			<chairSearchRadius>10</chairSearchRadius>
+			<ingestHoldUsesTable>false</ingestHoldUsesTable>
+			<ingestHoldOffsetStanding>
+				<northDefault>
+					<offset>(0.18,0,0)</offset>
+				</northDefault>
+			</ingestHoldOffsetStanding>
 		</ingestible>
 		<tradeTags>
 			<li>SRV_RawFood</li>
@@ -213,7 +220,7 @@
 			<foodType>VegetableOrFruit</foodType>
 			<preferability>MealSimple</preferability>
 			<nutrition>0.5</nutrition>
-			<optimalityOffset>-5</optimalityOffset>
+			<optimalityOffsetHumanlikes>-5</optimalityOffsetHumanlikes>
 			<ingestEffect>EatVegetarian</ingestEffect>
 			<ingestSound>Meal_Eat</ingestSound>
 			<tasteThought/>
@@ -243,7 +250,7 @@
 			<foodType>VegetableOrFruit</foodType>
 			<preferability>MealSimple</preferability>
 			<nutrition>0.5</nutrition>
-			<optimalityOffset>-5</optimalityOffset>
+			<optimalityOffsetHumanlikes>-5</optimalityOffsetHumanlikes>
 			<ingestEffect>EatVegetarian</ingestEffect>
 			<ingestSound>Meal_Eat</ingestSound>
 			<tasteThought/>
@@ -269,6 +276,13 @@
 		<ingestible>
 			<foodType>Meat</foodType>
 			<tasteThought/>
+			<chairSearchRadius>10</chairSearchRadius>
+			<ingestHoldUsesTable>false</ingestHoldUsesTable>
+			<ingestHoldOffsetStanding>
+				<northDefault>
+					<offset>(0.18,0,0)</offset>
+				</northDefault>
+			</ingestHoldOffsetStanding>
 		</ingestible>
 		<thingCategories>
 			<li>MeatRaw</li>
@@ -326,9 +340,16 @@
 			<foodType>Meat, Meal</foodType>
 			<preferability>MealSimple</preferability>
 			<nutrition>0.08</nutrition>
+			<chairSearchRadius>10</chairSearchRadius>
+			<ingestHoldUsesTable>false</ingestHoldUsesTable>
+			<ingestHoldOffsetStanding>
+				<northDefault>
+					<offset>(0.18,0,0)</offset>
+				</northDefault>
+			</ingestHoldOffsetStanding>
 			<ingestEffect>EatVegetarian</ingestEffect>
 			<ingestSound>Meal_Eat</ingestSound>
-			<optimalityOffset>8</optimalityOffset>
+			<optimalityOffsetHumanlikes>8</optimalityOffsetHumanlikes>
 			<specialThoughtAsIngredient>SRV_FoodMadeWithSmokedMeat</specialThoughtAsIngredient>
 			<outcomeDoers>
 				<li Class="IngestionOutcomeDoer_GiveHediff">
@@ -384,7 +405,7 @@
 			<DeteriorationRate>3</DeteriorationRate>
 		</statBases>
 		<ingestible>
-			<optimalityOffset>5</optimalityOffset>
+			<optimalityOffsetHumanlikes>5</optimalityOffsetHumanlikes>
 		</ingestible>
 		<comps>
 			<li Class="CompProperties_Rottable">
@@ -405,7 +426,7 @@
 			<DeteriorationRate>2</DeteriorationRate>
 		</statBases>
 		<ingestible>
-			<optimalityOffset>8</optimalityOffset>
+			<optimalityOffsetHumanlikes>8</optimalityOffsetHumanlikes>
 			<specialThoughtDirect>SRV_AteSmokedCheese</specialThoughtDirect>
 			<specialThoughtAsIngredient>SRV_FoodMadeWithSmokedCheese</specialThoughtAsIngredient>
 		</ingestible>
@@ -416,4 +437,4 @@
 		</comps>
 	</ThingDef>
 
-</ThingDefs>
+</Defs>

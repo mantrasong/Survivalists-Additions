@@ -4,17 +4,17 @@
 	<!-- If Vegetable Garden is found, add bamboo -->
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
-		<Operations>
-			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+		<operations>
+			<li Class="SurvivalistsAdditions.PatchOperationModDependent">
 				<modName>Vegetable Garden</modName>
 			</li>
 			<li Class="PatchOperationAdd">
-				<xpath>/ThingDefs/ThingDef[defName = "SRV_ShelterHeater"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+				<xpath>/Defs/ThingDef[defName = "SRV_ShelterHeater"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
 				<value>
 					<li>Bamboo</li>
 				</value>
 			</li>
-		</Operations>
+		</operations>
 	</Operation>
 	
 </Patch>

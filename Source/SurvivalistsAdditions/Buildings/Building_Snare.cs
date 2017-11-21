@@ -172,7 +172,7 @@ namespace SurvivalistsAdditions {
 			if (p.Faction == null && p.RaceProps.Animal) {
 				return false;
 			}
-			if (p.guest != null && p.guest.released) {
+			if (p.guest != null && p.guest.Released) {
 				return true;
 			}
 			Lord lord = p.GetLord();
@@ -250,22 +250,18 @@ namespace SurvivalistsAdditions {
 			else {
 				if (!p.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall)) {
 					if (p.Faction == Faction.OfPlayer || p.HostFaction == Faction.OfPlayer) {
-						Find.LetterStack.ReceiveLetter("SRV_LetterSnareTriggeredLabel".Translate(new object[]
-						{
-						p.NameStringShort.CapitalizeFirst()
-						}), "SRV_LetterSnareTriggeredColony".Translate(new object[]
-						{
-						p.NameStringShort.CapitalizeFirst()
-						}), LetterDefOf.BadNonUrgent, new TargetInfo(Position, Map, false), null);
+						Find.LetterStack.ReceiveLetter("SRV_LetterSnareTriggeredLabel".Translate(new object[]{
+							p.NameStringShort.CapitalizeFirst()
+						}), "SRV_LetterSnareTriggeredColony".Translate(new object[]{
+							p.NameStringShort.CapitalizeFirst()
+						}), LetterDefOf.NegativeEvent, new TargetInfo(Position, Map, false), null);
 					}
 					else {
-						Find.LetterStack.ReceiveLetter("SRV_LetterSnareTriggeredLabel".Translate(new object[]
-						{
-						p.NameStringShort.CapitalizeFirst()
-						}), "SRV_LetterSnareTriggered".Translate(new object[]
-						{
-						p.NameStringShort
-						}), LetterDefOf.Good, new TargetInfo(Position, Map, false), null);
+						Find.LetterStack.ReceiveLetter("SRV_LetterSnareTriggeredLabel".Translate(new object[]{
+							p.NameStringShort.CapitalizeFirst()
+						}), "SRV_LetterSnareTriggered".Translate(new object[]{
+							p.NameStringShort
+						}), LetterDefOf.PositiveEvent, new TargetInfo(Position, Map, false), null);
 					}
 				}
 

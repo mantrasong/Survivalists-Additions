@@ -15,12 +15,12 @@
 		<stages>
 			<li>
 				<label>initial-hidden</label>
-				<everVisible>false</everVisible>
+				<becomeVisible>false</becomeVisible>
 			</li>
 			<li>
 				<minSeverity>0.01</minSeverity>
 				<label>ate smoked meat</label>
-				<everVisible>false</everVisible>
+				<becomeVisible>false</becomeVisible>
 			</li>
 		</stages>
 	</HediffDef>
@@ -44,7 +44,7 @@
 		<stages>
 			<li>
 				<label>initial-hidden</label>
-				<everVisible>false</everVisible>
+				<becomeVisible>false</becomeVisible>
 			</li>
 			<li>
 				<minSeverity>0.001</minSeverity>
@@ -82,7 +82,7 @@
 		<stages>
 			<li>
 				<label>minor-hidden</label>
-				<everVisible>false</everVisible>
+				<becomeVisible>false</becomeVisible>
 			</li>
 			<li>
 				<minSeverity>0.001</minSeverity>

@@ -3,19 +3,28 @@
 using UnityEngine;
 using RimWorld;
 using Verse;
+using System.Collections.Generic;
 
 namespace SurvivalistsAdditions {
 
 	public class HardyPlant : Plant {
 
-		public const float HardyMinGrowthTemperature = -10f;
-		public const float HardyMinOptimalGrowthTemperature = 0f;
-		public const float HardyMaxOptimalGrowthTemperature = 35f;
-		public const float HardyMaxGrowthTemperature = 50f;
-		public const float HardyMaxLeaflessTemperature = -12f;
-
-		private const float HardyMinLeaflessTemperature = -18f;
+		
 		private string hardyCachedLabelMouseover;
+		private HardyPlantStats ext;
+
+		private HardyPlantStats Ext {
+			get {
+				if (ext == null) {
+					if (!def.HasModExtension<HardyPlantStats>()) {
+						Log.Error($"Survivalists Additions:: No mod extension found for hardy plant - {def.LabelCap}. Assigning default values.");
+						def.modExtensions.Add(new HardyPlantStats());
+					}
+					ext = def.GetModExtension<HardyPlantStats>();
+				}
+				return ext;
+			}
+		}
 
 		public override float GrowthRate {
 			get {
@@ -25,15 +34,14 @@ namespace SurvivalistsAdditions {
 
 		public float HardyGrowthRateFactor_Temperature {
 			get {
-				float num;
-				if (!GenTemperature.TryGetTemperatureForCell(Position, Map, out num)) {
+				if (!GenTemperature.TryGetTemperatureForCell(Position, Map, out float num)) {
 					return 1f;
 				}
-				if (num < HardyMinOptimalGrowthTemperature) {
-					return Mathf.InverseLerp(HardyMinGrowthTemperature, HardyMinOptimalGrowthTemperature, num);
+				if (num < Ext.minOptimalGrowthTemperature) {
+					return Mathf.InverseLerp(Ext.minGrowthTemperature, Ext.minOptimalGrowthTemperature, num);
 				}
-				if (num > HardyMaxOptimalGrowthTemperature) {
-					return Mathf.InverseLerp(HardyMaxGrowthTemperature, HardyMaxOptimalGrowthTemperature, num);
+				if (num > Ext.maxOptimalGrowthTemperature) {
+					return Mathf.InverseLerp(Ext.maxGrowthTemperature, Ext.maxOptimalGrowthTemperature, num);
 				}
 				return 1f;
 			}
@@ -66,7 +74,20 @@ namespace SurvivalistsAdditions {
 		}
 
 
-		public static bool GrowthSeasonNow(IntVec3 c, Map map) {
+		// Display additional info on the inspect window that isn't shown normally
+		public override IEnumerable<StatDrawEntry> SpecialDisplayStats {
+			get {
+				foreach (StatDrawEntry entry in base.SpecialDisplayStats) {
+					yield return entry;
+				}
+
+				yield return new StatDrawEntry(StatCategoryDefOf.PawnMisc, $"{"TabGrowing".Translate()} {Static.TemperatureRangeLower}", $"{Ext.minGrowthTemperature.ToStringTemperature("F0")} ~ {Ext.maxGrowthTemperature.ToStringTemperature("F0")}");
+				yield return new StatDrawEntry(StatCategoryDefOf.PawnMisc, $"{"Healthy".Translate()} {Static.TemperatureRangeLower}", $"{Ext.minLeaflessTemperature.ToStringTemperature("F0")} ~ {100f.ToStringTemperature("F0")}");
+			}
+		}
+
+
+		public bool GrowthSeasonNow(IntVec3 c, Map map) {
 			Room roomOrAdjacent = c.GetRoomOrAdjacent(map, RegionType.Set_All);
 			if (roomOrAdjacent == null) {
 				return false;
@@ -75,7 +96,7 @@ namespace SurvivalistsAdditions {
 				return map.weatherManager.growthSeasonMemory.GrowthSeasonOutdoorsNow;
 			}
 			float temperature = c.GetTemperature(map);
-			return temperature > HardyMinGrowthTemperature && temperature < HardyMaxGrowthTemperature;
+			return temperature > Ext.minGrowthTemperature && temperature < Ext.maxGrowthTemperature;
 		}
 
 
@@ -112,7 +133,7 @@ namespace SurvivalistsAdditions {
 								Messages.Message("MessagePlantDiedOfRot".Translate(new object[]
 								{
 									Label
-								}).CapitalizeFirst(), new TargetInfo(Position, map, false), MessageSound.Negative);
+								}).CapitalizeFirst(), new TargetInfo(Position, map, false), MessageTypeDefOf.NegativeEvent);
 							}
 							return;
 						}

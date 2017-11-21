@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResearchProjectDefs>
+<Defs>
 
 	<!--=============================== Tier 1: pre-electricity ===================================-->
 
@@ -45,4 +45,4 @@
 		<researchViewY>3</researchViewY>
 	</ResearchProjectDef>
 
-</ResearchProjectDefs>
+</Defs>

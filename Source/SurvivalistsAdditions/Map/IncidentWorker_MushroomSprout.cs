@@ -16,22 +16,19 @@ namespace SurvivalistsAdditions {
         return false;
       }
       Map map = (Map)target;
-      IntVec3 intVec;
-      return TryFindRootCell(map, out intVec);
+      return TryFindRootCell(map, out IntVec3 c);
     }
 
 
-    public override bool TryExecute(IncidentParms parms) {
+		protected override bool TryExecuteWorker(IncidentParms parms) {
       Map map = (Map)parms.target;
-      IntVec3 root;
-      if (!TryFindRootCell(map, out root)) {
+      if (!TryFindRootCell(map, out IntVec3 root)) {
         return false;
       }
       Thing thing = null;
       int randomInRange = CountRange.RandomInRange;
       for (int i = 0; i < randomInRange; i++) {
-        IntVec3 intVec;
-        if (!CellFinder.TryRandomClosewalkCellNear(root, map, SpawnRadius, out intVec, (IntVec3 x) => CanSpawnAt(x, map))) {
+        if (!CellFinder.TryRandomClosewalkCellNear(root, map, SpawnRadius, out IntVec3 intVec, (IntVec3 x) => CanSpawnAt(x, map))) {
           break;
         }
         Plant plant = intVec.GetPlant(map);

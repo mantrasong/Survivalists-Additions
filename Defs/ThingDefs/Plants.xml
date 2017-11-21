@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Plants>
+<Defs>
 
 	<ThingDef ParentName="PlantBase">
 		<defName>SRV_PlantTurnip</defName>
@@ -18,6 +18,16 @@
 		<ingestible>
 			<nutrition>0.18</nutrition>
 		</ingestible>
+		<modExtensions>
+			<li Class="SurvivalistsAdditions.HardyPlantStats">
+				<minLeaflessTemperature>-18</minLeaflessTemperature>
+				<maxLeaflessTemperature>-12</maxLeaflessTemperature>
+				<minGrowthTemperature>-10</minGrowthTemperature>
+				<minOptimalGrowthTemperature>0</minOptimalGrowthTemperature>
+				<maxOptimalGrowthTemperature>35</maxOptimalGrowthTemperature>
+				<maxGrowthTemperature>45</maxGrowthTemperature>
+			</li>
+		</modExtensions>
 		<plant>
 			<dieIfLeafless>false</dieIfLeafless>
 			<harvestTag>Standard</harvestTag>
@@ -54,6 +64,16 @@
 		<ingestible>
 			<nutrition>0.18</nutrition>
 		</ingestible>
+		<modExtensions>
+			<li Class="SurvivalistsAdditions.HardyPlantStats">
+				<minLeaflessTemperature>-13</minLeaflessTemperature>
+				<maxLeaflessTemperature>-9</maxLeaflessTemperature>
+				<minGrowthTemperature>-8</minGrowthTemperature>
+				<minOptimalGrowthTemperature>2</minOptimalGrowthTemperature>
+				<maxOptimalGrowthTemperature>38</maxOptimalGrowthTemperature>
+				<maxGrowthTemperature>50</maxGrowthTemperature>
+			</li>
+		</modExtensions>
 		<plant>
 			<dieIfLeafless>false</dieIfLeafless>
 			<harvestTag>Standard</harvestTag>
@@ -246,4 +266,4 @@
 		</plant>
 	</ThingDef>
 
-</Plants>
+</Defs>

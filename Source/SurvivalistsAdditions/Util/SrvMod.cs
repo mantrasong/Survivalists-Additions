@@ -18,10 +18,10 @@ namespace SurvivalistsAdditions {
 
     public override void DoSettingsWindowContents(Rect rect) {
 
-      Listing_Standard list = new Listing_Standard();
-
-      list.ColumnWidth = rect.width;
-      list.Begin(rect);
+			Listing_Standard list = new Listing_Standard() {
+				ColumnWidth = rect.width
+			};
+			list.Begin(rect);
       list.Gap();
       {
         Rect fullRect = list.GetRect(Text.LineHeight);

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<WorkGivers>
+<Defs>
 
 	<WorkGiverDef>
 		<defName>SRV_DoSimpleBills</defName>
@@ -108,4 +108,4 @@
 		</requiredCapacities>
 	</WorkGiverDef>
 
-</WorkGivers>
+</Defs>

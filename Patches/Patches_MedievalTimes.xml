@@ -4,35 +4,35 @@
 	<!-- If Medieval Times is found, unify coal -->
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
-		<Operations>
-			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+		<operations>
+			<li Class="SurvivalistsAdditions.PatchOperationModDependent">
 				<modName>Medieval Times</modName>
 			</li>
 			<li Class="PatchOperationAdd">
-				<xpath>/ThingDefs/ThingDef[DefName = "SRV_Forge"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+				<xpath>/Defs/ThingDef[defName = "SRV_Forge"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
 				<value>
 					<li>MedTimes_Resource_Coal</li>
 				</value>
 			</li>
-		</Operations>
+		</operations>
 	</Operation>
 
 	<!-- If Medieval Times is found, add recipes -->
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
-		<Operations>
-			<li Class="SurvivalistsAdditions.PatchOperationFindMod">
+		<operations>
+			<li Class="SurvivalistsAdditions.PatchOperationModDependent">
 				<modName>Medieval Times</modName>
 			</li>
 			<li Class="PatchOperationAdd">
-				<xpath>/ThingDefs/ThingDef[defName = "MedTimes_StoneHearth"]/recipes</xpath>
+				<xpath>/Defs/ThingDef[defName = "MedTimes_StoneHearth"]/recipes</xpath>
 				<value>
 					<li>SRV_GrillMealMeat</li>
 					<li>SRV_GrillMealVeg</li>
 				</value>
 			</li>
 			<li Class="PatchOperationAdd">
-				<xpath>/ThingDefs/ThingDef[DefName = "MedTimes_FoodPrepStation"]</xpath>
+				<xpath>/Defs/ThingDef[defName = "MedTimes_FoodPrepStation"]</xpath>
 				<value>
 					<recipes>
 						<li>SRV_PrepSalad</li>
@@ -42,7 +42,7 @@
 					</recipes>
 				</value>
 			</li>
-		</Operations>
+		</operations>
 	</Operation>
 
 </Patch>

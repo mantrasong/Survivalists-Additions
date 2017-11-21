@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
+<Defs>
 
 
 	<!-- ======================== Facilities ======================= -->
@@ -60,7 +60,7 @@
 		<defName>SRV_VinegarBarrel</defName>
 		<thingClass>SurvivalistsAdditions.Building_VinegarBarrel</thingClass>
 		<label>vinegar barrel</label>
-		<Description>A barrel for fermenting vinegar.</Description>
+		<description>A barrel for fermenting vinegar.</description>
 		<graphicData>
 			<texPath>Cupro/Object/FermentingBarrel/FermentingBarrel</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -75,7 +75,7 @@
 		<fillPercent>0.45</fillPercent>
 		<pathCost>60</pathCost>
 		<rotatable>true</rotatable>
-		<DesignationCategory>Production</DesignationCategory>
+		<designationCategory>Production</designationCategory>
 		<statBases>
 			<WorkToBuild>600</WorkToBuild>
 			<Mass>10</Mass>
@@ -90,8 +90,7 @@
 			<li>Woody</li>
 		</stuffCategories>
 		<useHitPoints>true</useHitPoints>
-		<Size>(1,1)</Size>
-		<Passability>PassThroughOnly</Passability>
+		<size>(1,1)</size>
 		<tickerType>Rare</tickerType>
 		<comps>
 			<li Class="CompProperties_TemperatureRuinable">
@@ -109,7 +108,7 @@
 		<defName>SRV_CheeseBarrel</defName>
 		<thingClass>SurvivalistsAdditions.Building_CheeseBarrel</thingClass>
 		<label>cheese barrel</label>
-		<Description>A barrel for fermenting and aging cheese.</Description>
+		<description>A barrel for fermenting and aging cheese.</description>
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
@@ -188,10 +187,10 @@
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
-		<DefName>SRV_CharcoalPit</DefName>
+		<defName>SRV_CharcoalPit</defName>
 		<label>charcoal pit</label>
-		<ThingClass>SurvivalistsAdditions.Building_CharcoalPit</ThingClass>
-		<Description>A pit dug into the ground for burning wood in the absence of oxygen.</Description>
+		<thingClass>SurvivalistsAdditions.Building_CharcoalPit</thingClass>
+		<description>A pit dug into the ground for burning wood in the absence of oxygen.</description>
 		<graphicData>
 			<texPath>Cupro/Object/Utility/CharcoalPit/EmptyPit</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -207,9 +206,9 @@
 			<WorkToBuild>500</WorkToBuild>
 			<Flammability>0</Flammability>
 		</statBases>
-		<Size>(1,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
-		<Passability>PassThroughOnly</Passability>
+		<size>(1,1)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
 		<canOverlapZones>false</canOverlapZones>
 		<pathCost>60</pathCost>
 		<surfaceType>Item</surfaceType>
@@ -261,4 +260,4 @@
 		</building>
 	</ThingDef>
 
-</ThingDefs>
+</Defs>

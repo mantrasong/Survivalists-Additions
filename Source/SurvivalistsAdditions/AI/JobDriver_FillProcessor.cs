@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using RimWorld;
 using Verse;
@@ -13,66 +14,67 @@ namespace SurvivalistsAdditions {
 
     protected IItemProcessor Processor {
       get {
-        return (IItemProcessor)CurJob.GetTarget(TargetIndex.A).Thing;
+        return (IItemProcessor)job.GetTarget(TargetIndex.A).Thing;
       }
     }
 
     protected Thing Item {
       get {
-        return CurJob.GetTarget(TargetIndex.B).Thing;
+        return job.GetTarget(TargetIndex.B).Thing;
       }
     }
 
-    protected override IEnumerable<Toil> MakeNewToils() {
+
+		public override bool TryMakePreToilReservations() {
+			return pawn.Reserve((Thing)Processor, job) && pawn.Reserve((Thing)Processor, job);
+		}
+
+
+		protected override IEnumerable<Toil> MakeNewToils() {
 
       // Verify processor and item validity
       this.FailOn(() => Processor.SpaceLeftForItem <= 0);
-      this.FailOnDestroyedNullOrForbidden(ProcessorInd);
-      this.FailOnDestroyedNullOrForbidden(ItemInd);
+      this.FailOnDespawnedNullOrForbidden(ProcessorInd);
       this.FailOn(() => (Item.TryGetComp<CompRottable>() != null && Item.TryGetComp<CompRottable>().Stage != RotStage.Fresh));
+			AddEndCondition(() => (Processor.SpaceLeftForItem > 0) ? JobCondition.Ongoing : JobCondition.Succeeded);
 
-      // Reserve resources
-      // Creating the toil before yielding allows for CheckForGetOpportunityDuplicate
-      Toil ingToil = Toils_Reserve.Reserve(ItemInd);
-      yield return ingToil;
+			// Reserve resources
+			yield return Toils_General.DoAtomic(delegate {
+				job.count = Processor.SpaceLeftForItem;
+			});
+			Toil reserveItem = Toils_Reserve.Reserve(ItemInd);
+			yield return reserveItem;
 
-      // Reserve the processor
-      yield return Toils_Reserve.Reserve(ProcessorInd);
+			// Haul and add items
+			yield return Toils_Goto.GotoThing(ItemInd, PathEndMode.ClosestTouch)
+				.FailOnDespawnedNullOrForbidden(ItemInd)
+				.FailOnSomeonePhysicallyInteracting(ItemInd);
+			yield return Toils_Haul.StartCarryThing(ItemInd, false, true, false)
+				.FailOnDestroyedNullOrForbidden(ItemInd);
+			yield return Toils_Haul.CheckForGetOpportunityDuplicate(reserveItem, ItemInd, TargetIndex.None, true, null);
+			yield return Toils_Goto.GotoThing(ProcessorInd, PathEndMode.Touch);
+			yield return Toils_General.Wait(Static.GenericWaitDuration)
+				.FailOnDestroyedNullOrForbidden(ItemInd)
+				.FailOnDestroyedNullOrForbidden(ProcessorInd)
+				.FailOnCannotTouch(ProcessorInd, PathEndMode.Touch)
+				.WithProgressBarToilDelay(ProcessorInd);
 
-      // Go to the item
-      yield return Toils_Goto.GotoThing(ItemInd, PathEndMode.ClosestTouch)
-        .FailOnSomeonePhysicallyInteracting(ItemInd)
-        .FailOnDestroyedNullOrForbidden(ItemInd);
-
-      // Haul the item
-      yield return Toils_Haul.StartCarryThing(ItemInd);
-      yield return Toils_Haul.CheckForGetOpportunityDuplicate(ingToil, ItemInd, TargetIndex.None);
-
-      // Carry the item to the processor
-      yield return Toils_Haul.CarryHauledThingToCell(ProcessorInd);
-
-      // Add delay for adding items to the processor
-      yield return Toils_General.Wait(Static.GenericWaitDuration).FailOnDestroyedNullOrForbidden(ProcessorInd).WithProgressBarToilDelay(ProcessorInd);
-
-      // Use the item
-      Toil add = new Toil();
-      add.initAction = () => {
-        int amountAccepted = Processor.AddItem(Item);
-        if (amountAccepted <= 0) {
-          EndJobWith(JobCondition.Incompletable);
-        }
-        if (amountAccepted >= pawn.carryTracker.CarriedThing.stackCount) {
-          pawn.carryTracker.CarriedThing.Destroy();
-        }
-        else {
-          pawn.carryTracker.CarriedThing.stackCount -= amountAccepted;
-        }
-      };
-      add.defaultCompleteMode = ToilCompleteMode.Instant;
-      yield return add;
-
-      // End the current job
-      yield break;
+			// Use the item
+			yield return new Toil() {
+				initAction = () => {
+					int amountAccepted = Processor.AddItem(Item);
+					if (amountAccepted <= 0) {
+						EndJobWith(JobCondition.Incompletable);
+					}
+					if (amountAccepted >= pawn.carryTracker.CarriedThing.stackCount) {
+						pawn.carryTracker.CarriedThing.Destroy();
+					}
+					else {
+						pawn.carryTracker.CarriedThing.stackCount -= amountAccepted;
+					}
+				},
+				defaultCompleteMode = ToilCompleteMode.Instant
+			};
     }
   }
 }

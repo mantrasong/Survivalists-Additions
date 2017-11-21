@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ThoughtDefs>
+<Defs>
 
 	<ThoughtDef>
 		<defName>SRV_WearingBurlapApparel</defName>
@@ -22,7 +22,7 @@
 				<baseMoodEffect>-5</baseMoodEffect>
 			</li>
 			<li>
-				<label>wearing burlap {0} etc</label>
+				<label>wearing burlap {0}, etc.</label>
 				<description>I am wearing more than three pieces of burlap apparel. They are itchy and uncomfortable.</description>
 				<baseMoodEffect>-6</baseMoodEffect>
 			</li>
@@ -155,4 +155,4 @@
 		</stages>
 	</ThoughtDef>
 
-</ThoughtDefs>
+</Defs>

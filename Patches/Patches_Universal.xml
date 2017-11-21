@@ -4,19 +4,14 @@
 	<!-- Add charcoal to all fuelFilters which accept WoodLogs -->
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
-		<Operations>
+		<operations>
 			<li Class="PatchOperationAdd">
 				<xpath>*/ThingDef/comps/li[@Class = "CompProperties_Refuelable" and fuelFilter/thingDefs/li[text() = "WoodLog"]]/fuelFilter/thingDefs</xpath>
 				<value>
 					<li>SRV_Charcoal</li>
 				</value>
-			</li><li Class="PatchOperationAdd">
-				<xpath>*/ThingDef/Comps/li[@Class = "CompProperties_Refuelable" and fuelFilter/thingDefs/li[text() = "WoodLog"]]/fuelFilter/thingDefs</xpath>
-				<value>
-					<li>SRV_Charcoal</li>
-				</value>
 			</li>
-		</Operations>
+		</operations>
 	</Operation>
 
 </Patch>

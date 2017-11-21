@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
+<Defs>
 
 	<ThingDef ParentName="BuildingBase">
-		<DefName>SRV_Grill</DefName>
+		<defName>SRV_Grill</defName>
 		<label>grill</label>
-		<ThingClass>Building_WorkTable_HeatPush</ThingClass>
-		<Description>A small grill used to cook food. Requires fuel to cook.</Description>
+		<thingClass>Building_WorkTable_HeatPush</thingClass>
+		<description>A small grill used to cook food. Requires fuel to cook.</description>
 		<graphicData>
 			<texPath>Cupro/Object/Station/Grill/Grill</texPath>
 			<shaderType>CutoutComplex</shaderType>
@@ -27,9 +27,9 @@
 			<Flammability>0</Flammability>
 			<Mass>12</Mass>
 		</statBases>
-		<Size>(1,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
-		<Passability>PassThroughOnly</Passability>
+		<size>(1,1)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
 		<canOverlapZones>false</canOverlapZones>
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -76,10 +76,10 @@
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
-		<DefName>SRV_Forge</DefName>
+		<defName>SRV_Forge</defName>
 		<label>forge</label>
-		<ThingClass>Building_WorkTable_HeatPush</ThingClass>
-		<Description>An ancient structure used for heating up metal and working it into useful tools.</Description>
+		<thingClass>Building_WorkTable_HeatPush</thingClass>
+		<description>An ancient structure used for heating up metal and working it into useful tools.</description>
 		<graphicData>
 			<texPath>Cupro/Object/Station/Forge/Forge</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -95,7 +95,7 @@
 			<Steel>30</Steel>
 		</costList>
 		<altitudeLayer>Building</altitudeLayer>
-		<UseHitPoints>true</UseHitPoints>
+		<useHitPoints>true</useHitPoints>
 		<destroyable>true</destroyable>
 		<rotatable>true</rotatable>
 		<statBases>
@@ -107,9 +107,9 @@
 			<!-- The forge is slower than the electric smelter, and the recipes use WorkToMake -->
 			<WorkTableWorkSpeedFactor>0.5</WorkTableWorkSpeedFactor>
 		</statBases>
-		<Size>(2,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
-		<Passability>PassThroughOnly</Passability>
+		<size>(2,1)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
 		<canOverlapZones>false</canOverlapZones>
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -159,10 +159,10 @@
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
-		<DefName>SRV_Smoker</DefName>
+		<defName>SRV_Smoker</defName>
 		<label>smoker</label>
-		<ThingClass>SurvivalistsAdditions.Building_Smoker</ThingClass>
-		<Description>A large stone smoker built for cooking and preserving a large amount of meat. Takes a long time to cook.</Description>
+		<thingClass>SurvivalistsAdditions.Building_Smoker</thingClass>
+		<description>A large stone smoker built for cooking and preserving a large amount of meat. Takes a long time to cook.</description>
 		<graphicData>
 			<texPath>Cupro/Object/Station/Smoker/Smoker</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -177,7 +177,7 @@
 		<costStuffCount>100</costStuffCount>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<altitudeLayer>Building</altitudeLayer>
-		<UseHitPoints>true</UseHitPoints>
+		<useHitPoints>true</useHitPoints>
 		<rotatable>true</rotatable>
 		<statBases>
 			<MaxHitPoints>500</MaxHitPoints>
@@ -187,9 +187,9 @@
 			<Cleanliness>-5</Cleanliness>
 			<Mass>185</Mass>
 		</statBases>
-		<Size>(1,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
-		<Passability>PassThroughOnly</Passability>
+		<size>(1,1)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
 		<canOverlapZones>false</canOverlapZones>
 		<pathCost>80</pathCost>
 		<surfaceType>Item</surfaceType>
@@ -219,14 +219,14 @@
 	</ThingDef>
 
 	<ThingDef Name="CampTableBase" ParentName="BuildingBase" Abstract="True">
-		<ThingClass>Building_WorkTable</ThingClass>
+		<thingClass>Building_WorkTable</thingClass>
 		<graphicData>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(2,1)</drawSize>
 		</graphicData>
-		<CostList>
+		<costList>
 			<WoodLog>15</WoodLog>
-		</CostList>
+		</costList>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<constructEffect>ConstructWood</constructEffect>
 		<altitudeLayer>Building</altitudeLayer>
@@ -238,9 +238,9 @@
 			<Flammability>1.0</Flammability>
 			<Mass>4.5</Mass>
 		</statBases>
-		<Size>(2,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
-		<Passability>PassThroughOnly</Passability>
+		<size>(2,1)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
 		<canOverlapZones>false</canOverlapZones>
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -267,7 +267,7 @@
 	<ThingDef ParentName="CampTableBase">
 		<defName>SRV_TableCamp</defName>
 		<label>camp crafting table</label>
-		<Description>A lightweight collapsible table for doing simple tasks while traveling.</Description>
+		<description>A lightweight collapsible table for doing simple tasks while traveling.</description>
 		<graphicData>
 			<texPath>Cupro/Object/Station/CraftingTable/CraftingTable</texPath>
 		</graphicData>
@@ -279,7 +279,7 @@
 	<ThingDef ParentName="CampTableBase">
 		<defName>SRV_TableButcherCamp</defName>
 		<label>camp butcher table</label>
-		<Description>A lightweight collapsible table for butchering animals while traveling.</Description>
+		<description>A lightweight collapsible table for butchering animals while traveling.</description>
 		<graphicData>
 			<texPath>Cupro/Object/Station/ButcheringTable/ButcheringTable</texPath>
 		</graphicData>
@@ -293,4 +293,4 @@
 		</recipes>
 	</ThingDef>
 
-</ThingDefs>
+</Defs>

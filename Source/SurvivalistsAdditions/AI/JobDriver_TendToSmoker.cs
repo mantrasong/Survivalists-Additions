@@ -10,36 +10,38 @@ namespace SurvivalistsAdditions {
 
     protected Building_Smoker Smoker {
       get {
-        return (Building_Smoker)CurJob.GetTarget(TargetIndex.A).Thing;
+        return (Building_Smoker)job.GetTarget(TargetIndex.A).Thing;
       }
     }
 
 
-    protected override IEnumerable<Toil> MakeNewToils() {
+		public override bool TryMakePreToilReservations() {
+			return pawn.Reserve(Smoker, job);
+		}
+
+
+		protected override IEnumerable<Toil> MakeNewToils() {
 
       // Verify smoker and meat validity
-      this.FailOnDestroyedNullOrForbidden(SmokerInd);
+      this.FailOnDespawnedNullOrForbidden(SmokerInd);
       this.FailOn(() => !Smoker.NeedsTending);
 
-      // Reserve the smoker
-      yield return Toils_Reserve.Reserve(SmokerInd);
-
       // Go to the smoker
-      yield return Toils_Goto.GotoThing(SmokerInd, PathEndMode.ClosestTouch).FailOnSomeonePhysicallyInteracting(SmokerInd);
+      yield return Toils_Goto.GotoThing(SmokerInd, PathEndMode.ClosestTouch)
+				.FailOnSomeonePhysicallyInteracting(SmokerInd);
 
       // Add delay for tending to the smoker
-      yield return Toils_General.Wait(Static.GenericWaitDuration).FailOnDestroyedNullOrForbidden(SmokerInd).WithProgressBarToilDelay(SmokerInd);
+      yield return Toils_General.Wait(Static.GenericWaitDuration)
+				.FailOnDestroyedNullOrForbidden(SmokerInd)
+				.WithProgressBarToilDelay(SmokerInd);
 
-      // Tend to the smoker
-      Toil tend = new Toil();
-      tend.initAction = () => {
-        Smoker.Tend();
-      };
-      tend.defaultCompleteMode = ToilCompleteMode.Instant;
-      yield return tend;
-
-      // End the current job
-      yield break;
+			// Tend to the smoker
+			yield return new Toil() {
+				initAction = () => {
+					Smoker.Tend();
+				},
+				defaultCompleteMode = ToilCompleteMode.Instant
+			};
     }
   }
 }

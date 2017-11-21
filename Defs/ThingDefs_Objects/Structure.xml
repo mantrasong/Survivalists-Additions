@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
+<Defs>
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>SRV_ShelterDoor</defName>
@@ -42,7 +42,6 @@
 		<building>
 			<soundDoorOpenManual>DoorOpenManual</soundDoorOpenManual>
 			<soundDoorCloseManual>DoorCloseManual</soundDoorCloseManual>
-			<ignoreNeedsPower>true</ignoreNeedsPower>
 			<canPlaceOverWall>true</canPlaceOverWall>
 		</building>
 		<comps>
@@ -112,7 +111,6 @@
 		<canOverlapZones>false</canOverlapZones>
 		<building>
 			<isInert>true</isInert>
-			<ignoreNeedsPower>true</ignoreNeedsPower>
 		</building>
 		<damageMultipliers>
 			<li>
@@ -122,4 +120,4 @@
 		</damageMultipliers>
 	</ThingDef>
 
-</ThingDefs>
+</Defs>
