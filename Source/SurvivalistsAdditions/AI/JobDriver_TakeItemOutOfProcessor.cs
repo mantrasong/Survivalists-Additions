@@ -26,7 +26,7 @@ namespace SurvivalistsAdditions {
 
 
 		public override bool TryMakePreToilReservations() {
-			return pawn.Reserve(job.GetTarget(TargetIndex.A).Thing, job) && pawn.Reserve(Item, job);
+			return pawn.Reserve(job.GetTarget(TargetIndex.A).Thing, job);
 		}
 
 
