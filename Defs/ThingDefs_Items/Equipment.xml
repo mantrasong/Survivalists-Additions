@@ -32,6 +32,13 @@
 				<li>Overhead</li>
 			</layers>
 		</apparel>
+		<recipeMaker>
+      <recipeUsers>
+				<li>ElectricTailoringBench</li>
+				<li>HandTailoringBench</li>
+				<li>CraftingSpot</li>
+      </recipeUsers>
+    </recipeMaker>
 		<colorGenerator Class="ColorGenerator_Options">
 			<options>
 				<li>

@@ -10,13 +10,17 @@
 		<effectWorking>Tailor</effectWorking>
 		<soundWorking>Recipe_Tailor</soundWorking>
 		<targetCountAdjustment>8</targetCountAdjustment>
+	</RecipeDef>
+
+	<RecipeDef Name="SRV_TailorBurlapBase" ParentName="SRV_MakeBurlapBase" Abstract="True">
 		<recipeUsers>
 			<li>ElectricTailoringBench</li>
 			<li>HandTailoringBench</li>
 		</recipeUsers>
 	</RecipeDef>
 
-	<RecipeDef ParentName="SRV_MakeBurlapBase">
+
+	<RecipeDef ParentName="SRV_TailorBurlapBase">
 		<defName>SRV_MakeBurlapJute</defName>
 		<label>make burlap from jute</label>
 		<description>Process jute fibers into burlap. Makes 8 burlap cloth.</description>
@@ -42,6 +46,34 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="SRV_MakeBurlapBase">
+		<defName>SRV_MakeSlowBurlapJute</defName>
+		<label>make burlap from jute</label>
+		<description>Process jute fibers into burlap by hand. Makes 6 burlap cloth.</description>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>SRV_JuteFibers</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+		</ingredients>
+		<products>
+			<SRV_Burlap>6</SRV_Burlap>
+		</products>
+		<recipeUsers>
+			<li>CraftingSpot</li>
+		</recipeUsers>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>SRV_JuteFibers</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SRV_TailorBurlapBase">
 		<defName>SRV_MakeBurlapAgave</defName>
 		<label>make burlap from agave</label>
 		<description>Process raw agave into burlap. Makes 8 burlap cloth.</description>
