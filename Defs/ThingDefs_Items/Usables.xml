@@ -262,7 +262,10 @@
 		</tradeTags>
 	</ThingDef>
 
-	<ThingDef ParentName="PlantFoodRawBase">
+	<ThingDef Name="SRV_RimshroomParent" ParentName="PlantFoodRawBase" Abstract="True">
+		<thingCategories/>
+	</ThingDef>
+	<ThingDef ParentName="SRV_RimshroomParent">
 		<defName>SRV_MushroomBundle</defName>
 		<label>rimshroom bundle</label>
 		<description>Edible mushrooms. Can be eaten as a source of protein.</description>
@@ -290,9 +293,6 @@
 		<comps>
 			<li Class="CompProperties_Rottable">
 				<daysToRotStart>12</daysToRotStart>
-			</li>
-			<li Class="CompProperties_FoodPoisoningChance">
-				<humanlikeOnly>true</humanlikeOnly>
 			</li>
 		</comps>
 	</ThingDef>
