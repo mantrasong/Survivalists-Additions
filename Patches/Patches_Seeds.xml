@@ -9,49 +9,17 @@
 				<modName>SeedsPlease</modName>
 			</li>
 			<li Class="PatchOperationInsert">
-				<xpath>/Defs/ThingDef[@Name="SRV_PlantDefInsertion"]</xpath>
+				<xpath>/Defs/Def[@Name="SRV_DefInsertion"]</xpath>
 				<order>Prepend</order>
 				<value>
-					<SeedsPlease.SeedDef Name="SRV_SeedBase" ParentName="ResourceBase" Abstract="True">
-						<thingClass>SeedsPlease.Seed</thingClass>
-						<label>unspecified seed</label>
-						<description>These are genetically engineered seeds capable of thriving in a wide range of alien environments over multiple generations.</description>
-						<graphicData>
-							<texPath>Things/Item/Seeds/Seeds</texPath>
-							<graphicClass>Graphic_StackCount</graphicClass>
-						</graphicData>
-						<statBases>
-							<MaxHitPoints>15</MaxHitPoints>
-							<Mass>0.015</Mass>
-							<Flammability>1.0</Flammability>
-							<DeteriorationRate>1</DeteriorationRate>
-							<MarketValue>0</MarketValue>
-							<SellPriceFactor>0.01</SellPriceFactor>
-						</statBases>
-						<soundInteract>Grain_Drop</soundInteract>
-						<soundDrop>Grain_Drop</soundDrop>
-						<thingCategories>
-							<li>SeedsCategory</li>
-						</thingCategories>
-						<tradeTags>
-							<li>Seeds</li>
-						</tradeTags>
-						<seed>
-							<harvestFactor>1.0</harvestFactor>
-							<seedFactor>1.0</seedFactor>
-							<baseChance>0.95</baseChance>
-							<extraChance>0.15</extraChance>
-						</seed>
-						<stackLimit>500</stackLimit>
-					</SeedsPlease.SeedDef>
-
-					<SeedsPlease.SeedDef ParentName="SRV_SeedBase">
+					<SeedsPlease.SeedDef ParentName="SeedBase">
 						<defName>SRV_SeedTurnip</defName>
 						<label>turnip seeds</label>
 						<plant>SRV_PlantTurnip</plant>
+						<graphicData><texPath>Cupro/Item/Material/Seeds/Seeds</texPath></graphicData>
 					</SeedsPlease.SeedDef>
 					
-					<SeedsPlease.SeedDef ParentName="SRV_SeedBase">
+					<SeedsPlease.SeedDef ParentName="SeedBase">
 						<defName>SRV_SeedCabbage</defName>
 						<label>cabbage seeds</label>
 						<plant>SRV_PlantCabbage</plant>
@@ -68,22 +36,13 @@
 				<modName>SeedsPlease</modName>
 			</li>
 			<li Class="PatchOperationInsert">
-				<xpath>/Defs/RecipeDef[@Name="SRV_RecipeDefInsertion"]</xpath>
+				<xpath>/Defs/Def[@Name="SRV_DefInsertion"]</xpath>
 				<order>Prepend</order>
 				<value>
 					<RecipeDef ParentName="ProcessRaw">
 						<defName>SRV_ProcessRawTurnip</defName>
 						<label>process turnips into seeds</label>
 						<description>Cut turnips into starters for growing more turnips.</description>
-						<jobString>Processing plants.</jobString>
-						<workSpeedStat>TailoringSpeed</workSpeedStat>
-						<effectWorking>Tailor</effectWorking>
-						<soundWorking>Recipe_Tailor</soundWorking>
-						<workSkill>Crafting</workSkill>
-						<workAmount>800</workAmount>
-						<recipeUsers>
-							<li>PlantProcessingTable</li>
-						</recipeUsers>
 						<ingredients>
 							<li>
 								<filter>
@@ -104,15 +63,10 @@
 						</products>
 					</RecipeDef>
 					
-					<RecipeDef>
+					<RecipeDef ParentName="ExtractSeed">
 						<defName>SRV_ExtractSeedCabbage</defName>
 						<label>extract cabbage seeds</label>
 						<description>Extract seeds from cabbage.</description>
-						<jobString>Extracting seeds.</jobString>
-						<workSpeedStat>CookSpeed</workSpeedStat>
-						<effectWorking>Cook</effectWorking>
-						<workSkill>Cooking</workSkill>
-						<workAmount>600</workAmount>
 						<recipeUsers>
 							<li>PlantProcessingTable</li>
 						</recipeUsers>

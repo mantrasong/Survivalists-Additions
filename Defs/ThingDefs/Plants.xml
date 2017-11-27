@@ -40,6 +40,18 @@
 			<growDays>6</growDays>
 			<fertilityMin>1.0</fertilityMin>
 			<fertilitySensitivity>1.0</fertilitySensitivity>
+			<wildCommonalityMaxFraction>0.0035</wildCommonalityMaxFraction>
+			<wildBiomes>
+				<TropicalRainforest>0.001</TropicalRainforest>
+				<TemperateForest>0.003</TemperateForest>
+				<BorealForest>0.01</BorealForest>
+				<Tundra>0.02</Tundra>
+			</wildBiomes>
+			<wildClusterSizeRange>
+				<min>2</min>
+				<max>6</max>
+			</wildClusterSizeRange>
+			<wildClusterRadius>7</wildClusterRadius>
 			<visualSizeRange>
 				<min>0.3</min>
 				<max>1</max>

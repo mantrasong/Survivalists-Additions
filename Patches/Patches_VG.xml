@@ -6,7 +6,7 @@
 		<success>Always</success>
 		<operations>
 			<li Class="SurvivalistsAdditions.PatchOperationModDependent">
-				<modName>Vegetable Garden</modName>
+				<modName>VGP Vegetable Garden</modName>
 			</li>
 			<li Class="PatchOperationAdd">
 				<xpath>/Defs/ThingDef[defName = "SRV_ShelterHeater"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>

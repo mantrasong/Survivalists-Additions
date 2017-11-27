@@ -217,7 +217,7 @@
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
 	</ThingDef>
-
+	
 	<ThingDef Name="CampTableBase" ParentName="BuildingBase" Abstract="True">
 		<thingClass>Building_WorkTable</thingClass>
 		<graphicData>
@@ -241,6 +241,8 @@
 		<size>(2,1)</size>
 		<designationCategory>Production</designationCategory>
 		<passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
 		<canOverlapZones>false</canOverlapZones>
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -251,8 +253,13 @@
 		</inspectorTabs>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<workSpeedPenaltyOutdoors>true</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>true</workSpeedPenaltyTemperature>
 		</building>
 		<comps>
+			<li>
+				<compClass>CompReportWorkSpeed</compClass>
+			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
 					<li>ToolCabinet</li>
@@ -260,6 +267,7 @@
 			</li>
 		</comps>
 		<placeWorkers>
+			<li>PlaceWorker_ReportWorkSpeedPenalties</li>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
 	</ThingDef>
