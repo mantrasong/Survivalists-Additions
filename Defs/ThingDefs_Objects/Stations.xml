@@ -41,6 +41,7 @@
 			<li>SRV_GrillMealVeg</li>
 			<li>SRV_GrillMealVegDouble</li>
 			<li>SRV_GrillMealFine</li>
+			<li>SRV_MakePemmicanGrill</li>
 		</recipes>
 		<inspectorTabs>
 			<li>ITab_Bills</li>

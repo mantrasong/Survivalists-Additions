@@ -12,6 +12,12 @@
 	</RecipeDef>	
 
 
+	<RecipeDef ParentName="MakePemmican">
+    <defName>SRV_MakePemmicanGrill</defName>
+    <workAmount>1000</workAmount>
+    <!-- other meals use WorkToMake stat -->
+  </RecipeDef>
+	
 	<RecipeDef Name="SRV_GrillMealMeat" ParentName="GrilledMealBase">
 		<defName>SRV_GrillMealMeat</defName>
 		<label>grill meat (1)</label>
