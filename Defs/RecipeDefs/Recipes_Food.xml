@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<RecipeDef Name="GrilledMealBase" Abstract="True">
+	<RecipeDef Name="SRV_GrilledMealBase" Abstract="True">
 		<jobString>Grilling.</jobString>
 		<workSpeedStat>CookSpeed</workSpeedStat>
 		<effectWorking>Cook</effectWorking>
@@ -9,34 +9,9 @@
 		<allowMixingIngredients>true</allowMixingIngredients>
 		<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
 		<workSkill>Cooking</workSkill>
-	</RecipeDef>	
+	</RecipeDef>
 
-
-	<RecipeDef ParentName="MakePemmican">
-    <defName>SRV_MakePemmicanGrill</defName>
-    <workAmount>1000</workAmount>
-    <!-- other meals use WorkToMake stat -->
-  </RecipeDef>
-	
-	<RecipeDef Name="SRV_GrillMealMeat" ParentName="GrilledMealBase">
-		<defName>SRV_GrillMealMeat</defName>
-		<label>grill meat (1)</label>
-		<description>Prepares a grilled meal consisting of meat. Takes a while, but adds a good flavor.</description>
-		<workAmount>600</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>MeatRaw</li>
-						<li>AnimalProductRaw</li>
-					</categories>
-				</filter>
-				<count>0.5</count>
-			</li>
-		</ingredients>
-		<products>
-			<SRV_MealGrilledMeat>1</SRV_MealGrilledMeat>
-		</products>
+	<RecipeDef Name="SRV_GrillMealBase_Meat" ParentName="SRV_GrilledMealBase" Abstract="True">
 		<fixedIngredientFilter>
 			<categories>
 				<li>MeatRaw</li>
@@ -51,46 +26,8 @@
 			</exceptedThingDefs>
 		</defaultIngredientFilter>
 	</RecipeDef>
-	<RecipeDef ParentName="SRV_GrillMealMeat">
-		<defName>SRV_GrillMealMeatDouble</defName>
-		<label>grill meat (2)</label>
-		<description>Prepares two grilled meals consisting of meat. Takes a while, but adds a good flavor.</description>
-		<workAmount>900</workAmount>
-		<targetCountAdjustment>2</targetCountAdjustment>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>MeatRaw</li>
-						<li>AnimalProductRaw</li>
-					</categories>
-				</filter>
-				<count>0.5</count>
-			</li>
-		</ingredients>
-		<products>
-			<SRV_MealGrilledMeat>2</SRV_MealGrilledMeat>
-		</products>
-	</RecipeDef>
 
-	<RecipeDef Name="SRV_GrillMealVeg" ParentName="GrilledMealBase">
-		<defName>SRV_GrillMealVeg</defName>
-		<label>grill vegetarian (1)</label>
-		<description>Prepares a grilled meal consisting of vegetables. Takes a while, but adds a good flavor.</description>
-		<workAmount>600</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>PlantFoodRaw</li>
-					</categories>
-				</filter>
-				<count>0.5</count>
-			</li>
-		</ingredients>
-		<products>
-			<SRV_MealGrilledVeg>1</SRV_MealGrilledVeg>
-		</products>
+	<RecipeDef Name="SRV_GrillMealBase_Veg" ParentName="SRV_GrilledMealBase" Abstract="True">
 		<fixedIngredientFilter>
 			<categories>
 				<li>PlantFoodRaw</li>
@@ -113,7 +50,78 @@
 			</exceptedThingDefs>
 		</defaultIngredientFilter>
 	</RecipeDef>
-	<RecipeDef ParentName="SRV_GrillMealVeg">
+
+
+	<RecipeDef ParentName="MakePemmican">
+    <defName>SRV_MakePemmicanGrill</defName>
+    <workAmount>1000</workAmount>
+    <!-- other meals use WorkToMake stat -->
+  </RecipeDef>
+	
+	<RecipeDef ParentName="SRV_GrillMealBase_Meat">
+		<defName>SRV_GrillMealMeat</defName>
+		<label>grill meat (1)</label>
+		<description>Prepares a grilled meal consisting of meat. Takes a while, but adds a good flavor.</description>
+		<workAmount>600</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+		<products>
+			<SRV_MealGrilledMeat>1</SRV_MealGrilledMeat>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SRV_GrillMealBase_Meat">
+		<defName>SRV_GrillMealMeatDouble</defName>
+		<label>grill meat (2)</label>
+		<description>Prepares two grilled meals consisting of meat. Takes a while, but adds a good flavor.</description>
+		<workAmount>900</workAmount>
+		<targetCountAdjustment>2</targetCountAdjustment>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<products>
+			<SRV_MealGrilledMeat>2</SRV_MealGrilledMeat>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SRV_GrillMealBase_Veg">
+		<defName>SRV_GrillMealVeg</defName>
+		<label>grill vegetarian (1)</label>
+		<description>Prepares a grilled meal consisting of vegetables. Takes a while, but adds a good flavor.</description>
+		<workAmount>600</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+		<products>
+			<SRV_MealGrilledVeg>1</SRV_MealGrilledVeg>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SRV_GrillMealBase_Veg">
 		<defName>SRV_GrillMealVegDouble</defName>
 		<label>grill vegetarian (2)</label>
 		<description>Prepares two grilled meals consisting of vegetables. Takes a while, but adds a good flavor.</description>
@@ -126,7 +134,7 @@
 						<li>PlantFoodRaw</li>
 					</categories>
 				</filter>
-				<count>0.5</count>
+				<count>1</count>
 			</li>
 		</ingredients>
 		<products>
@@ -134,7 +142,7 @@
 		</products>
 	</RecipeDef>
 
-	<RecipeDef ParentName="GrilledMealBase">
+	<RecipeDef ParentName="SRV_GrilledMealBase">
 		<defName>SRV_GrillMealFine</defName>
 		<label>grill fine meal</label>
 		<description>Prepares a fine grilled meal. Takes a while, but adds a good flavor.</description>
