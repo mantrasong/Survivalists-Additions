@@ -12,6 +12,7 @@
 				<xpath>/Defs/ThingDef[defName = "SRV_ShelterHeater"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
 				<value>
 					<li>ZEN_CherryWood</li>
+					<li>ZEN_EbonyWood</li>
 				</value>
 			</li>
 		</operations>
@@ -34,9 +35,25 @@
 				<xpath>/Defs/ThingDef[defName = "PlantSaguaroCactus"]</xpath>
 				<value>
 					<li Class="ZenGarden.SecondaryResource">
-						<growDays>6</growDays>
+						<growDays>8</growDays>
 						<parentMinGrowth>0.9</parentMinGrowth>
 						<bloomingGraphicPath>Cupro/Object/Plant/SaguaroCactus_Blooming</bloomingGraphicPath>
+						<limitedGrowSeasons>
+							<li>Spring</li>
+							<li>Summer</li>
+							<li>Fall</li>
+						</limitedGrowSeasons>
+						<forbiddenGrowBiomes>
+							<li>TemperateForest</li>
+							<li>TemperateSwamp</li>
+							<li>TropicalRainforest</li>
+							<li>TropicalSwamp</li>
+							<li>BorealForest</li>
+							<li>Tundra</li>
+							<li>ColdBog</li>
+							<li>IceSheet</li>
+							<li>SeaIce</li>
+						</forbiddenGrowBiomes>
 						<harvestedThingDef>SRV_PricklyPear</harvestedThingDef>
 						<minToHarvest>10</minToHarvest>
 						<maxToHarvest>15</maxToHarvest>
