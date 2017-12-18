@@ -41,6 +41,7 @@
 						<limitedGrowSeasons>
 							<li>Spring</li>
 							<li>Summer</li>
+							<li>PermanentSummer</li>
 							<li>Fall</li>
 						</limitedGrowSeasons>
 						<forbiddenGrowBiomes>
