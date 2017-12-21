@@ -58,6 +58,7 @@
     <Compile Include="AI\JobDriver_FillProcessor.cs" />
     <Compile Include="AI\JobDriver_TakeItemOutOfProcessor.cs" />
     <Compile Include="AI\JobDriver_DisableSnare.cs" />
+    <Compile Include="ITab_StockWatcher.cs" />
     <Compile Include="Map\GenStep_Plants.cs" />
     <Compile Include="Map\IncidentWorker_MushroomSprout.cs" />
     <Compile Include="Items\ItemSpawner.cs" />

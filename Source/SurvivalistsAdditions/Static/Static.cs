@@ -14,6 +14,8 @@ namespace SurvivalistsAdditions {
     public static string Food = "SRV_Food".Translate();
 		public static string DisableSnare = "SRV_MenuOption_DisableSnare".Translate();
 		public static string TemperatureRangeLower = "SRV_TemperatureRangeLower".Translate();
+		public static string Label_ITabSmoker = "SRV_Label_ITabSmoker".Translate();
+		public static string Label_ITabCharPit = "SRV_Label_ITabCharPit".Translate();
 
 		public static string ToolTip_VinegarBarrel_MaxCapacity = "SRV_ToolTip_VinegarBarrel_MaxCapacity".Translate();
 		public static string ToolTip_VinegarBarrel_FermentDays = "SRV_ToolTip_VinegarBarrel_FermentDays".Translate();
