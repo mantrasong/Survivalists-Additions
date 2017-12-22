@@ -25,7 +25,8 @@
 		<techLevel>Neolithic</techLevel>
 		<apparel>
 			<bodyPartGroups>
-				<li>FullHead</li>
+				<li>UpperHead</li>
+				<li>Mouth</li>
 			</bodyPartGroups>
 			<wornGraphicPath>Cupro/Item/Equipment/Shemagh/Shemagh</wornGraphicPath>
 			<layers>
