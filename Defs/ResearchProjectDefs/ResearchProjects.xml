@@ -14,7 +14,7 @@
 			<li>TribalStart</li>
 		</tags>
 		<researchViewX>0</researchViewX>
-		<researchViewY>3</researchViewY>
+		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -28,7 +28,7 @@
 			<li>ClassicStart</li>
 		</tags>
 		<researchViewX>1</researchViewX>
-		<researchViewY>3.5</researchViewY>
+		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
@@ -42,7 +42,7 @@
 			<li>SRV_Forge</li>
 		</prerequisites>
 		<researchViewX>2</researchViewX>
-		<researchViewY>3</researchViewY>
+		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
 
 </Defs>

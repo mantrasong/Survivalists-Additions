@@ -51,7 +51,6 @@
     <Compile Include="Buildings\Building_Snare.cs" />
     <Compile Include="Components\CompProperties_Smoker.cs" />
     <Compile Include="Components\CompSmoker.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HardyPlant.cs" />
     <Compile Include="HardyPlantStats.cs" />
     <Compile Include="Interfaces\IItemProcessor.cs" />
@@ -63,6 +62,7 @@
     <Compile Include="Map\IncidentWorker_MushroomSprout.cs" />
     <Compile Include="Items\ItemSpawner.cs" />
     <Compile Include="Items\TurnipItemSpawner.cs" />
+    <Compile Include="NotificationType.cs" />
     <Compile Include="Util\PatchOperationModDependent.cs" />
     <Compile Include="Static\SettingsWidgets.cs" />
     <Compile Include="Util\SrvMod.cs" />

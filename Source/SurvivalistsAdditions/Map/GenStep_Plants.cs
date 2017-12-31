@@ -9,7 +9,7 @@ namespace SurvivalistsAdditions {
 
     public override void Generate(Map map) {
       // Adjust the amount of plants to spawn
-      int timesToSpawn = (int)((map.Size.x / 25) * map.Biome.plantDensity * ((map.TileInfo.VisibleRivers.NullOrEmpty()) ? 1f : 2f) * SrvSettings.GenStep_PlantDensity);
+      int timesToSpawn = (int)((map.Size.x / 25) * map.Biome.plantDensity * ((map.TileInfo.VisibleRivers.NullOrEmpty()) ? 2.5f : 5f) * SrvSettings.GenStep_PlantDensity);
 
       // Validate water cells
       Predicate<IntVec3> validWater = ((IntVec3 c) => (
@@ -30,24 +30,30 @@ namespace SurvivalistsAdditions {
         (c.GetTerrain(map).fertility > 0 || c.GetTerrain(map) == SrvDefOf.Mud)
       ));
 
-      // Spawn Hayreed
-      for (int t = 0; t < timesToSpawn; t++) {
-        IntVec3 intVec;
-        CellFinderLoose.TryFindRandomNotEdgeCellWith(10, validWater, map, out intVec);
-        if (intVec == null || intVec == IntVec3.Invalid) {
+			// Spawn Hayreed
+			for (int ht = 0, hs = 0; ht < timesToSpawn; ht++) {
+				if (hs >= SrvSettings.GenStep_PlantDensity * 4) {
+					break;
+				}
+				CellFinderLoose.TryFindRandomNotEdgeCellWith(10, validWater, map, out IntVec3 intVec);
+				if (intVec == null || intVec == IntVec3.Invalid) {
           continue;
         }
         ClusterAround(intVec, 5.8f, map, shoreValidator, SrvDefOf.SRV_Hayreed);
+				hs++;
       }
 
       // Spawn Jute
-      for (int t = 0; t < timesToSpawn; t++) {
-        IntVec3 intVec;
-        CellFinderLoose.TryFindRandomNotEdgeCellWith(10, validWater, map, out intVec);
-        if (intVec == null || intVec == IntVec3.Invalid) {
+      for (int jt = 0, js = 0; jt < timesToSpawn; jt++) {
+				if (js >= SrvSettings.GenStep_PlantDensity * 4) {
+					break;
+				}
+				CellFinderLoose.TryFindRandomNotEdgeCellWith(10, validWater, map, out IntVec3 intVec);
+				if (intVec == null || intVec == IntVec3.Invalid) {
           continue;
         }
         ClusterAround(intVec, 3.6f, map, waterAndShoreValidator, SrvDefOf.SRV_WildJute);
+				js++;
       }
     }
 

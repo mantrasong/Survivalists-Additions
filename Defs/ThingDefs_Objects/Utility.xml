@@ -50,6 +50,9 @@
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
+		<researchPrerequisites>
+			<li>SRV_Forge</li>
+		</researchPrerequisites>
 	</ThingDef>
 
 
@@ -258,6 +261,9 @@
 				<shaderType>Cutout</shaderType>
 			</trapUnarmedGraphicData>
 		</building>
+		<researchPrerequisites>
+			<li>SRV_Snare</li>
+		</researchPrerequisites>
 	</ThingDef>
 
 </Defs>

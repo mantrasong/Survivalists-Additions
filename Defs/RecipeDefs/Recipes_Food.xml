@@ -325,7 +325,7 @@
 		</defaultIngredientFilter>
 	</RecipeDef>
 
-	<RecipeDef Name="PickleBase" Abstract="True">
+	<RecipeDef Name="SRV_RecipePickleBase" Abstract="True">
 		<jobString>Pickling.</jobString>
 		<workSpeedStat>CookSpeed</workSpeedStat>
 		<effectWorking>Cook</effectWorking>
@@ -348,7 +348,48 @@
 		<workSkill>Cooking</workSkill>
 	</RecipeDef>
 
-	<RecipeDef ParentName="PickleBase">
+	<RecipeDef ParentName="SRV_RecipePickleBase">
+		<defName>SRV_PickleGeneric</defName>
+		<label>pickle vegetables</label>
+		<description>Preserve vegetables or fruit in vinegar. Can be eaten by itself, or used in meals.</description>
+		<allowMixingIngredients>True</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<products>
+			<SRV_PickledGeneric>1</SRV_PickledGeneric>
+		</products>
+		<fixedIngredientFilter>
+			<categories>
+				<li>PlantFoodRaw</li>
+			</categories>
+			<disallowedSpecialFilters>
+				<li>AllowPlantFood</li>
+			</disallowedSpecialFilters>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>PlantFoodRaw</li>
+			</categories>
+			<exceptedCategories>
+				<li>EggsUnfertilized</li>
+				<li>EggsFertilized</li>
+			</exceptedCategories>
+			<exceptedThingDefs>
+				<li>Hay</li>
+				<li>SRV_JuteFibers</li>
+			</exceptedThingDefs>
+		</defaultIngredientFilter>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SRV_RecipePickleBase">
 		<defName>SRV_PickleTurnip</defName>
 		<label>pickle turnip</label>
 		<description>Preserve turnips in vinegar. Can be eaten by itself, or used in meals.</description>
@@ -377,7 +418,7 @@
 		</defaultIngredientFilter>
 	</RecipeDef>
 
-	<RecipeDef ParentName="PickleBase">
+	<RecipeDef ParentName="SRV_RecipePickleBase">
 		<defName>SRV_PickleCabbage</defName>
 		<label>pickle cabbage</label>
 		<description>Preserve cabbage in vinegar. Can be eaten by itself, or used in meals.</description>

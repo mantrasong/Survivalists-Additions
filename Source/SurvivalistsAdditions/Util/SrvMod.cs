@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace SurvivalistsAdditions {
@@ -22,7 +24,7 @@ namespace SurvivalistsAdditions {
 				ColumnWidth = rect.width
 			};
 			list.Begin(rect);
-      list.Gap();
+      list.Gap(6);
       {
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -35,7 +37,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_VinegarBarrel_MaxCapacity);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.VinegarBarrel_MaxCapacity, 1, 75, 5);
       }
-      list.Gap();
+      list.Gap(6);
       {
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -48,7 +50,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_VinegarBarrel_FermentDays);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.VinegarBarrel_FermentDays, 1, 30);
       }
-      list.Gap(25);
+      list.Gap();
       {
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -61,7 +63,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_CheeseBarrel_MaxCapacity);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.CheeseBarrel_MaxCapacity, 1, 75, 5);
       }
-      list.Gap();
+      list.Gap(6);
       {
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -74,7 +76,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_CheeseBarrel_AgingDays);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.CheeseBarrel_AgingDays, 1, 30);
       }
-      list.Gap(25);
+      list.Gap();
       {
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -87,7 +89,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_Smoker_MaxCapacity);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.Smoker_MaxCapacity, 10, 75, 5);
       }
-      list.Gap();
+      list.Gap(6);
       {
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -100,7 +102,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_Smoker_SmokeHours);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.Smoker_SmokeHours, 4, 72, 4);
       }
-      list.Gap();
+      list.Gap(6);
       {
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -113,7 +115,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_Smoker_TendHours);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.Smoker_TendHours, 1, 4);
       }
-      list.Gap(25);
+      list.Gap();
       {
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -126,7 +128,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_CharcoalPit_MaxCapacity);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.CharcoalPit_MaxCapacity, 5, 75, 5);
       }
-      list.Gap();
+      list.Gap(6);
       {
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -139,7 +141,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_CharcoalPit_BurnHours);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.CharcoalPit_BurnHours, 1, 48, 4);
       }
-      list.Gap();
+      list.Gap(6);
       {
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -152,7 +154,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_CharcoalPit_CharcoalPerWoodLog);
 				SettingsWidgets.FloatSliderWithButtons(rightRect, ref SrvSettings.CharcoalPit_CharcoalPerWoodLog, 0.5f, 5f, 0.5f, floatRound: 0.5f);
       }
-      list.Gap(25);
+      list.Gap();
 			{
 				Rect fullRect = list.GetRect(Text.LineHeight);
 				Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -165,7 +167,7 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_Snare_FailChance);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.Snare_FailChance, 1, 100, 5);
 			}
-			list.Gap();
+			list.Gap(6);
 			{
 				Rect fullRect = list.GetRect(Text.LineHeight);
 				Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
@@ -178,7 +180,43 @@ namespace SurvivalistsAdditions {
 				TooltipHandler.TipRegion(leftRect, Static.ToolTip_Snare_BreakChance);
 				SettingsWidgets.IntSliderWithButtons(rightRect, ref SrvSettings.Snare_BreakChance, 1, 100, 5);
 			}
-			list.Gap(25);
+			list.Gap(6);
+			{
+				Rect fullRect = list.GetRect(Text.LineHeight);
+				Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
+				Rect rightRect = fullRect.RightHalf().RightPartPixels(325).Rounded();
+
+				Widgets.CheckboxLabeled(leftRect, Static.Label_AllowPositiveLetter, ref SrvSettings.Snare_AllowPositiveNotification);
+				if (Mouse.IsOver(leftRect)) {
+					Widgets.DrawHighlight(leftRect);
+				}
+				TooltipHandler.TipRegion(leftRect, Static.ToolTip_Snare_AllowPositiveLetter);
+
+				Widgets.CheckboxLabeled(rightRect, Static.Label_AllowNegativeLetter, ref SrvSettings.Snare_AllowNegativeNotification);
+				if (Mouse.IsOver(rightRect)) {
+					Widgets.DrawHighlight(rightRect);
+				}
+				TooltipHandler.TipRegion(rightRect, Static.ToolTip_Snare_AllowNegativeLetter);
+			}
+			list.Gap(6);
+			{
+				Rect fullRect = list.GetRect(Text.LineHeight);
+				Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();
+				Rect rightRect = fullRect.RightHalf().RightPartPixels(325).Rounded();
+
+				Widgets.Label(leftRect, Static.Label_NotificationType);
+				if (Widgets.ButtonText(rightRect, SrvSettings.Snare_NotificationType.ToHumanString())) {
+					List<FloatMenuOption> fmo = new List<FloatMenuOption>();
+					foreach (NotificationType nt in Enum.GetValues(typeof(NotificationType))) {
+						fmo.Add(new FloatMenuOption(nt.ToHumanString(), delegate {
+							SrvSettings.Snare_NotificationType = nt;
+						}));
+					}
+					Find.WindowStack.Add(new FloatMenu(fmo));
+				}
+				TooltipHandler.TipRegion(leftRect, Static.ToolTip_Snare_NotificationType);
+			}
+			list.Gap();
 			{
         Rect fullRect = list.GetRect(Text.LineHeight);
         Rect leftRect = fullRect.LeftHalf().RightPartPixels(325).Rounded();

@@ -81,7 +81,13 @@ namespace SurvivalistsAdditions {
 
 				if (this.IsHashIntervalTick(500) && !Armed && !Disabled && Spawned) {
 					if (affectedPawn != null && affectedPawn.BodySize < 0.6f) {
-						ApplyHediff(affectedPawn);
+						// The animal is trying to get free, simulate the escape attempt
+						if (Rand.Value > (FailChance / 2f)) {
+							ApplyHediff(affectedPawn);
+						}
+						else {
+							RemoveHediff();
+						}
 					}
 
 					if (rearmAfterCleared) {
@@ -204,16 +210,7 @@ namespace SurvivalistsAdditions {
 		public void Disable() {
 			disabled = true;
 			disabledTicks = 0;
-			if (affectedPawn != null) {
-				Hediff largeDiff = affectedPawn.health.hediffSet.hediffs.Find((Hediff x) => x.def == SrvDefOf.SRV_SnaredLarge);
-				if (largeDiff != null) {
-					affectedPawn.health.RemoveHediff(largeDiff);
-				}
-				Hediff smallDiff = affectedPawn.health.hediffSet.hediffs.Find((Hediff x) => x.def == SrvDefOf.SRV_SnaredSmall);
-				if (smallDiff != null) {
-					affectedPawn.health.RemoveHediff(smallDiff);
-				}
-			}
+			RemoveHediff();
 		}
 
 
@@ -226,7 +223,7 @@ namespace SurvivalistsAdditions {
 
 		protected override void SpringSub(Pawn p) {
 			base.SpringSub(p);
-			if (Rand.Value > FailChance && p != null) {
+			if (p != null && Rand.Value > FailChance) {
 				affectedPawn = p;
 				ApplyHediff(p);
       }
@@ -243,29 +240,75 @@ namespace SurvivalistsAdditions {
 
 
 		private void ApplyHediff(Pawn p) {
-
+			if (p.BodySize > 1f) {
+				return;
+			}
 			if (p.BodySize >= 0.6f && p.BodySize <= 1f) {
 				p.health.AddHediff(SrvDefOf.SRV_SnaredLarge);
 			}
 			else {
 				if (!p.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall)) {
-					if (p.Faction == Faction.OfPlayer || p.HostFaction == Faction.OfPlayer) {
-						Find.LetterStack.ReceiveLetter("SRV_LetterSnareTriggeredLabel".Translate(new object[]{
-							p.NameStringShort.CapitalizeFirst()
-						}), "SRV_LetterSnareTriggeredColony".Translate(new object[]{
-							p.NameStringShort.CapitalizeFirst()
-						}), LetterDefOf.NegativeEvent, new TargetInfo(Position, Map, false), null);
-					}
-					else {
-						Find.LetterStack.ReceiveLetter("SRV_LetterSnareTriggeredLabel".Translate(new object[]{
-							p.NameStringShort.CapitalizeFirst()
-						}), "SRV_LetterSnareTriggered".Translate(new object[]{
-							p.NameStringShort
-						}), LetterDefOf.PositiveEvent, new TargetInfo(Position, Map, false), null);
-					}
+					NotifyPlayer(p);
 				}
 
 				p.health.AddHediff(SrvDefOf.SRV_SnaredSmall);
+			}
+		}
+
+
+		private void RemoveHediff() {
+			if (affectedPawn != null) {
+				Hediff largeDiff = affectedPawn.health.hediffSet.hediffs.Find((Hediff x) => x.def == SrvDefOf.SRV_SnaredLarge);
+				if (largeDiff != null) {
+					affectedPawn.health.RemoveHediff(largeDiff);
+				}
+				Hediff smallDiff = affectedPawn.health.hediffSet.hediffs.Find((Hediff x) => x.def == SrvDefOf.SRV_SnaredSmall);
+				if (smallDiff != null) {
+					affectedPawn.health.RemoveHediff(smallDiff);
+				}
+				// Try to enter either a berserk or panicking state as a result of being snared
+				// Larger animals are more likely to go berserk, smaller animals are more likely to flee
+				if (Rand.Chance(affectedPawn.BodySize)) {
+					affectedPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, null, true);
+				}
+				else if (!Rand.Chance(affectedPawn.BodySize)) {
+					affectedPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee, null, true);
+				}
+			}
+		}
+
+
+		private void NotifyPlayer(Pawn p) {
+			// If the notification type isn't None, try to notify the player
+			if (SrvSettings.Snare_NotificationType != NotificationType.None) {
+				// Determine if this is a positive notification or not
+				bool isPositive = !(p.Faction == Faction.OfPlayer || p.HostFaction == Faction.OfPlayer);
+				// Check if this notification is allowed
+				if ((isPositive && SrvSettings.Snare_AllowPositiveNotification) || (!isPositive && SrvSettings.Snare_AllowNegativeNotification)) {
+
+					// If the notification type is SilentText
+					if (SrvSettings.Snare_NotificationType == NotificationType.SilentText) {
+						Messages.Message("SRV_LetterSnareTriggered".Translate(new object[] { p.NameStringShort }), 
+							new TargetInfo(Position, Map), 
+							MessageTypeDefOf.SilentInput
+						);
+					}
+					// If the notification type is TextWithSound
+					else if (SrvSettings.Snare_NotificationType == NotificationType.TextWithSound) {
+						Messages.Message("SRV_LetterSnareTriggered".Translate(new object[] { p.NameStringShort }),
+							new TargetInfo(Position, Map),
+							(isPositive) ? MessageTypeDefOf.PositiveEvent : MessageTypeDefOf.NegativeEvent
+						);
+					}
+					// If the notification type is Letter
+					else {
+						Find.LetterStack.ReceiveLetter("SRV_LetterSnareTriggeredLabel".Translate(new object[] { p.NameStringShort.CapitalizeFirst() }), 
+							"SRV_LetterSnareTriggered".Translate(new object[] { p.NameStringShort }), 
+							(isPositive) ? LetterDefOf.PositiveEvent : LetterDefOf.NegativeEvent, 
+							new TargetInfo(Position, Map, false)
+						);
+					}
+				}
 			}
 		}
 

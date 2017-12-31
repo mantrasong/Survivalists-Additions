@@ -6,6 +6,12 @@
 	<SRV_NoIngredient>need ingredients</SRV_NoIngredient>
 	<SRV_TemperatureRangeLower>temperature range</SRV_TemperatureRangeLower>
 
+	<!-- Notification Type -->
+	<SRV_NotificationType_None>None</SRV_NotificationType_None>
+	<SRV_NotificationType_SilentText>Silent text</SRV_NotificationType_SilentText>
+	<SRV_NotificationType_TextWithSound>Text with sound</SRV_NotificationType_TextWithSound>
+	<SRV_NotificationType_Letter>Letter</SRV_NotificationType_Letter>
+
 	<!-- Snare -->
 	<SRV_LetterSnareTriggeredLabel>{0} Snared!</SRV_LetterSnareTriggeredLabel>
 	<SRV_LetterSnareTriggered>A {0} has been snared and will eventually suffocate. Colonists can rescue the animal by disabling the snare, or wait for the animal to expire.</SRV_LetterSnareTriggered>
@@ -37,7 +43,7 @@
 	<SRV_ContainsCharcoal>Contains {0} / {1} charcoal.</SRV_ContainsCharcoal>
 	<SRV_Charred>Charred</SRV_Charred>
 	
-	<!-- Settings -->
+	<!-- Settings Labels -->
 	<SRV_Label_VinegarBarrel_MaxCapacity>Vinegar barrel, max capacity: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_VinegarBarrel_MaxCapacity>
 	<SRV_Label_VinegarBarrel_FermentDays>Vinegar barrel, ferment days: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_VinegarBarrel_FermentDays>
 	
@@ -54,10 +60,13 @@
 
 	<SRV_Label_Snare_FailChance>Snare, fail chance: Difficulty x &lt;b&gt;&lt;color=orange&gt;{0}%&lt;/color&gt;&lt;/b&gt;</SRV_Label_Snare_FailChance>
 	<SRV_Label_Snare_BreakChance>Snare, break chance: Difficulty x &lt;b&gt;&lt;color=orange&gt;{0}%&lt;/color&gt;&lt;/b&gt;</SRV_Label_Snare_BreakChance>
+	<SRV_Label_Snare_AllowPositive>Snare, allow positive notifications</SRV_Label_Snare_AllowPositive>
+	<SRV_Label_Snare_AllowNegative>Snare, allow negative notifications</SRV_Label_Snare_AllowNegative>
+	<SRV_Label_Snare_NotificationType>Snare, notification type</SRV_Label_Snare_NotificationType>
 	
 	<SRV_Label_GenStep_PlantDensity>WorldGen, jute and hayreed spawn multiplier: &lt;b&gt;&lt;color=orange&gt;{0}&lt;/color&gt;&lt;/b&gt;</SRV_Label_GenStep_PlantDensity>
 
-	<!-- Settings -->
+	<!-- Settings Tooltips -->
 	<SRV_ToolTip_VinegarBarrel_MaxCapacity>The maximum amount of vinegar juice that can ferment in the vinegar barrel at once.</SRV_ToolTip_VinegarBarrel_MaxCapacity>
 	<SRV_ToolTip_VinegarBarrel_FermentDays>How many days it takes to ferment vinegar juice into vinegar.</SRV_ToolTip_VinegarBarrel_FermentDays>
 	
@@ -74,6 +83,9 @@
 	
 	<SRV_ToolTip_Snare_FailChance>The chance that the snare will fail in catching an animal. This number is multiplied by the game difficulty, so Peaceful or Very Easy will be 1x this number, Very Hard will be 5x this number, etc.</SRV_ToolTip_Snare_FailChance>
 	<SRV_ToolTip_Snare_BreakChance>The chance that the snare will break after an animal has broken free or died. This number is multiplied by the game difficulty, so Peaceful or Very Easy will be 1x this number, Very Hard will be 5x this number, etc.</SRV_ToolTip_Snare_BreakChance>
+	<SRV_ToolTip_Snare_AllowPositive>Allow notifications when a wild animal has been snared.</SRV_ToolTip_Snare_AllowPositive>
+	<SRV_ToolTip_Snare_AllowNegative>Allow notifications when a colony animal has been snared.</SRV_ToolTip_Snare_AllowNegative>
+	<SRV_ToolTip_Snare_NotificationType>The type of notification to send, if it is allowed.</SRV_ToolTip_Snare_NotificationType>
 
 	<SRV_ToolTip_GenStep_PlantDensity>Multiplier for hayreed and jute spawning on initial map generation. Setting the value to 0 will disable spawning.</SRV_ToolTip_GenStep_PlantDensity>
 
