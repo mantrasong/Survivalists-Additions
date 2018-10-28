@@ -389,38 +389,21 @@ namespace SurvivalistsAdditions {
       else {
         stringBuilder.Append(" ~ ");
         if (Finished) {
-          stringBuilder.AppendLine("SRV_ContainsSmokedFood".Translate(new object[]
-          {
-            FoodCount,
-            MaxCapacity
-          }));
+          stringBuilder.AppendLine("SRV_ContainsSmokedFood".Translate(FoodCount, MaxCapacity));
           stringBuilder.AppendLine("SRV_Smoked".Translate());
         }
         else {
           
-          stringBuilder.AppendLine("SRV_ContainsFood".Translate(new object[]
-          {
-            FoodCount,
-            MaxCapacity
-          }));
+          stringBuilder.AppendLine("SRV_ContainsFood".Translate(FoodCount,MaxCapacity));
           if (NeedsTending) {
             stringBuilder.AppendLine("SRV_InspectSmokerTending".Translate());
           }
-          stringBuilder.Append("FermentationProgress".Translate(new object[]
-          {
-            Progress.ToStringPercent(),
-            EstimatedTicksLeft.ToStringTicksToPeriod(true, false, true)
-          }));
+          stringBuilder.Append("FermentationProgress".Translate(Progress.ToStringPercent(),
+            EstimatedTicksLeft.ToStringTicksToPeriod()));
           stringBuilder.Append(" ~ ");
-          stringBuilder.AppendLine("SRV_Rot".Translate(new object[]
-          {
-            RotProgressPct.ToStringPercent()
-          }));
+          stringBuilder.AppendLine("SRV_Rot".Translate(RotProgressPct.ToStringPercent()));
           if (CurrentTempProgressSpeedFactor != 1f) {
-            stringBuilder.AppendLine("SRV_SmokerOutOfIdealTemperature".Translate(new object[]
-            {
-              CurrentTempProgressSpeedFactor.ToStringPercent()
-            }));
+            stringBuilder.AppendLine("SRV_SmokerOutOfIdealTemperature".Translate( CurrentTempProgressSpeedFactor.ToStringPercent()));
           }
         }
       }

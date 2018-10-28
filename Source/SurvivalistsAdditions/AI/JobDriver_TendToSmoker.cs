@@ -15,7 +15,7 @@ namespace SurvivalistsAdditions {
     }
 
 
-		public override bool TryMakePreToilReservations() {
+		public override bool TryMakePreToilReservations(bool errorOnFailed) {
 			return pawn.Reserve(Smoker, job);
 		}
 

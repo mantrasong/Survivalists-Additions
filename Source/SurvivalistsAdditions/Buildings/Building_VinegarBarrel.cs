@@ -228,18 +228,12 @@ namespace SurvivalistsAdditions {
       
       if (!Empty && !temperatureComp.Ruined) {
         if (Finished) {
-          stringBuilder.AppendLine("SRV_ContainsVinegar".Translate(new object[]
-          {
-            itemCount,
-            MaxCapacity
-          }));
+          stringBuilder.AppendLine("SRV_ContainsVinegar".Translate(itemCount,
+            MaxCapacity));
         }
         else {
-          stringBuilder.AppendLine("SRV_ContainsJuice".Translate(new object[]
-          {
-            itemCount,
-            MaxCapacity
-          }));
+          stringBuilder.AppendLine("SRV_ContainsJuice".Translate( itemCount,
+            MaxCapacity));
         }
       }
       if (!Empty) {
@@ -247,16 +241,10 @@ namespace SurvivalistsAdditions {
           stringBuilder.AppendLine("Fermented".Translate());
         }
         else {
-          stringBuilder.AppendLine("FermentationProgress".Translate(new object[]
-          {
-            Progress.ToStringPercent(),
-            EstimatedTicksLeft.ToStringTicksToPeriod(true, false, true)
-          }));
+          stringBuilder.AppendLine("FermentationProgress".Translate(Progress.ToStringPercent(),
+            EstimatedTicksLeft.ToStringTicksToPeriod()));
           if (CurrentTempProgressSpeedFactor != 1f) {
-            stringBuilder.AppendLine("FermentationBarrelOutOfIdealTemperature".Translate(new object[]
-            {
-              CurrentTempProgressSpeedFactor.ToStringPercent()
-            }));
+            stringBuilder.AppendLine("FermentationBarrelOutOfIdealTemperature".Translate(CurrentTempProgressSpeedFactor.ToStringPercent()));
           }
         }
       }

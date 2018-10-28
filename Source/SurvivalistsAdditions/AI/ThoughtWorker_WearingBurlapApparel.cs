@@ -12,7 +12,7 @@ namespace SurvivalistsAdditions {
       int num = 0;
       List<Apparel> wornApparel = p.apparel.WornApparel;
       for (int i = 0; i < wornApparel.Count; i++) {
-        if (wornApparel[i].Stuff == SrvDefOf.SRV_Burlap && (wornApparel[i].def.apparel.layers.Contains(ApparelLayer.OnSkin) || wornApparel[i].def.apparel.layers.Contains(ApparelLayer.Overhead))) {
+        if (wornApparel[i].Stuff == SrvDefOf.SRV_Burlap && (wornApparel[i].def.apparel.layers.Contains(ApparelLayerDefOf.OnSkin) || wornApparel[i].def.apparel.layers.Contains(ApparelLayerDefOf.Overhead))) {
           if (text == null) {
             text = wornApparel[i].def.label;
           }
