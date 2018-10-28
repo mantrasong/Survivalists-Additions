@@ -36,11 +36,10 @@
 		<statBases>
 			<MarketValue>1.1</MarketValue>
 			<Mass>0.016</Mass>
+			<Nutrition>0.04</Nutrition>
 		</statBases>
 		<stackLimit>100</stackLimit>
-		<ingestible>
-			<nutrition>0.04</nutrition>
-		</ingestible>
+		<ingestible />
 		<comps>
 			<li Class="CompProperties_Rottable">
 				<daysToRotStart>60</daysToRotStart>

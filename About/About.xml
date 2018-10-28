@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Survivalist's Additions</name>
-  <author>cuproPanda</author>
+  <author>mantrasong</author>
   <url>https://ludeon.com/forums/index.php?topic=32190</url>
-  <targetVersion>0.18.0</targetVersion>
+  <targetVersion>1.0.0</targetVersion>
   <description>Adds new features for primitive and tribal playthroughs.</description>
 </ModMetaData>

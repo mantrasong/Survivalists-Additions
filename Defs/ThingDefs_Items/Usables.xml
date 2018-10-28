@@ -10,10 +10,10 @@
 			<DeteriorationRate>10</DeteriorationRate>
 			<MarketValue>20</MarketValue>
 			<WorkToMake>1250</WorkToMake>
+			<Nutrition>0.80</Nutrition>
 		</statBases>
 		<ingestible>
 			<preferability>MealSimple</preferability>
-			<nutrition>0.80</nutrition>
 			<specialThoughtDirect>SRV_AteGrilledMeal</specialThoughtDirect>
 			<ingestEffect>EatVegetarian</ingestEffect>
 			<ingestSound>Meal_Eat</ingestSound>
@@ -36,10 +36,11 @@
 			<MarketValue>15</MarketValue>
 			<Mass>0.3</Mass>
 			<WorkToMake>500</WorkToMake>
+			<Nutrition>0.75</Nutrition>
 		</statBases>
 		<ingestible>
 			<preferability>MealSimple</preferability>
-			<nutrition>0.75</nutrition>
+			
 			<optimalityOffsetHumanlikes>1</optimalityOffsetHumanlikes>
 			<ingestEffect>EatVegetarian</ingestEffect>
 			<ingestSound>Meal_Eat</ingestSound>
@@ -62,10 +63,11 @@
 			<MarketValue>14</MarketValue>
 			<Mass>0.3</Mass>
 			<WorkToMake>500</WorkToMake>
+			<Nutrition>0.7</Nutrition>
 		</statBases>
 		<ingestible>
 			<preferability>MealSimple</preferability>
-			<nutrition>0.7</nutrition>
+			
 			<optimalityOffsetHumanlikes>1</optimalityOffsetHumanlikes>
 			<ingestEffect>EatVegetarian</ingestEffect>
 			<ingestSound>Meal_Eat</ingestSound>
@@ -109,10 +111,11 @@
 			<MarketValue>30</MarketValue>
 			<Mass>0.4</Mass>
 			<WorkToMake>1250</WorkToMake>
+			<Nutrition>0.85</Nutrition>
 		</statBases>
 		<ingestible>
 			<preferability>MealFine</preferability>
-			<nutrition>0.85</nutrition>
+			
 		</ingestible>
 	</ThingDef>
 
@@ -128,6 +131,7 @@
 		<statBases>
 			<MarketValue>1.2</MarketValue>
 			<SellPriceFactor>0.5</SellPriceFactor>
+			<Nutrition>0.04</Nutrition>
 		</statBases>
 		<comps>
 			<li Class="CompProperties_Rottable">
@@ -136,7 +140,7 @@
 		</comps>
 		<ingestible>
 			<foodType>VegetableOrFruit</foodType>
-			<nutrition>0.04</nutrition>
+			
 			<specialThoughtDirect>SRV_AteRawTurnip</specialThoughtDirect>
 			<chairSearchRadius>10</chairSearchRadius>
 			<ingestHoldUsesTable>false</ingestHoldUsesTable>
@@ -163,11 +167,12 @@
 			<MarketValue>0.8</MarketValue>
 			<SellPriceFactor>0.2</SellPriceFactor>
 			<Mass>0.02</Mass>
+			<Nutrition>0.03</Nutrition>
 		</statBases>
 		<ingestible>
 			<foodType>VegetableOrFruit</foodType>
 			<preferability>RawBad</preferability>
-			<nutrition>0.03</nutrition>
+			
 			<tasteThought>AteRawFood</tasteThought>
 		</ingestible>
 		<comps>
@@ -188,11 +193,12 @@
 		<statBases>
 			<MarketValue>2</MarketValue>
 			<Mass>0.03</Mass>
+			<Nutrition>0.02</Nutrition>
 		</statBases>
 		<ingestible>
 			<foodType>VegetableOrFruit</foodType>
 			<preferability>RawBad</preferability>
-			<nutrition>0.02</nutrition>
+			
 			<tasteThought>AteRawFood</tasteThought>
 		</ingestible>
 		<comps>
@@ -214,11 +220,12 @@
 			<MarketValue>15</MarketValue>
 			<Mass>0.15</Mass>
 			<WorkToMake>500</WorkToMake>
+			<Nutrition>0.5</Nutrition>
 		</statBases>
 		<ingestible>
 			<foodType>VegetableOrFruit</foodType>
 			<preferability>MealSimple</preferability>
-			<nutrition>0.5</nutrition>
+			
 			<optimalityOffsetHumanlikes>-5</optimalityOffsetHumanlikes>
 			<ingestEffect>EatVegetarian</ingestEffect>
 			<ingestSound>Meal_Eat</ingestSound>
@@ -331,11 +338,12 @@
 			<MarketValue>1.8</MarketValue>
 			<Mass>0.018</Mass>
 			<DeteriorationRate>2</DeteriorationRate>
+			<Nutrition>0.08</Nutrition>
 		</statBases>
 		<ingestible>
 			<foodType>Meat, Meal</foodType>
 			<preferability>MealSimple</preferability>
-			<nutrition>0.08</nutrition>
+			
 			<chairSearchRadius>10</chairSearchRadius>
 			<ingestHoldUsesTable>false</ingestHoldUsesTable>
 			<ingestHoldOffsetStanding>
@@ -371,6 +379,7 @@
 			<MaxHitPoints>75</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 			<Mass>0.22</Mass>
+			<Nutrition>0.25</Nutrition>
 		</statBases>
 		<stackLimit>25</stackLimit>
 		<socialPropernessMatters>true</socialPropernessMatters>
@@ -378,7 +387,7 @@
 			<preferability>RawTasty</preferability>
 			<foodType>AnimalProduct, Processed</foodType>
 			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
-			<nutrition>0.25</nutrition>
+			
 		</ingestible>
 		<thingCategories>
 			<li>AnimalProductRaw</li>

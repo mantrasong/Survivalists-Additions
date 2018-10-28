@@ -8,6 +8,7 @@
 		<description>A hardy root vegetable with edible leaves. Requires good soil, but is able to grow in lower temperatures than normal plants.</description>
 		<statBases>
 			<MaxHitPoints>85</MaxHitPoints>
+			<Nutrition>0.18</Nutrition>
 		</statBases>
 		<graphicData>
 			<texPath>Cupro/Object/Plant/PlantTurnip</texPath>
@@ -15,9 +16,8 @@
 		</graphicData>
 		<altitudeLayer>Item</altitudeLayer>
 		<selectable>true</selectable>
-		<ingestible>
-			<nutrition>0.18</nutrition>
-		</ingestible>
+			
+		<ingestible />
 		<modExtensions>
 			<li Class="SurvivalistsAdditions.HardyPlantStats">
 				<minLeaflessTemperature>-18</minLeaflessTemperature>
@@ -40,18 +40,16 @@
 			<growDays>6</growDays>
 			<fertilityMin>1.0</fertilityMin>
 			<fertilitySensitivity>1.0</fertilitySensitivity>
-			<wildCommonalityMaxFraction>0.0035</wildCommonalityMaxFraction>
 			<wildBiomes>
 				<TropicalRainforest>0.001</TropicalRainforest>
 				<TemperateForest>0.003</TemperateForest>
 				<BorealForest>0.01</BorealForest>
 				<Tundra>0.02</Tundra>
 			</wildBiomes>
-			<wildClusterSizeRange>
-				<min>2</min>
-				<max>6</max>
-			</wildClusterSizeRange>
+			
 			<wildClusterRadius>7</wildClusterRadius>
+			<wildClusterWeight>80</wildClusterWeight>
+			<wildOrder>1</wildOrder>
 			<visualSizeRange>
 				<min>0.3</min>
 				<max>1</max>
@@ -66,6 +64,7 @@
 		<description>A hardy plant with a large leafy bulb. Requires good soil, but is able to grow in lower temperatures than normal plants.</description>
 		<statBases>
 			<MaxHitPoints>85</MaxHitPoints>
+			<Nutrition>0.18</Nutrition>
 		</statBases>
 		<graphicData>
 			<texPath>Cupro/Object/Plant/PlantCabbage</texPath>
@@ -73,9 +72,7 @@
 		</graphicData>
 		<altitudeLayer>Item</altitudeLayer>
 		<selectable>true</selectable>
-		<ingestible>
-			<nutrition>0.18</nutrition>
-		</ingestible>
+		<ingestible />
 		<modExtensions>
 			<li Class="SurvivalistsAdditions.HardyPlantStats">
 				<minLeaflessTemperature>-13</minLeaflessTemperature>
@@ -95,10 +92,9 @@
 				<li>Ground</li>
 			</sowTags>
 			<growDays>10</growDays>
-			<lifespanFraction>20</lifespanFraction>
+			<lifespanDaysPerGrowDays>20</lifespanDaysPerGrowDays>
 			<fertilityMin>1.0</fertilityMin>
 			<fertilitySensitivity>1.0</fertilitySensitivity>
-			<wildCommonalityMaxFraction>0.005</wildCommonalityMaxFraction>
 			<wildBiomes>
 				<TropicalRainforest>0.005</TropicalRainforest>
 				<TemperateForest>0.005</TemperateForest>
@@ -106,11 +102,10 @@
 				<BorealForest>0.0075</BorealForest>
 				<Tundra>0.0125</Tundra>
 			</wildBiomes>
-			<wildClusterSizeRange>
-				<min>2</min>
-				<max>5</max>
-			</wildClusterSizeRange>
+			
 			<wildClusterRadius>6</wildClusterRadius>
+			<wildClusterWeight>80</wildClusterWeight>
+			<wildOrder>1</wildOrder>
 			<visualSizeRange>
 				<min>0.3</min>
 				<max>1</max>
@@ -129,21 +124,19 @@
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Beauty>1</Beauty>
+			<Nutrition>0.25</Nutrition>
 		</statBases>
-		<ingestible>
-			<nutrition>0.25</nutrition>
-		</ingestible>
+		<ingestible />
 		<selectable>true</selectable>
 		<plant>
 			<harvestTag>Standard</harvestTag>
 			<harvestedThingDef>SRV_JuteFibers</harvestedThingDef>
 			<harvestFailable>false</harvestFailable>
 			<growDays>7</growDays>
-			<lifespanFraction>6</lifespanFraction>
+			<lifespanDaysPerGrowDays>6</lifespanDaysPerGrowDays>
 			<dieIfLeafless>true</dieIfLeafless>
 			<fertilityMin>1.1</fertilityMin>
 			<maxMeshCount>9</maxMeshCount>
-			<reproduces>false</reproduces>
 		</plant>
 	</ThingDef>
 
@@ -152,10 +145,10 @@
 		<statBases>
 			<MaxHitPoints>120</MaxHitPoints>
 			<Beauty>2</Beauty>
+			<Nutrition>0.45</Nutrition>
+
 		</statBases>
-		<ingestible>
-			<nutrition>0.45</nutrition>
-		</ingestible>
+		<ingestible />
 		<plant>
 			<growDays>8</growDays>
 			<harvestYield>18</harvestYield>
@@ -169,9 +162,10 @@
 
 	<ThingDef ParentName="SRV_JuteBase">
 		<defName>SRV_CultivatedJute</defName>
-		<ingestible>
-			<nutrition>0.3</nutrition>
-		</ingestible>
+		<statBases>
+			<Nutrition>0.3</Nutrition>
+		</statBases>
+		<ingestible />
 		<plant>
 			<harvestYield>12</harvestYield>
 			<fertilitySensitivity>0.8</fertilitySensitivity>
@@ -187,9 +181,10 @@
 
 	<ThingDef ParentName="SRV_JuteBase">
 		<defName>SRV_HydroJute</defName>
-		<ingestible>
-			<nutrition>0.35</nutrition>
-		</ingestible>
+		<statBases>
+			<Nutrition>0.35</Nutrition>
+		</statBases>
+		<ingestible />
 		<plant>
 			<harvestYield>14</harvestYield>
 			<fertilitySensitivity>0.8</fertilitySensitivity>
@@ -210,24 +205,22 @@
 		<statBases>
 			<MaxHitPoints>45</MaxHitPoints>
 			<Beauty>-2</Beauty>
+			<Nutrition>0.18</Nutrition>
 		</statBases>
 		<graphicData>
 			<texPath>Cupro/Object/Plant/Mushroom</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<hideAtSnowDepth>0.5</hideAtSnowDepth>
-		<ingestible>
-			<nutrition>0.18</nutrition>
-		</ingestible>
+		<ingestible />
 		<selectable>true</selectable>
 		<plant>
 			<harvestTag>Standard</harvestTag>
 			<harvestedThingDef>SRV_MushroomBundle</harvestedThingDef>
 			<harvestYield>8</harvestYield>
 			<harvestFailable>false</harvestFailable>
-			<lifespanFraction>6</lifespanFraction>
+			<lifespanDaysPerGrowDays>6</lifespanDaysPerGrowDays>
 			<dieIfLeafless>false</dieIfLeafless>
-			<reproduces>false</reproduces>
 			<fertilitySensitivity>0.0</fertilitySensitivity>
 			<growDays>2.5</growDays>
 			<growMinGlow>-0.01</growMinGlow>
@@ -253,20 +246,18 @@
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Beauty>1</Beauty>
+			<Nutrition>0.25</Nutrition>
 		</statBases>
-		<ingestible>
-			<nutrition>0.25</nutrition>
-		</ingestible>
+		<ingestible />
 		<selectable>true</selectable>
 		<plant>
 			<harvestTag>Standard</harvestTag>
 			<harvestedThingDef>Hay</harvestedThingDef>
 			<harvestFailable>false</harvestFailable>
-			<lifespanFraction>6</lifespanFraction>
+			<lifespanDaysPerGrowDays>6</lifespanDaysPerGrowDays>
 			<dieIfLeafless>true</dieIfLeafless>
 			<fertilityMin>1.1</fertilityMin>
 			<maxMeshCount>16</maxMeshCount>
-			<reproduces>false</reproduces>
 			<growDays>8</growDays>
 			<harvestYield>30</harvestYield>
 			<harvestAfterGrowth>0.30</harvestAfterGrowth>
