@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BenchBase">
 		<defName>SRV_Grill</defName>
 		<label>grill</label>
 		<thingClass>Building_WorkTable_HeatPush</thingClass>
@@ -16,7 +16,6 @@
 			<li>Stony</li>
 		</stuffCategories>
 		<costStuffCount>50</costStuffCount>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<altitudeLayer>Building</altitudeLayer>
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>True</useHitPoints>
@@ -33,7 +32,7 @@
 		<canOverlapZones>false</canOverlapZones>
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<recipes>
 			<li>SRV_GrillMealMeat</li>
@@ -41,7 +40,7 @@
 			<li>SRV_GrillMealVeg</li>
 			<li>SRV_GrillMealVegDouble</li>
 			<li>SRV_GrillMealFine</li>
-			<li>SRV_MakePemmicanGrill</li>
+			<!--<li>SRV_MakePemmicanGrill</li>-->
 		</recipes>
 		<inspectorTabs>
 			<li>ITab_Bills</li>
@@ -73,6 +72,8 @@
 			<isMealSource>true</isMealSource>
 			<heatPerTickWhileWorking>0.10</heatPerTickWhileWorking>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
 		</building>
 	</ThingDef>
 
@@ -114,7 +115,7 @@
 		<canOverlapZones>false</canOverlapZones>
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<tickerType>Normal</tickerType>
 		<comps>
@@ -150,6 +151,8 @@
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 			<heatPerTickWhileWorking>0.25</heatPerTickWhileWorking>
+			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
 		</building>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
@@ -159,7 +162,7 @@
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BenchBase">
 		<defName>SRV_Smoker</defName>
 		<label>smoker</label>
 		<thingClass>SurvivalistsAdditions.Building_Smoker</thingClass>
@@ -176,7 +179,6 @@
 			<li>Stony</li>
 		</stuffCategories>
 		<costStuffCount>100</costStuffCount>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<altitudeLayer>Building</altitudeLayer>
 		<useHitPoints>true</useHitPoints>
 		<rotatable>true</rotatable>
@@ -217,9 +219,13 @@
 		<placeWorkers>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
+		<building>	
+			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
+		</building>
 	</ThingDef>
 	
-	<ThingDef Name="CampTableBase" ParentName="BuildingBase" Abstract="True">
+	<ThingDef Name="CampTableBase" ParentName="BenchBase" Abstract="True">
 		<thingClass>Building_WorkTable</thingClass>
 		<graphicData>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -228,7 +234,6 @@
 		<costList>
 			<WoodLog>15</WoodLog>
 		</costList>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<constructEffect>ConstructWood</constructEffect>
 		<altitudeLayer>Building</altitudeLayer>
 		<fillPercent>0.5</fillPercent>
@@ -247,15 +252,15 @@
 		<canOverlapZones>false</canOverlapZones>
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<inspectorTabs>
 			<li>ITab_Bills</li>
 		</inspectorTabs>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-			<workSpeedPenaltyOutdoors>true</workSpeedPenaltyOutdoors>
-			<workSpeedPenaltyTemperature>true</workSpeedPenaltyTemperature>
+			<!--<workSpeedPenaltyOutdoors>true</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>true</workSpeedPenaltyTemperature>-->
 		</building>
 		<comps>
 			<li>
@@ -283,23 +288,6 @@
 		<statBases>
 			<Beauty>1</Beauty>
 		</statBases>
-	</ThingDef>
-
-	<ThingDef ParentName="CampTableBase">
-		<defName>SRV_TableButcherCamp</defName>
-		<label>camp butcher table</label>
-		<description>A lightweight collapsible table for butchering animals while traveling.</description>
-		<graphicData>
-			<texPath>Cupro/Object/Station/ButcheringTable/ButcheringTable</texPath>
-		</graphicData>
-		<statBases>
-			<Beauty>-2</Beauty>
-			<Cleanliness>-18</Cleanliness>
-		</statBases>
-		<recipes>
-			<li>MakeKibble</li>
-			<li>ButcherCorpseFlesh</li>
-		</recipes>
 	</ThingDef>
 
 </Defs>

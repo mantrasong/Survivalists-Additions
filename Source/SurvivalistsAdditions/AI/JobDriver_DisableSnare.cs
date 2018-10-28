@@ -29,7 +29,7 @@ namespace SurvivalistsAdditions
                 initAction = delegate
                 {
                     Building_Snare snare = (Building_Snare)GetActor().CurJob.GetTarget(TargetIndex.A).Thing;
-                    snare.Disable();
+                    //snare.Disable();
                 },
                 defaultCompleteMode = ToilCompleteMode.Instant
             };

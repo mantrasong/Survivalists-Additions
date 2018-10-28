@@ -6,11 +6,7 @@
 		<label>shelter door</label>
 		<description>A simple shelter door to separate rooms. Quick to pass through, but quick to destroy.</description>
 		<thingClass>Building_Door</thingClass>
-		<blueprintClass>Blueprint_Door</blueprintClass>
 		<category>Building</category>
-		<blueprintGraphicData>
-			<texPath>Things/Building/Door/Door_Blueprint</texPath>
-		</blueprintGraphicData>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
 		<fillPercent>1</fillPercent>
 		<canOverlapZones>false</canOverlapZones>
@@ -40,8 +36,14 @@
 		<drawerType>RealtimeOnly</drawerType>
 		<holdsRoof>true</holdsRoof>
 		<building>
-			<soundDoorOpenManual>DoorOpenManual</soundDoorOpenManual>
-			<soundDoorCloseManual>DoorCloseManual</soundDoorCloseManual>
+			<blueprintClass>Blueprint_Door</blueprintClass>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Door/Door_Blueprint</texPath>
+			</blueprintGraphicData>
+			<soundDoorOpenPowered>Door_OpenPowered</soundDoorOpenPowered>
+			<soundDoorClosePowered>Door_ClosePowered</soundDoorClosePowered>
+			<soundDoorOpenManual>Door_OpenManual</soundDoorOpenManual>
+			<soundDoorCloseManual>Door_CloseManual</soundDoorCloseManual>
 			<canPlaceOverWall>true</canPlaceOverWall>
 		</building>
 		<comps>
@@ -78,9 +80,7 @@
 				<edgeRight>Damage/Edge</edgeRight>
 			</damageData>
 		</graphicData>
-		<blueprintGraphicData>
-			<texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
-		</blueprintGraphicData>
+		
 		<uiIconPath>Cupro/Object/Structure/WallShelter_MenuIcon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
@@ -111,6 +111,9 @@
 		<canOverlapZones>false</canOverlapZones>
 		<building>
 			<isInert>true</isInert>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
 		</building>
 		<damageMultipliers>
 			<li>

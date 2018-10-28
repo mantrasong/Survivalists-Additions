@@ -5,9 +5,9 @@
 		<defName>SRV_MushroomSprout</defName>
 		<label>mushroom sprout sprout</label>
 		<category>Misc</category>
-		<targetTypes>
-      <li>MapPlayerHome</li>
-    </targetTypes>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
 		<workerClass>SurvivalistsAdditions.IncidentWorker_MushroomSprout</workerClass>
 		<baseChance>0.35</baseChance>
 		<letterLabel>Mushroom sprout</letterLabel>

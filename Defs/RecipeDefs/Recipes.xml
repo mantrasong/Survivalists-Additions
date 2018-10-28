@@ -137,7 +137,7 @@
 		<label>make juice for vinegar</label>
 		<description>Make concentrated juice for fermenting into vinegar.</description>
 		<jobString>Making vinegar juice.</jobString>
-		<workSpeedStat>BrewingSpeed</workSpeedStat>
+		<workSpeedStat>DrugCookingSpeed</workSpeedStat>
 		<workSkill>Cooking</workSkill>
 		<effectWorking>Cook</effectWorking>
 		<soundWorking>Recipe_Brewing</soundWorking>
@@ -175,7 +175,7 @@
 		<label>make curdled milk for cheese</label>
 		<description>Make curdled milk for fermenting and aging into cheese.</description>
 		<jobString>Making curdled milk.</jobString>
-		<workSpeedStat>BrewingSpeed</workSpeedStat>
+		<workSpeedStat>DrugCookingSpeed</workSpeedStat>
 		<workSkill>Cooking</workSkill>
 		<effectWorking>Cook</effectWorking>
 		<soundWorking>Recipe_Brewing</soundWorking>

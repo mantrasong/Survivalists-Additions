@@ -117,13 +117,6 @@
 	</Operation>
 
 	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[defName="MeleeWeapon_Shiv"]/recipeMaker/recipeUsers</xpath>
-		<value>
-			<li>SRV_Forge</li>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[defName="MeleeWeapon_Club"]/recipeMaker/recipeUsers</xpath>
 		<value>
 			<li>SRV_Forge</li>

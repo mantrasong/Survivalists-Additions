@@ -21,9 +21,9 @@
 			<categories>
 				<li>MeatRaw</li>
 			</categories>
-			<exceptedThingDefs>
-				<li>Human_Meat</li>
-			</exceptedThingDefs>
+			<disallowedThingDefs>
+				<li>Meat_Human</li>
+			</disallowedThingDefs>
 		</defaultIngredientFilter>
 	</RecipeDef>
 
@@ -32,31 +32,30 @@
 			<categories>
 				<li>PlantFoodRaw</li>
 			</categories>
-			<disallowedSpecialFilters>
+			<specialFiltersToDisallow>
 				<li>AllowPlantFood</li>
-			</disallowedSpecialFilters>
+			</specialFiltersToDisallow>
 		</fixedIngredientFilter>
 		<defaultIngredientFilter>
 			<categories>
 				<li>PlantFoodRaw</li>
 			</categories>
-			<exceptedCategories>
+			<disallowedCategories>
 				<li>EggsUnfertilized</li>
 				<li>EggsFertilized</li>
-			</exceptedCategories>
-			<exceptedThingDefs>
+			</disallowedCategories>
+			<disallowedThingDefs>
 				<li>Hay</li>
 				<li>SRV_JuteFibers</li>
-			</exceptedThingDefs>
+			</disallowedThingDefs>
 		</defaultIngredientFilter>
 	</RecipeDef>
 
 
-	<RecipeDef ParentName="MakePemmican">
-    <defName>SRV_MakePemmicanGrill</defName>
-    <workAmount>1000</workAmount>
-    <!-- other meals use WorkToMake stat -->
-  </RecipeDef>
+	<!--<RecipeDef ParentName="Pemmican">
+		<defName>SRV_MakePemmicanGrill</defName>
+		<workAmount>1000</workAmount>
+	</RecipeDef>-->
 	
 	<RecipeDef ParentName="SRV_GrillMealBase_Meat">
 		<defName>SRV_GrillMealMeat</defName>
@@ -173,23 +172,23 @@
 			<categories>
 				<li>FoodRaw</li>
 			</categories>
-			<disallowedSpecialFilters>
+			<specialFiltersToDisallow>
 				<li>AllowPlantFood</li>
-			</disallowedSpecialFilters>
+			</specialFiltersToDisallow>
 		</fixedIngredientFilter>
 		<defaultIngredientFilter>
 			<categories>
 				<li>FoodRaw</li>
 			</categories>
-			<exceptedCategories>
+			<disallowedCategories>
 				<li>EggsUnfertilized</li>
 				<li>EggsFertilized</li>
-			</exceptedCategories>
-			<exceptedThingDefs>
-				<li>Human_Meat</li>
+			</disallowedCategories>
+			<disallowedThingDefs>
+				<li>Meat_Human</li>
 				<li>Hay</li>
 				<li>SRV_JuteFibers</li>
-			</exceptedThingDefs>
+			</disallowedThingDefs>
 		</defaultIngredientFilter>
 		<skillRequirements>
 			<Cooking>5</Cooking>
@@ -229,9 +228,9 @@
 					<categories>
 						<li>PlantFoodRaw</li>
 					</categories>
-					<exceptedThingDefs>
+					<disallowedThingDefs>
 						<li>SRV_Turnip_Green</li>
-					</exceptedThingDefs>
+					</disallowedThingDefs>
 				</filter>
 				<count>5</count>
 			</li>
@@ -243,9 +242,9 @@
 			<categories>
 				<li>PlantFoodRaw</li>
 			</categories>
-			<disallowedSpecialFilters>
+			<specialFiltersToDisallow>
 				<li>AllowPlantFood</li>
-			</disallowedSpecialFilters>
+			</specialFiltersToDisallow>
 			<thingDefs>
 				<li>SRV_Turnip_Green</li>
 			</thingDefs>
@@ -257,14 +256,14 @@
 			<thingDefs>
 				<li>SRV_Turnip_Green</li>
 			</thingDefs>
-			<exceptedCategories>
+			<disallowedCategories>
 				<li>EggsUnfertilized</li>
 				<li>EggsFertilized</li>
-			</exceptedCategories>
-			<exceptedThingDefs>
+			</disallowedCategories>
+			<disallowedThingDefs>
 				<li>Hay</li>
 				<li>SRV_JuteFibers</li>
-			</exceptedThingDefs>
+			</disallowedThingDefs>
 		</defaultIngredientFilter>
 	</RecipeDef>
 
@@ -286,9 +285,9 @@
 					<categories>
 						<li>PlantFoodRaw</li>
 					</categories>
-					<exceptedThingDefs>
+					<disallowedThingDefs>
 						<li>SRV_Cabbage</li>
-					</exceptedThingDefs>
+					</disallowedThingDefs>
 				</filter>
 				<count>5</count>
 			</li>
@@ -300,9 +299,9 @@
 			<categories>
 				<li>PlantFoodRaw</li>
 			</categories>
-			<disallowedSpecialFilters>
+			<specialFiltersToDisallow>
 				<li>AllowPlantFood</li>
-			</disallowedSpecialFilters>
+			</specialFiltersToDisallow>
 			<thingDefs>
 				<li>SRV_Cabbage</li>
 			</thingDefs>
@@ -314,14 +313,14 @@
 			<thingDefs>
 				<li>SRV_Cabbage</li>
 			</thingDefs>
-			<exceptedCategories>
+			<disallowedCategories>
 				<li>EggsUnfertilized</li>
 				<li>EggsFertilized</li>
-			</exceptedCategories>
-			<exceptedThingDefs>
+			</disallowedCategories>
+			<disallowedThingDefs>
 				<li>Hay</li>
 				<li>SRV_JuteFibers</li>
-			</exceptedThingDefs>
+			</disallowedThingDefs>
 		</defaultIngredientFilter>
 	</RecipeDef>
 
@@ -370,22 +369,22 @@
 			<categories>
 				<li>PlantFoodRaw</li>
 			</categories>
-			<disallowedSpecialFilters>
+			<specialFiltersToDisallow>
 				<li>AllowPlantFood</li>
-			</disallowedSpecialFilters>
+			</specialFiltersToDisallow>
 		</fixedIngredientFilter>
 		<defaultIngredientFilter>
 			<categories>
 				<li>PlantFoodRaw</li>
 			</categories>
-			<exceptedCategories>
+			<disallowedCategories>
 				<li>EggsUnfertilized</li>
 				<li>EggsFertilized</li>
-			</exceptedCategories>
-			<exceptedThingDefs>
+			</disallowedCategories>
+			<disallowedThingDefs>
 				<li>Hay</li>
 				<li>SRV_JuteFibers</li>
-			</exceptedThingDefs>
+			</disallowedThingDefs>
 		</defaultIngredientFilter>
 	</RecipeDef>
 

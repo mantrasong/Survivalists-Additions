@@ -5,7 +5,7 @@
 	<!-- ======================== Facilities ======================= -->
 
 
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BenchBase">
 		<defName>SRV_Bellows</defName>
 		<thingClass>Building</thingClass>
 		<label>bellows</label>
@@ -37,7 +37,6 @@
 		</stuffCategories>
 		<costStuffCount>5</costStuffCount>
 		<designationCategory>Misc</designationCategory>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<comps>
 			<li Class="CompProperties_Facility">
 				<statOffsets>
@@ -53,13 +52,17 @@
 		<researchPrerequisites>
 			<li>SRV_Forge</li>
 		</researchPrerequisites>
+		<building>
+			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
+		</building>
 	</ThingDef>
 
 
 	<!-- ======================== Utility ======================= -->
 
 
-	<ThingDef Name="SRV_Barrel" ParentName="BuildingBase">
+	<ThingDef Name="SRV_Barrel" ParentName="BenchBase">
 		<defName>SRV_VinegarBarrel</defName>
 		<thingClass>SurvivalistsAdditions.Building_VinegarBarrel</thingClass>
 		<label>vinegar barrel</label>
@@ -71,7 +74,6 @@
 				<rect>(0.05,0.1,0.9,0.9)</rect>
 			</damageData>
 		</graphicData>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<canOverlapZones>false</canOverlapZones>
@@ -149,7 +151,7 @@
 			<li>Woody</li>
 		</stuffCategories>
 		<costStuffCount>10</costStuffCount>
-		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
+		<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
 		<placeWorkers>
@@ -166,7 +168,6 @@
 						<li>WoodLog</li>
 					</thingDefs>
 				</fuelFilter>
-				<destroyOnNoFuel>true</destroyOnNoFuel>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>6</glowRadius>
@@ -239,6 +240,9 @@
 		<rotatable>false</rotatable>
 		<tickerType>Normal</tickerType>
 		<stealable>false</stealable>
+		 <thingCategories>
+		  <li>BuildingsSecurity</li>
+		</thingCategories>
 		<statBases>
 			<MaxHitPoints>40</MaxHitPoints>
 			<WorkToBuild>1000</WorkToBuild>
@@ -254,7 +258,10 @@
 		<passability>Standable</passability>
 		<building>
 			<isTrap>true</isTrap>
+			<trapDestroyOnSpring>true</trapDestroyOnSpring>
 			<trapDamageCategory>Sharp</trapDamageCategory>
+			<expandHomeArea>false</expandHomeArea>
+			<ai_chillDestination>false</ai_chillDestination>
 			<trapUnarmedGraphicData>
 				<texPath>Cupro/Object/Utility/SnareUnarmed</texPath>
 				<graphicClass>Graphic_Single</graphicClass>

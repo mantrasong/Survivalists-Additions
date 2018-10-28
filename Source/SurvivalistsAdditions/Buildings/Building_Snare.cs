@@ -19,6 +19,10 @@ namespace SurvivalistsAdditions
         private bool disabled;
         private bool rearmAfterCleared;
 
+        private List<Pawn> touchingPawns = new List<Pawn>();
+
+        #region properties
+
         public bool Disabled
         {
             get { return disabled; }
@@ -53,121 +57,97 @@ namespace SurvivalistsAdditions
             }
         }
 
+        #endregion
+
+        #region Overrides
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref rearmAfterCleared, "rearmAfterCleared", false);
+            Scribe_Values.Look(ref rearmAfterCleared, "rearmAfterCleared", true);
         }
 
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            foreach (Pawn pawn in PawnsInCell())
-            {
-                if (!pawn.Dead && (pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredLarge) || pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall)))
-                {
-                    affectedPawn = pawn;
-                    break;
-                }
-            }
-        }
 
+        }
 
         public override void Tick()
         {
-            if (!Disabled)
+            if (base.Spawned)
             {
-                if (affectedPawn != null)
+                if (!Disabled)
                 {
-                    if (affectedPawn.Position != Position || affectedPawn.Dead || affectedPawn.health.capacities.GetLevel(PawnCapacityDefOf.Moving) > 0.1f)
+                    //check to see if we're sprung
+                    List<Thing> thingList = base.Position.GetThingList(base.Map);
+                    for (int i = 0; i < thingList.Count; i++)
                     {
-                        affectedPawn = null;
-                        if (Rand.Value < BreakChance)
+                        Pawn pawn = thingList[i] as Pawn;
+                        if (pawn != null && !touchingPawns.Contains(pawn))
                         {
-                            Destroy(DestroyMode.Deconstruct);
-                            return;
+                            touchingPawns.Add(pawn);
+                            CheckSpring(pawn);
                         }
                     }
-                }
 
-
-                foreach (Pawn p in PawnsInCell())
-                {
-                    CheckSpring(p);
-                }
-
-                if (this.IsHashIntervalTick(500) && !Disabled && Spawned)
-                {
-                    if (affectedPawn != null && affectedPawn.BodySize < 0.6f)
+                    //if they're dead, remove them from the "touching" list
+                    for (int j = 0; j < touchingPawns.Count; j++)
                     {
-                        // The animal is trying to get free, simulate the escape attempt
-                        if (Rand.Value > (FailChance / 2f))
+                        Pawn pawn2 = touchingPawns[j];
+                        if (!pawn2.Spawned || pawn2.Position != base.Position)
                         {
-                            ApplyHediff(affectedPawn);
-                        }
-                        else
-                        {
-                            RemoveHediff();
+                            touchingPawns.Remove(pawn2);
                         }
                     }
-                    //TODO this may require attention
-                    if (rearmAfterCleared)
+
+                    //look for a snared pawn
+                    foreach (Pawn pawn in touchingPawns)
                     {
-                        bool ableToRearm = true;
-                        foreach (Pawn pawn in PawnsInCell())
+                        if (!pawn.Dead && (pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredLarge) || pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall)))
                         {
-                            if (!pawn.Dead && (pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredLarge) || pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall)))
+                            affectedPawn = pawn;
+                            break;
+                        }
+                    }
+
+                    if (this.IsHashIntervalTick(500))
+                    {
+                        if (affectedPawn != null && affectedPawn.BodySize < 0.6f)
+                        {
+                            // The animal is trying to get free, simulate the escape attempt
+                            if (Rand.Value > (FailChance / 2f))
                             {
-                                ableToRearm = false;
-                                break;
+                                ApplyHediff(affectedPawn);
                             }
-                            ableToRearm = true;
+                            else
+                            {
+                                RemoveHediff();
+                            }
                         }
-
-                        if (ableToRearm)
-                        {
-                            Map map = base.Map;
-                            GenConstruct.PlaceBlueprintForBuild(def, base.Position, map, base.Rotation, Faction.OfPlayer, base.Stuff);
-                            rearmAfterCleared = false;
-                        }
+  
                     }
                 }
-            }
-            else
-            {
-                affectedPawn = null;
-                if (disabledTicks < TicksToRemainDisabled)
+                else //if Disabled, tick the disabled count
                 {
-                    disabledTicks++;
+                    affectedPawn = null;
+                    if (disabledTicks < TicksToRemainDisabled)
+                    {
+                        disabledTicks++;
+                    }
+                    else
+                    {
+                        disabledTicks = 0;
+                        disabled = false;
+                    }
                 }
-                else
-                {
-                    disabledTicks = 0;
-                    disabled = false;
-                }
-            }
 
-            /// No need to tick the comps, since the snare doesn't have any comps
-            /// No other override actions needed for A17
-            /// CHECKME: Future alphas may add/require comps
+                /// No need to tick the comps, since the snare doesn't have any comps
+                /// No other override actions needed for A17
+                /// CHECKME: Future alphas may add/require comps
+            }
         }
-
-
-        private List<Pawn> PawnsInCell()
-        {
-            List<Pawn> list = new List<Pawn>();
-            foreach (Thing t in Position.GetThingList(Map))
-            {
-                if (t is Pawn)
-                {
-                    list.Add(t as Pawn);
-                }
-            }
-            return list;
-        }
-
 
         protected override float SpringChance(Pawn p)
         {
@@ -195,6 +175,68 @@ namespace SurvivalistsAdditions
             return Mathf.Clamp01(num);
         }
 
+        public override ushort PathWalkCostFor(Pawn p)
+        {
+            if (KnowsOfSnare(p))
+            {
+                return 30;
+            }
+            return 0;
+        }
+
+        protected override void SpringSub(Pawn p)
+        {
+            base.SpringSub(p);
+            if (p != null && Rand.Value > FailChance)
+            {
+                affectedPawn = p;
+                ApplyHediff(p);
+            }
+
+            foreach (Pawn pawn in touchingPawns)
+            {
+                if (!pawn.Dead && (pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredLarge) || pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall)))
+                {
+                    Map.designationManager.RemoveAllDesignationsOn(this);
+                    rearmAfterCleared = true;
+                    break;
+                }
+            }
+
+            CheckAutoRebuild(base.Map);
+            
+
+        }
+
+        //public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn selPawn)
+        //{
+        //    if (!Disabled)
+        //    {
+        //        Action disableSnare = delegate
+        //        {
+        //            if (selPawn.CanReserveAndReach(this, PathEndMode.ClosestTouch, Danger.Deadly, ignoreOtherReservations: true))
+        //            {
+        //                Job job = new Job(SrvDefOf.SRV_DisableSnare, this);
+        //                selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+        //            }
+        //        };
+        //        yield return new FloatMenuOption(Static.DisableSnare, disableSnare, MenuOptionPriority.RescueOrCapture);
+        //    }
+        //}
+
+        #endregion
+
+
+        public bool KnowsOfSnare(Pawn p)
+        {
+            if (p.Faction == null && p.RaceProps.Animal)
+            {
+                return false;
+            }
+
+            return KnowsOfTrap(p);
+
+        }
 
         private bool IsValidAnimal(Pawn p)
         {
@@ -215,83 +257,29 @@ namespace SurvivalistsAdditions
         }
 
 
-        public bool KnowsOfSnare(Pawn p)
-        {
-            if ((p.Faction == Faction.OfPlayer || p.HostFaction == Faction.OfPlayer) &&
-                     p.RaceProps.trainability.intelligenceOrder >= TrainabilityDefOf.Intermediate.intelligenceOrder)
-            {
-                return true;
-            }
-            if (p.Faction == null && p.RaceProps.Animal)
-            {
-                return false;
-            }
-            if (p.guest != null && p.guest.Released)
-            {
-                return true;
-            }
-            Lord lord = p.GetLord();
-            return p.guest != null && lord != null && lord.LordJob is LordJob_FormAndSendCaravan;
-        }
-
-
-        public override ushort PathFindCostFor(Pawn p)
-        {
-            if (KnowsOfSnare(p))
-            {
-                return 800;
-            }
-            return 0;
-        }
-
-        public override ushort PathWalkCostFor(Pawn p)
-        {
-            if (KnowsOfSnare(p))
-            {
-                return 30;
-            }
-            return 0;
-        }
-
-
-        public void Disable()
-        {
-            disabled = true;
-            disabledTicks = 0;
-            RemoveHediff();
-        }
+        //public void Disable()
+        //{
+        //    disabled = true;
+        //    disabledTicks = 0;
+        //    RemoveHediff();
+        //}
 
 
         private void CheckSpring(Pawn p)
         {
-            if (Rand.Value < SpringChance(p))
+            if (Rand.Chance(SpringChance(p)))
             {
                 Spring(p);
             }
         }
 
-
-        protected override void SpringSub(Pawn p)
+        private void CheckAutoRebuild(Map map)
         {
-            base.SpringSub(p);
-            if (p != null && Rand.Value > FailChance)
+            if (map != null )
             {
-                affectedPawn = p;
-                ApplyHediff(p);
+                GenConstruct.PlaceBlueprintForBuild(def, base.Position, map, base.Rotation, Faction.OfPlayer, base.Stuff);
             }
-            
-            foreach (Pawn pawn in PawnsInCell())
-            {
-                if (!pawn.Dead && (pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredLarge) || pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall)))
-                {
-                    Map.designationManager.RemoveAllDesignationsOn(this);
-                    rearmAfterCleared = true;
-                    break;
-                }
-            }
-            
         }
-
 
         private void ApplyHediff(Pawn p)
         {
@@ -385,20 +373,6 @@ namespace SurvivalistsAdditions
         }
 
 
-        public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn selPawn)
-        {
-            if (!Disabled)
-            {
-                Action disableSnare = delegate
-                {
-                    if (selPawn.CanReserveAndReach(this, PathEndMode.ClosestTouch, Danger.Deadly, ignoreOtherReservations: true))
-                    {
-                        Job job = new Job(SrvDefOf.SRV_DisableSnare, this);
-                        selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-                    }
-                };
-                yield return new FloatMenuOption(Static.DisableSnare, disableSnare, MenuOptionPriority.RescueOrCapture);
-            }
-        }
+
     }
 }
