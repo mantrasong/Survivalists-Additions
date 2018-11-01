@@ -240,9 +240,6 @@
 		<rotatable>false</rotatable>
 		<tickerType>Normal</tickerType>
 		<stealable>false</stealable>
-		 <thingCategories>
-		  <li>BuildingsSecurity</li>
-		</thingCategories>
 		<statBases>
 			<MaxHitPoints>40</MaxHitPoints>
 			<WorkToBuild>1000</WorkToBuild>
