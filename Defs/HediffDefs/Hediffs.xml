@@ -36,8 +36,8 @@
 		<comps>
 			<li Class="HediffCompProperties_Disappears">
 				<disappearsAfterTicks>
-					<min>250</min>
-					<max>500</max>
+					<min>500</min>
+					<max>5000</max>
 				</disappearsAfterTicks>
 			</li>
 		</comps>
@@ -70,14 +70,22 @@
 		<defaultLabelColor>(0.8,0.5,0.5)</defaultLabelColor>
 		<minSeverity>0.001</minSeverity>
 		<maxSeverity>1</maxSeverity>
-		<initialSeverity>0.1</initialSeverity>
+		<initialSeverity>0.5</initialSeverity>
+		<tendable>true</tendable>
 		<comps>
 			<li Class="HediffCompProperties_Disappears">
 				<disappearsAfterTicks>
-					<min>600</min>
-					<max>650</max>
+					<min>10000</min>
+					<max>240000</max>
 				</disappearsAfterTicks>
 			</li>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>1</severityPerDay>
+			  </li>
+			<li Class="HediffCompProperties_TendDuration">
+				<baseTendDurationHours>12</baseTendDurationHours>
+				<severityPerDayTended>-0.53</severityPerDayTended>
+			  </li>
 		</comps>
 		<stages>
 			<li>

@@ -13,20 +13,14 @@ namespace SurvivalistsAdditions
     public class Building_Snare : Building_TrapDamager
     {
 
-        private const int TicksToRemainDisabled = 5000;
         private Pawn affectedPawn;
-        private int disabledTicks = 0;
-        private bool disabled;
         private bool rearmAfterCleared;
+        public float stunDuration = 20;
 
         private List<Pawn> touchingPawns = new List<Pawn>();
 
         #region properties
 
-        public bool Disabled
-        {
-            get { return disabled; }
-        }
 
         public int Difficulty
         {
@@ -76,86 +70,29 @@ namespace SurvivalistsAdditions
 
         public override void Tick()
         {
+
             if (base.Spawned)
             {
-                if (!Disabled)
+
+                //check to see if we're sprung
+                List<Thing> thingList = base.Position.GetThingList(base.Map);
+                for (int i = 0; i < thingList.Count; i++)
                 {
-                    //check to see if we're sprung
-                    List<Thing> thingList = base.Position.GetThingList(base.Map);
-                    for (int i = 0; i < thingList.Count; i++)
+                    Pawn pawn = thingList[i] as Pawn;
+                    if (pawn != null && !touchingPawns.Contains(pawn))
                     {
-                        Pawn pawn = thingList[i] as Pawn;
-                        if (pawn != null && !touchingPawns.Contains(pawn))
-                        {
-                            touchingPawns.Add(pawn);
-                            CheckSpring(pawn);
-                        }
-                    }
-
-                    //if they're dead, remove them from the "touching" list
-                    for (int j = 0; j < touchingPawns.Count; j++)
-                    {
-                        Pawn pawn2 = touchingPawns[j];
-                        if (!pawn2.Spawned || pawn2.Position != base.Position)
-                        {
-                            touchingPawns.Remove(pawn2);
-                        }
-                    }
-
-                    //look for a snared pawn
-                    foreach (Pawn pawn in touchingPawns)
-                    {
-                        if (!pawn.Dead && (pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredLarge) || pawn.health.hediffSet.HasHediff(SrvDefOf.SRV_SnaredSmall)))
-                        {
-                            affectedPawn = pawn;
-                            break;
-                        }
-                    }
-
-                    if (this.IsHashIntervalTick(500))
-                    {
-                        if (affectedPawn != null && affectedPawn.BodySize < 0.6f)
-                        {
-                            // The animal is trying to get free, simulate the escape attempt
-                            if (Rand.Value > (FailChance / 2f))
-                            {
-                                ApplyHediff(affectedPawn);
-                            }
-                            else
-                            {
-                                RemoveHediff();
-                            }
-                        }
-  
+                        touchingPawns.Add(pawn);
+                        CheckSpring(pawn);
                     }
                 }
-                else //if Disabled, tick the disabled count
-                {
-                    affectedPawn = null;
-                    if (disabledTicks < TicksToRemainDisabled)
-                    {
-                        disabledTicks++;
-                    }
-                    else
-                    {
-                        disabledTicks = 0;
-                        disabled = false;
-                    }
-                }
-
-                /// No need to tick the comps, since the snare doesn't have any comps
-                /// No other override actions needed for A17
-                /// CHECKME: Future alphas may add/require comps
+                
             }
+            
         }
 
         protected override float SpringChance(Pawn p)
         {
             float num;
-            if (Disabled)
-            {
-                return 0;
-            }
             if (!IsValidAnimal(p))
             {
                 return 0;
@@ -184,13 +121,27 @@ namespace SurvivalistsAdditions
             return 0;
         }
 
+        public override ushort PathFindCostFor(Pawn p)
+        {
+            if (!KnowsOfSnare(p))
+            {
+                return 0;
+            }
+            return 800;
+        }
+
+        public override bool IsDangerousFor(Pawn p)
+        {
+            return KnowsOfSnare(p);
+        }
+
         protected override void SpringSub(Pawn p)
         {
-            base.SpringSub(p);
             if (p != null && Rand.Value > FailChance)
             {
                 affectedPawn = p;
-                ApplyHediff(p);
+                ApplyDamage(p);
+
             }
 
             foreach (Pawn pawn in touchingPawns)
@@ -204,28 +155,11 @@ namespace SurvivalistsAdditions
             }
 
             CheckAutoRebuild(base.Map);
-            
 
+            base.SpringSub(p);
         }
 
-        //public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn selPawn)
-        //{
-        //    if (!Disabled)
-        //    {
-        //        Action disableSnare = delegate
-        //        {
-        //            if (selPawn.CanReserveAndReach(this, PathEndMode.ClosestTouch, Danger.Deadly, ignoreOtherReservations: true))
-        //            {
-        //                Job job = new Job(SrvDefOf.SRV_DisableSnare, this);
-        //                selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-        //            }
-        //        };
-        //        yield return new FloatMenuOption(Static.DisableSnare, disableSnare, MenuOptionPriority.RescueOrCapture);
-        //    }
-        //}
-
         #endregion
-
 
         public bool KnowsOfSnare(Pawn p)
         {
@@ -256,15 +190,6 @@ namespace SurvivalistsAdditions
             return true;
         }
 
-
-        //public void Disable()
-        //{
-        //    disabled = true;
-        //    disabledTicks = 0;
-        //    RemoveHediff();
-        //}
-
-
         private void CheckSpring(Pawn p)
         {
             if (Rand.Chance(SpringChance(p)))
@@ -275,13 +200,13 @@ namespace SurvivalistsAdditions
 
         private void CheckAutoRebuild(Map map)
         {
-            if (map != null )
+            if (map != null)
             {
                 GenConstruct.PlaceBlueprintForBuild(def, base.Position, map, base.Rotation, Faction.OfPlayer, base.Stuff);
             }
         }
 
-        private void ApplyHediff(Pawn p)
+        private void ApplyDamage(Pawn p)
         {
             if (p.BodySize > 1f)
             {
@@ -297,7 +222,6 @@ namespace SurvivalistsAdditions
                 {
                     NotifyPlayer(p);
                 }
-
                 p.health.AddHediff(SrvDefOf.SRV_SnaredSmall);
             }
         }
