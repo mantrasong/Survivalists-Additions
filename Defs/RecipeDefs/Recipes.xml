@@ -108,24 +108,24 @@
 		<effectWorking>Smelt</effectWorking>
 		<soundWorking>Recipe_Smelt</soundWorking>
 		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ChunkSlagSteel</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
-			</li>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>ChunkSlagSteel</li>
+			  </thingDefs>
+			</filter>
+			<count>1</count>
+		  </li>
 		</ingredients>
 		<products>
-			<Steel>10</Steel>
+		  <Steel>10</Steel>
 		</products>
 		<fixedIngredientFilter>
-			<thingDefs>
-				<li>ChunkSlagSteel</li>
-			</thingDefs>
+		  <thingDefs>
+			<li>ChunkSlagSteel</li>
+		  </thingDefs>
 		</fixedIngredientFilter>
-		<unfinishedThingDef>SRV_UnfinishedSmelt</unfinishedThingDef>
+		<!--<unfinishedThingDef>SRV_UnfinishedSmelt</unfinishedThingDef>-->
 		<recipeUsers>
 			<li>SRV_Forge</li>
 		</recipeUsers>

@@ -27,7 +27,9 @@
 		<graphicData>
 			<texPath>Cupro/Item/Unfinished/UnfinishedSmelt</texPath>
 		</graphicData>
-		<stuffCategories />
+		<stuffCategories>
+		  <li>Metallic</li>
+		</stuffCategories>
 	</ThingDef>
 
 </Defs>
