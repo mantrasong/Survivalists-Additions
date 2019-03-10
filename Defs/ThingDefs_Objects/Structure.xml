@@ -15,6 +15,7 @@
 			<WorkToBuild>75</WorkToBuild>
 			<DoorOpenSpeed>2</DoorOpenSpeed>
 			<Flammability>1.0</Flammability>
+			<Beauty>-2</Beauty>
 		</statBases>
 		<graphicData>
 			<texPath>Cupro/Object/Structure/DoorShelter_Mover</texPath>
@@ -86,6 +87,7 @@
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToBuild>100</WorkToBuild>
 			<Flammability>1.0</Flammability>
+			<Beauty>-2</Beauty>
 		</statBases>
 		<stuffCategories>
 			<li>Woody</li>
