@@ -3,6 +3,8 @@
   <name>Survivalist's Additions</name>
   <author>mantrasong</author>
   <url>https://ludeon.com/forums/index.php?topic=32190</url>
-  <targetVersion>1.0.0</targetVersion>
+  <supportedVersions>
+	<li>1.0</li>
+  </supportedVersions>
   <description>Adds new features for primitive and tribal playthroughs.</description>
 </ModMetaData>

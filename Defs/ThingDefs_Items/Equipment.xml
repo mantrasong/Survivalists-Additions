@@ -19,7 +19,7 @@
 			<ArmorRating_Blunt>0.01</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.01</ArmorRating_Sharp>
 			<ArmorRating_Heat>0.05</ArmorRating_Heat>
-			<Insulation_Cold>-4</Insulation_Cold>
+			<Insulation_Cold>4</Insulation_Cold>
 			<Insulation_Heat>6</Insulation_Heat>
 		</statBases>
 		<techLevel>Neolithic</techLevel>

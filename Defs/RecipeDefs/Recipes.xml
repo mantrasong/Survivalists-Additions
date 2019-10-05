@@ -147,9 +147,9 @@
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
-						<li>RawBerries</li>
-					</thingDefs>
+					<categories>
+				<li>PlantFoodRaw</li>
+			  </categories>
 				</filter>
 				<count>25</count>
 			</li>
