@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef ParentName="BenchBase">
+	<ThingDef Name="SRV_OutdoorBenchBase" ParentName="BuildingBase"  Abstract="True">
+		 <canOverlapZones>false</canOverlapZones>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<thingCategories>
+		  <li>BuildingsProduction</li>
+		</thingCategories>
+		<statBases>
+		  <Mass>20</Mass>
+		</statBases>
+		<interactionCellIcon>DiningChair</interactionCellIcon>
+	</ThingDef>
+
+	<ThingDef ParentName="SRV_OutdoorBenchBase">
 		<defName>SRV_Grill</defName>
 		<label>grill</label>
 		<thingClass>Building_WorkTable_HeatPush</thingClass>
@@ -25,6 +38,7 @@
 			<Beauty>1</Beauty>
 			<Flammability>0</Flammability>
 			<Mass>12</Mass>
+			<WorkTableWorkSpeedFactor>0.9</WorkTableWorkSpeedFactor>
 		</statBases>
 		<size>(1,1)</size>
 		<designationCategory>Production</designationCategory>
@@ -40,7 +54,6 @@
 			<li>SRV_GrillMealVeg</li>
 			<li>SRV_GrillMealVegDouble</li>
 			<li>SRV_GrillMealFine</li>
-			<!--<li>SRV_MakePemmicanGrill</li>-->
 		</recipes>
 		<inspectorTabs>
 			<li>ITab_Bills</li>
@@ -72,12 +85,10 @@
 			<isMealSource>true</isMealSource>
 			<heatPerTickWhileWorking>0.10</heatPerTickWhileWorking>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
-			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
 		</building>
 	</ThingDef>
 
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="SRV_OutdoorBenchBase">
 		<defName>SRV_Forge</defName>
 		<label>forge</label>
 		<thingClass>Building_WorkTable_HeatPush</thingClass>
@@ -151,8 +162,6 @@
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 			<heatPerTickWhileWorking>0.25</heatPerTickWhileWorking>
-			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
-			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
 		</building>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
@@ -162,7 +171,7 @@
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="BenchBase">
+	<ThingDef ParentName="SRV_OutdoorBenchBase">
 		<defName>SRV_Smoker</defName>
 		<label>smoker</label>
 		<thingClass>SurvivalistsAdditions.Building_Smoker</thingClass>
@@ -219,13 +228,9 @@
 		<placeWorkers>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
-		<building>	
-			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
-			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
-		</building>
 	</ThingDef>
 	
-	<ThingDef Name="CampTableBase" ParentName="BenchBase" Abstract="True">
+	<ThingDef Name="CampTableBase" ParentName="SRV_OutdoorBenchBase" Abstract="True">
 		<thingClass>Building_WorkTable</thingClass>
 		<graphicData>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -259,8 +264,6 @@
 		</inspectorTabs>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-			<!--<workSpeedPenaltyOutdoors>true</workSpeedPenaltyOutdoors>
-			<workSpeedPenaltyTemperature>true</workSpeedPenaltyTemperature>-->
 		</building>
 		<comps>
 			<li>

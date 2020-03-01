@@ -3,6 +3,7 @@
 
 	<HediffDef>
 		<defName>SRV_AteSmokedMeat</defName>
+		 <description>A mood boost from eating good food</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<label>smoked meat</label>
 		<defaultLabelColor>(0.8,0.5,0.5)</defaultLabelColor>
@@ -28,6 +29,7 @@
 	<HediffDef>
 		<defName>SRV_SnaredLarge</defName>
 		<hediffClass>HediffWithComps</hediffClass>
+		 <description>The pawn has been caught by a snare! It will probably escape</description>
 		<label>snared</label>
 		<defaultLabelColor>(0.8,0.5,0.5)</defaultLabelColor>
 		<minSeverity>0.001</minSeverity>
@@ -65,6 +67,7 @@
 
 	<HediffDef>
 		<defName>SRV_SnaredSmall</defName>
+		<description>The pawn has been caught by a snare! It will probably die</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<label>snared (suffocating)</label>
 		<defaultLabelColor>(0.8,0.5,0.5)</defaultLabelColor>

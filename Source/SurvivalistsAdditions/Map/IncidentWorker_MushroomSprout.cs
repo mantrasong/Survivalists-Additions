@@ -54,7 +54,7 @@ namespace SurvivalistsAdditions
             {
                 return false;
             }
-            SendStandardLetter(thing, null);
+            SendStandardLetter(parms, null);
             return true;
         }
 

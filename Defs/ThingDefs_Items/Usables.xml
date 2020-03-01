@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="GrilledBase" ParentName="MealRottable" Abstract="True">
+	<ThingDef Name="GrilledBase" ParentName="MealCooked" Abstract="True">
 		<description>A smoky meal slowly cooked over an open flame.</description>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -23,7 +23,7 @@
 		</tradeTags>
 	</ThingDef>
 
-	<ThingDef ParentName="MealRottable">
+	<ThingDef ParentName="MealCooked">
 		<defName>SRV_MealTurnipSalad</defName>
 		<label>turnip salad</label>
 		<description>Fresh garden veggies chopped up and mixed together - hopefully with a clean knife.</description>
@@ -50,7 +50,7 @@
 		</tradeTags>
 	</ThingDef>
 
-	<ThingDef ParentName="MealRottable">
+	<ThingDef ParentName="MealCooked">
 		<defName>SRV_MealCabbageSalad</defName>
 		<label>cabbage salad</label>
 		<description>Fresh garden veggies chopped up and mixed together - hopefully with a clean knife.</description>

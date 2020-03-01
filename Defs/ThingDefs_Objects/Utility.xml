@@ -5,7 +5,7 @@
 	<!-- ======================== Facilities ======================= -->
 
 
-	<ThingDef ParentName="BenchBase">
+	<ThingDef ParentName="SRV_OutdoorBenchBase">
 		<defName>SRV_Bellows</defName>
 		<thingClass>Building</thingClass>
 		<label>bellows</label>
@@ -52,17 +52,14 @@
 		<researchPrerequisites>
 			<li>SRV_Forge</li>
 		</researchPrerequisites>
-		<building>
-			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
-			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
-		</building>
+
 	</ThingDef>
 
 
 	<!-- ======================== Utility ======================= -->
 
 
-	<ThingDef Name="SRV_Barrel" ParentName="BenchBase">
+	<ThingDef Name="SRV_Barrel" ParentName="SRV_OutdoorBenchBase">
 		<defName>SRV_VinegarBarrel</defName>
 		<thingClass>SurvivalistsAdditions.Building_VinegarBarrel</thingClass>
 		<label>vinegar barrel</label>
