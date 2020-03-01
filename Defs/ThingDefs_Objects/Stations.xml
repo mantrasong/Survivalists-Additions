@@ -162,7 +162,7 @@
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="BenchBase">
+	<!--<ThingDef ParentName="BenchBase">
 		<defName>SRV_Smoker</defName>
 		<label>smoker</label>
 		<thingClass>SurvivalistsAdditions.Building_Smoker</thingClass>
@@ -223,7 +223,93 @@
 			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
 			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
 		</building>
-	</ThingDef>
+	</ThingDef>-->
+	
+	<!--<ThingDef ParentName="BenchBase">
+		<defName>SRV_Smoker</defName>
+		<label>smoker</label>
+		<thingClass>Building_WorkTable</thingClass>
+		<description>A large stone smoker built for cooking and preserving a large amount of meat. Takes a long time to cook.</description>
+		<category>Building</category>
+		<graphicData>
+			
+			<texPath>Cupro/Object/Station/Smoker/Smoker</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,3)</drawSize>
+			
+			<drawRotated>false</drawRotated>
+			<allowFlip>false</allowFlip>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Cupro/Object/Station/Smoker/Smoker_MenuIcon</uiIconPath>
+		<fillPercent>0.9</fillPercent>
+		<rotatable>true</rotatable>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>100</costStuffCount>
+		<altitudeLayer>Building</altitudeLayer>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>2000</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>10</Beauty>
+			<Cleanliness>-5</Cleanliness>
+			<Mass>185</Mass>
+		</statBases>
+
+		<size>(1,1)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<canOverlapZones>false</canOverlapZones>
+		<pathCost>80</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<tickerType>Normal</tickerType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>75.0</fuelConsumptionRate>
+				<fuelCapacity>40.0</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>SRV_Charcoal</li>
+					</thingDefs>
+				</fuelFilter>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+			</li>
+			<li Class="SurvivalistsAdditions.CompProperties_Smoker">
+				<smokeStyle>None</smokeStyle>
+				<offset>(0.5,0,1)</offset>
+				<produceSmokeOnlyWhenUsed>true</produceSmokeOnlyWhenUsed>
+				<size>0.75</size>
+			</li>
+		</comps>
+		<building>
+			<isMealSource>true</isMealSource>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
+		</building>
+	</ThingDef>-->
+	
+	
 	
 	<ThingDef Name="CampTableBase" ParentName="BenchBase" Abstract="True">
 		<thingClass>Building_WorkTable</thingClass>

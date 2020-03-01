@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<RecipeDef Name="SRV_SmokedBase" Abstract="True">
+		<jobString>Smoking.</jobString>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+		<workSkill>Cooking</workSkill>
+	</RecipeDef>
+
+	<!--<RecipeDef ParentName="SRV_SmokedBase">
+		<defName>SRV_SmokerMeat</defName>
+		<label>smoke meat (5)</label>
+		<description>Smoke meat to preserve it. Tasty, but hard to chew. It lasts a long time without refrigeration.</description>
+		<workAmount>600</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+		<defaultIngredientFilter>
+			<categories>
+				<li>MeatRaw</li>
+			</categories>
+		</defaultIngredientFilter>
+		<products>
+			<SRV_SmokedMeat>5</SRV_SmokedMeat>
+		</products>
+		<fixedIngredientFilter>
+			<categories>
+				<li>MeatRaw</li>
+			</categories>
+			<disallowedThingDefs>
+				<li>SRV_SmokedMeat</li>
+			</disallowedThingDefs>
+		</fixedIngredientFilter>
+		<recipeUsers>
+			<li>SRV_Smoker</li>
+		</recipeUsers>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SRV_SmokedBase">
+		<defName>SRV_SmokerCheese</defName>
+		<label>smoke cheese (5)</label>
+		<description>Smoke cheese to preserve it. It lasts a long time without refrigeration.</description>
+		<workAmount>600</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+					</categories>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Milk</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<SRV_SmokedCheese>5</SRV_SmokedCheese>
+		</products>
+		<recipeUsers>
+			<li>SRV_Smoker</li>
+		</recipeUsers>
+	</RecipeDef>-->
+
+	<RecipeDef>
+		<defName>SRV_SmokerMeat</defName>
+		<label>smoke meat (10)</label>
+		<description>Smoke meat to preserve it. Tasty, but hard to chew. It lasts a long time without refrigeration.</description>
+		<jobString>Smoking meat.</jobString>
+		<workAmount>2500</workAmount>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+					</categories>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+		<products>
+			<SRV_SmokedMeat>10</SRV_SmokedMeat>
+		</products>
+		<fixedIngredientFilter>
+			<categories>
+				<li>MeatRaw</li>
+			</categories>
+			<disallowedThingDefs>
+				<li>SRV_SmokedMeat</li>
+			</disallowedThingDefs>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>MeatRaw</li>
+			</categories>
+		</defaultIngredientFilter>
+		<workSkill>Cooking</workSkill>
+		<recipeUsers>
+			<li>SRV_Smoker</li>
+		</recipeUsers>
+	</RecipeDef>
+
+</Defs>
