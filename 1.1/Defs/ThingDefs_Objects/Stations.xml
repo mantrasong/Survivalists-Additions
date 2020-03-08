@@ -171,65 +171,6 @@
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="SRV_OutdoorBenchBase">
-		<defName>SRV_Smoker</defName>
-		<label>smoker</label>
-		<thingClass>SurvivalistsAdditions.Building_Smoker</thingClass>
-		<description>A large stone smoker built for cooking and preserving a large amount of meat. Takes a long time to cook.</description>
-		<graphicData>
-			<texPath>Cupro/Object/Station/Smoker/Smoker</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<shaderType>CutoutComplex</shaderType>
-			<drawSize>(3,3)</drawSize>
-		</graphicData>
-		<uiIconPath>Cupro/Object/Station/Smoker/Smoker_MenuIcon</uiIconPath>
-		<fillPercent>0.9</fillPercent>
-		<stuffCategories>
-			<li>Stony</li>
-		</stuffCategories>
-		<costStuffCount>100</costStuffCount>
-		<altitudeLayer>Building</altitudeLayer>
-		<useHitPoints>true</useHitPoints>
-		<rotatable>true</rotatable>
-		<statBases>
-			<MaxHitPoints>500</MaxHitPoints>
-			<WorkToBuild>2000</WorkToBuild>
-			<Flammability>0</Flammability>
-			<Beauty>10</Beauty>
-			<Cleanliness>-5</Cleanliness>
-			<Mass>185</Mass>
-		</statBases>
-		<size>(1,1)</size>
-		<designationCategory>Production</designationCategory>
-		<passability>PassThroughOnly</passability>
-		<canOverlapZones>false</canOverlapZones>
-		<pathCost>80</pathCost>
-		<surfaceType>Item</surfaceType>
-		<tickerType>Normal</tickerType>
-		<comps>
-			<li Class="CompProperties_Forbiddable" />
-			<li Class="CompProperties_Refuelable">
-				<fuelConsumptionRate>75.0</fuelConsumptionRate>
-				<fuelCapacity>40.0</fuelCapacity>
-				<fuelFilter>
-					<thingDefs>
-						<li>SRV_Charcoal</li>
-					</thingDefs>
-				</fuelFilter>
-				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-			</li>
-			<li Class="SurvivalistsAdditions.CompProperties_Smoker">
-				<smokeStyle>None</smokeStyle>
-				<offset>(0.5,0,1)</offset>
-				<produceSmokeOnlyWhenUsed>true</produceSmokeOnlyWhenUsed>
-				<size>0.75</size>
-			</li>
-		</comps>
-		<placeWorkers>
-			<li>PlaceWorker_NotUnderRoof</li>
-		</placeWorkers>
-	</ThingDef>
-	
 	<ThingDef Name="CampTableBase" ParentName="SRV_OutdoorBenchBase" Abstract="True">
 		<thingClass>Building_WorkTable</thingClass>
 		<graphicData>

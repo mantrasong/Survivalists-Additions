@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Patch us into the Universal Fermenter -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName = "UniversalFermenter"]/comps/li[@Class="UniversalProcessors.CompProperties_UniversalFermenter"]/products</xpath>
+		  <value>
+			<li>
+				<thingDef>SRV_Cheese</thingDef>
+				<ingredientFilter>
+					<thingDefs>
+						<li>SRV_CurdledMilk</li>
+					</thingDefs>
+				</ingredientFilter>
+				<temperatureSafe>
+					<min>-1</min>
+					<max>32</max>
+				</temperatureSafe>
+				<progressPerDegreePerTick>0.00001</progressPerDegreePerTick>
+				
+			</li>
+			<li>
+				<thingDef>SRV_Vinegar</thingDef>
+				<ingredientFilter>
+					<thingDefs>
+						<li>SRV_VinegarJuice</li>
+					</thingDefs>
+				</ingredientFilter>
+				<temperatureSafe>
+					<min>-1</min>
+					<max>32</max>
+				</temperatureSafe>
+				<progressPerDegreePerTick>0.00001</progressPerDegreePerTick>
+				
+			</li>
+		  </value>
+	</Operation>
+
+</Patch>

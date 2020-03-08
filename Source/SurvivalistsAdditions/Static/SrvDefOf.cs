@@ -23,8 +23,6 @@ namespace SurvivalistsAdditions {
 		public static HediffDef SRV_SnaredLarge;
 		public static HediffDef SRV_SnaredSmall;
 
-		public static JobDef SRV_FillProcessor;
-    public static JobDef SRV_TendToSmoker;
     public static JobDef SRV_TakeItemOutOfProcessor;
 		public static JobDef SRV_DisableSnare;
 

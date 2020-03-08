@@ -3,13 +3,13 @@
 
 	<JobDef>
 		<defName>SRV_FillProcessor</defName>
-		<driverClass>SurvivalistsAdditions.JobDriver_FillProcessor</driverClass>
+		<driverClass>UniversalProcessors.JobDriver_FillProcessor</driverClass>
 		<reportString>filling TargetA.</reportString>
 	</JobDef>
 	
 	<JobDef>
 		<defName>SRV_TakeItemOutOfProcessor</defName>
-		<driverClass>SurvivalistsAdditions.JobDriver_TakeItemOutOfProcessor</driverClass>
+		<driverClass>UniversalProcessors.JobDriver_TakeItemOutOfProcessor</driverClass>
 		<reportString>removing processed items from TargetA.</reportString>
 	</JobDef>
 	

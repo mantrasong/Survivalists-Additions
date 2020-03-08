@@ -51,20 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AI\JobDriver_TendToSmoker.cs" />
-    <Compile Include="AI\WorkGiver_TendToSmoker.cs" />
-    <Compile Include="Buildings\Building_CharcoalPit.cs" />
-    <Compile Include="Buildings\Building_Smoker.cs" />
-    <Compile Include="Buildings\Building_VinegarBarrel.cs" />
-    <Compile Include="Buildings\Building_CheeseBarrel.cs" />
     <Compile Include="Buildings\Building_Snare.cs" />
-    <Compile Include="Components\CompProperties_Smoker.cs" />
-    <Compile Include="Components\CompSmoker.cs" />
     <Compile Include="HardyPlant.cs" />
     <Compile Include="HardyPlantStats.cs" />
-    <Compile Include="Interfaces\IItemProcessor.cs" />
-    <Compile Include="AI\JobDriver_FillProcessor.cs" />
-    <Compile Include="AI\JobDriver_TakeItemOutOfProcessor.cs" />
     <Compile Include="AI\JobDriver_DisableSnare.cs" />
     <Compile Include="ITab_StockWatcher.cs" />
     <Compile Include="Map\GenStep_Plants.cs" />
@@ -82,8 +71,6 @@
     <Compile Include="Static\Static.cs" />
     <Compile Include="AI\ThoughtWorker_WearingBurlapApparel.cs" />
     <Compile Include="Util\ThingCountExposable.cs" />
-    <Compile Include="AI\WorkGiver_FillProcessor.cs" />
-    <Compile Include="AI\WorkGiver_TakeItemOutOfProcessor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

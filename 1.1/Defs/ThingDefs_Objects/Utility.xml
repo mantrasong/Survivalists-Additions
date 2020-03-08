@@ -58,61 +58,6 @@
 
 	<!-- ======================== Utility ======================= -->
 
-
-	<ThingDef Name="SRV_Barrel" ParentName="SRV_OutdoorBenchBase">
-		<defName>SRV_VinegarBarrel</defName>
-		<thingClass>SurvivalistsAdditions.Building_VinegarBarrel</thingClass>
-		<label>vinegar barrel</label>
-		<description>A barrel for fermenting vinegar.</description>
-		<graphicData>
-			<texPath>Cupro/Object/FermentingBarrel/FermentingBarrel</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<damageData>
-				<rect>(0.05,0.1,0.9,0.9)</rect>
-			</damageData>
-		</graphicData>
-		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<canOverlapZones>false</canOverlapZones>
-		<fillPercent>0.45</fillPercent>
-		<pathCost>60</pathCost>
-		<rotatable>true</rotatable>
-		<designationCategory>Production</designationCategory>
-		<statBases>
-			<WorkToBuild>600</WorkToBuild>
-			<Mass>10</Mass>
-			<MaxHitPoints>100</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-		</statBases>
-		<costList>
-			<Steel>10</Steel>
-		</costList>
-		<costStuffCount>30</costStuffCount>
-		<stuffCategories>
-			<li>Woody</li>
-		</stuffCategories>
-		<useHitPoints>true</useHitPoints>
-		<size>(1,1)</size>
-		<tickerType>Rare</tickerType>
-		<comps>
-			<li Class="CompProperties_TemperatureRuinable">
-				<minSafeTemperature>-1</minSafeTemperature>
-				<maxSafeTemperature>32</maxSafeTemperature>
-				<progressPerDegreePerTick>0.00001</progressPerDegreePerTick>
-			</li>
-		</comps>
-		<researchPrerequisites>
-			<li>Brewing</li>
-		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="SRV_Barrel">
-		<defName>SRV_CheeseBarrel</defName>
-		<thingClass>SurvivalistsAdditions.Building_CheeseBarrel</thingClass>
-		<label>cheese barrel</label>
-		<description>A barrel for fermenting and aging cheese.</description>
-	</ThingDef>
-
 	<ThingDef ParentName="BuildingBase">
 		<defName>SRV_ShelterHeater</defName>
 		<label>shelter heater</label>
@@ -186,42 +131,6 @@
 			</li>
 		</comps>
 		<designationCategory>Temperature</designationCategory>
-	</ThingDef>
-
-	<ThingDef ParentName="BuildingBase">
-		<defName>SRV_CharcoalPit</defName>
-		<label>charcoal pit</label>
-		<thingClass>SurvivalistsAdditions.Building_CharcoalPit</thingClass>
-		<description>A pit dug into the ground for burning wood in the absence of oxygen.</description>
-		<graphicData>
-			<texPath>Cupro/Object/Utility/CharcoalPit/EmptyPit</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(3,3)</drawSize>
-		</graphicData>
-		<constructEffect>ConstructDirt</constructEffect>
-		<blockLight>false</blockLight>
-		<altitudeLayer>Building</altitudeLayer>
-		<rotatable>false</rotatable>
-		<useHitPoints>false</useHitPoints>
-		<fillPercent>0</fillPercent>
-		<statBases>
-			<WorkToBuild>500</WorkToBuild>
-			<Flammability>0</Flammability>
-		</statBases>
-		<size>(1,1)</size>
-		<designationCategory>Production</designationCategory>
-		<passability>PassThroughOnly</passability>
-		<canOverlapZones>false</canOverlapZones>
-		<pathCost>60</pathCost>
-		<surfaceType>Item</surfaceType>
-		<tickerType>Rare</tickerType>
-		<comps>
-			<li Class="CompProperties_Forbiddable" />
-		</comps>
-		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
-		<placeWorkers>
-			<li>PlaceWorker_NotUnderRoof</li>
-		</placeWorkers>
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
