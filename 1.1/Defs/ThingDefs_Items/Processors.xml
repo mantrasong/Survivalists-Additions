@@ -31,7 +31,7 @@
 		<comps>
 			<li Class="CompProperties_Forbiddable" />
 			<li Class="UniversalFermenter.CompProperties_UniversalFermenter">
-			<products>
+			<processes>
 				<li>
 					<thingDef>SRV_Charcoal</thingDef>
 					<ingredientFilter>
@@ -40,7 +40,7 @@
 						</thingDefs>
 					</ingredientFilter>
 				</li>
-			</products>
+			</processes>
 	  </li>
 		</comps>
 		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
