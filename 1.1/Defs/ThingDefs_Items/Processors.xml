@@ -30,7 +30,7 @@
 		<tickerType>Rare</tickerType>
 		<comps>
 			<li Class="CompProperties_Forbiddable" />
-			<li Class="UniversalProcessors.CompProperties_UniversalFermenter">
+			<li Class="UniversalFermenter.CompProperties_UniversalFermenter">
 			<products>
 				<li>
 					<thingDef>SRV_Charcoal</thingDef>
@@ -96,7 +96,7 @@
 				</fuelFilter>
 				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
 			</li>
-			<li Class="UniversalProcessors.CompProperties_UniversalFermenter">
+			<li Class="UniversalFermenter.CompProperties_UniversalFermenter">
 				<products>
 					<li>
 						<thingDef>SRV_SmokedCheese</thingDef>

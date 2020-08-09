@@ -3,15 +3,15 @@
 
 	<JobDef>
 		<defName>SRV_FillProcessor</defName>
-		<driverClass>UniversalProcessors.JobDriver_FillProcessor</driverClass>
+		<driverClass>UniversalFermenter.JobDriver_FillUF</driverClass>
 		<reportString>filling TargetA.</reportString>
 	</JobDef>
 	
 	<JobDef>
 		<defName>SRV_TakeItemOutOfProcessor</defName>
-		<driverClass>UniversalProcessors.JobDriver_TakeItemOutOfProcessor</driverClass>
+		<driverClass>UniversalFermenter.JobDriver_TakeProductOutOfUF</driverClass>
 		<reportString>removing processed items from TargetA.</reportString>
-	</JobDef>
+	</JobDef>]
 	
 	<JobDef>
 		<defName>SRV_TendToSmoker</defName>

@@ -155,11 +155,9 @@
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
-			<categories>
-				<li>FruitFoodRaw</li>
-			</categories>
 			<thingDefs>
 				<li>RawBerries</li>
+				<li>RawAgave</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>

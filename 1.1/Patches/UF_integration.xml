@@ -3,7 +3,7 @@
 
 	<!-- Patch us into the Universal Fermenter -->
 	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[defName = "UniversalFermenter"]/comps/li[@Class="UniversalFermenter.CompProperties_UniversalFermenter"]/products</xpath>
+		<xpath>Defs/ThingDef[defName = "UniversalFermenter"]/comps/li[@Class="UniversalFermenter.CompProperties_UniversalFermenter"]/processes</xpath>
 		  <value>
 			<li>
 				<thingDef>SRV_Cheese</thingDef>
@@ -12,11 +12,22 @@
 						<li>SRV_CurdledMilk</li>
 					</thingDefs>
 				</ingredientFilter>
-				<temperatureSafe>
-					<min>-1</min>
-					<max>32</max>
-				</temperatureSafe>
-				<progressPerDegreePerTick>0.00001</progressPerDegreePerTick>
+				<usesTemperature>true</usesTemperature>
+				<temperatureSafe>-1.0~32.0</temperatureSafe>
+				<temperatureIdeal>7.0~32.0</temperatureIdeal>
+				<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour> <!-- percent per degree per hour -->
+				<speedBelowSafe>0.1</speedBelowSafe>
+				<speedAboveSafe>1.0</speedAboveSafe>
+				<processDays>6</processDays> <!-- in days, 60000 ticks is a day -->
+				<maxCapacity>25</maxCapacity>
+				<efficiency>1.0</efficiency>
+				<sunFactor>1.0~1.0</sunFactor>
+				<rainFactor>1.0~1.0</rainFactor>
+				<snowFactor>1.0~1.0</snowFactor>
+				<windFactor>1.0~1.0</windFactor>
+				<graphicSuffix></graphicSuffix>
+				<usesQuality>false</usesQuality>
+				<qualityDays>(1, 2, 3, 4, 5, 6, 7)</qualityDays>
 				
 			</li>
 			<li>
@@ -26,11 +37,22 @@
 						<li>SRV_VinegarJuice</li>
 					</thingDefs>
 				</ingredientFilter>
-				<temperatureSafe>
-					<min>-1</min>
-					<max>32</max>
-				</temperatureSafe>
-				<progressPerDegreePerTick>0.00001</progressPerDegreePerTick>
+				<usesTemperature>true</usesTemperature>
+				<temperatureSafe>-1.0~32.0</temperatureSafe>
+				<temperatureIdeal>7.0~32.0</temperatureIdeal>
+				<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour> <!-- percent per degree per hour -->
+				<speedBelowSafe>0.1</speedBelowSafe>
+				<speedAboveSafe>1.0</speedAboveSafe>
+				<processDays>6</processDays> <!-- in days, 60000 ticks is a day -->
+				<maxCapacity>25</maxCapacity>
+				<efficiency>1.0</efficiency>
+				<sunFactor>1.0~1.0</sunFactor>
+				<rainFactor>1.0~1.0</rainFactor>
+				<snowFactor>1.0~1.0</snowFactor>
+				<windFactor>1.0~1.0</windFactor>
+				<graphicSuffix></graphicSuffix>
+				<usesQuality>false</usesQuality>
+				<qualityDays>(1, 2, 3, 4, 5, 6, 7)</qualityDays>
 				
 			</li>
 		  </value>
