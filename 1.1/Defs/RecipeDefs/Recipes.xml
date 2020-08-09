@@ -148,13 +148,16 @@
 			<li>
 				<filter>
 					<categories>
-				<li>PlantFoodRaw</li>
-			  </categories>
+						<li>PlantFoodRaw</li>
+					</categories>
 				</filter>
 				<count>25</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
+			<categories>
+				<li>FruitFoodRaw</li>
+			</categories>
 			<thingDefs>
 				<li>RawBerries</li>
 			</thingDefs>

@@ -9,11 +9,11 @@
   </supportedVersions>
   <packageId>Mantrasong.SurvAdd.1</packageId>
   <modDependencies>
-		 <li>
-			<packageId>Mantrasong.Processors</packageId>
-			<displayName>Universal Fermenter</displayName>
-			<steamWorkshopUrl>steam://url/CommunityFilePage/2015487929</steamWorkshopUrl>
-		  </li>
+	<li>
+		<packageId>syrchalis.universalfermenter</packageId>
+		<displayName>[SYR] Universal Fermenter</displayName>
+		<steamWorkshopUrl>steam://url/CommunityFilePage/2073225100</steamWorkshopUrl>
+	</li>
 	</modDependencies>
   <description>Adds new features for primitive and tribal playthroughs.</description>
 </ModMetaData>
