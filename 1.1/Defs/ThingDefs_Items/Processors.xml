@@ -97,7 +97,7 @@
 				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
 			</li>
 			<li Class="UniversalFermenter.CompProperties_UniversalFermenter">
-				<products>
+				<processes>
 					<li>
 						<thingDef>SRV_SmokedCheese</thingDef>
 						<ingredientFilter>
@@ -119,7 +119,7 @@
 							  </disallowedThingDefs>
 						</ingredientFilter>
 					</li>
-				</products>
+				</processes>
 			</li>
 			<li Class="SurvivalistsAdditions.CompProperties_Smoker">
 				<smokeStyle>None</smokeStyle>
