@@ -120,9 +120,9 @@
 								<!--<li>Meat_Human</li>
 								<li>Meat_Megaspider</li>-->
 							  </disallowedThingDefs>
-							  <processDays>2</processDays>
-							  <temperatureSafe>-1.0~35.0</temperatureSafe>
 						</ingredientFilter>
+						<processDays>2</processDays>
+						<temperatureSafe>-1.0~35.0</temperatureSafe>
 					</li>
 				</processes>
 			</li>
