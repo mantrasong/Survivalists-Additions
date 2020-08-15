@@ -159,6 +159,9 @@
 				<li>RawBerries</li>
 				<li>RawAgave</li>
 			</thingDefs>
+			<categories>
+				<li>FruitFoodRaw</li>
+			</categories>
 		</fixedIngredientFilter>
 		<products>
 			<SRV_VinegarJuice>5</SRV_VinegarJuice>

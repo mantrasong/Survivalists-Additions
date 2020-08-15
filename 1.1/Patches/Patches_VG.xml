@@ -17,4 +17,30 @@
 		</operations>
 	</Operation>
 	
+	<!--<Operation Class="PatchOperationFindMod">
+		<mods>
+		  <li>VGP Vegetable Garden</li>
+		</mods>
+		 <match Class="PatchOperationAdd">
+			<success>Always</success>
+			<xpath>/Defs/RecipeDef[defName="SRV_MakeVinegarJuice"]/fixedIngredientFilter/thingDefs</xpath>
+			<value>
+				<li>RawAgave</li>
+				<li>RawBerries</li>
+				<li>Rawapple</li>
+				<li>Rawbanana</li>
+				<li>Rawgrape</li>
+				<li>Raworange</li>
+				<li>Rawblueberry</li>
+				<li>Rawwatermelon</li>
+				<li>Rawdate</li>
+				<li>Rawfig</li>
+				<li>Rawgooseberry</li>
+				<li>Rawcloudberry</li>
+				<li>RawCherry</li>
+			</value>
+			<order>Append</order>
+		 </match>
+	</Operation>-->
+	
 </Patch>
