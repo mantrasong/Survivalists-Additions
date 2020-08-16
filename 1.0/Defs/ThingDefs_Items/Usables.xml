@@ -247,7 +247,7 @@
 		</graphicData>
 	</ThingDef>
 
-	<ThingDef ParentName="SRV_PickledBase">
+	<!--<ThingDef ParentName="SRV_PickledBase">
 		<defName>SRV_PickledTurnip</defName>
 		<label>pickled turnips</label>
 		<description>Turnips preserved in vinegar to prevent rotting. Can be eaten by themselves, or used in meals.</description>
@@ -263,7 +263,7 @@
 		<graphicData>
 			<texPath>Cupro/Item/Usable/PickledCabbage</texPath>
 		</graphicData>
-	</ThingDef>
+	</ThingDef>-->
 
 	<ThingDef Name="SRV_RimshroomParent" ParentName="PlantFoodRawBase" Abstract="True">
 		<thingCategories/>

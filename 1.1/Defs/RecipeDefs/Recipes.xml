@@ -162,6 +162,9 @@
 			<categories>
 				<li>FruitFoodRaw</li>
 			</categories>
+			<disallowedThingDefs>
+				<li>SRV_PickledGeneric</li>
+			</disallowedThingDefs>
 		</fixedIngredientFilter>
 		<products>
 			<SRV_VinegarJuice>5</SRV_VinegarJuice>

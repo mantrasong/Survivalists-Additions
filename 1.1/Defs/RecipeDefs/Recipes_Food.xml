@@ -388,7 +388,7 @@
 		</defaultIngredientFilter>
 	</RecipeDef>
 
-	<RecipeDef ParentName="SRV_RecipePickleBase">
+	<!--<RecipeDef ParentName="SRV_RecipePickleBase">
 		<defName>SRV_PickleTurnip</defName>
 		<label>pickle turnip</label>
 		<description>Preserve turnips in vinegar. Can be eaten by itself, or used in meals.</description>
@@ -444,6 +444,6 @@
 				<li>SRV_Cabbage</li>
 			</thingDefs>
 		</defaultIngredientFilter>
-	</RecipeDef>
+	</RecipeDef>-->
 
 </Defs>
