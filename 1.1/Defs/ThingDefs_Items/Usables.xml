@@ -219,7 +219,8 @@
 		</tradeTags>
 	</ThingDef>
 
-	<ThingDef Name="SRV_PickledBase" ParentName="PlantFoodRawBase" Abstract="True">
+	<ThingDef Name="SRV_PickledBase" ParentName="OrganicProductBase" Abstract="True">
+		<socialPropernessMatters>true</socialPropernessMatters>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
@@ -231,6 +232,7 @@
 			<Nutrition>0.5</Nutrition>
 		</statBases>
 		<ingestible>
+
 			<foodType>VegetableOrFruit</foodType>
 			<preferability>MealSimple</preferability>
 			
@@ -241,9 +243,10 @@
 			<specialThoughtDirect>SRV_AtePickledVeggies</specialThoughtDirect>
 			<specialThoughtAsIngredient>SRV_FoodMadeWithPickledIngredient</specialThoughtAsIngredient>
 		</ingestible>
-		<tradeTags>
-			<li>SRV_RawFood</li>
-		</tradeTags>
+		<thingCategories>
+			<li>srv_pickled</li>
+		</thingCategories>
+		
 	</ThingDef>
 
 	<ThingDef ParentName="SRV_PickledBase">
@@ -253,8 +256,28 @@
 		<graphicData>
 			<texPath>Cupro/Item/Usable/PickledGeneric</texPath>
 		</graphicData>
+				<tradeTags>
+			<li>SRV_RawFood</li>
+		</tradeTags>
 	</ThingDef>
 
+	<ThingDef ParentName="SRV_PickledBase">
+		<defName>SRV_PickledTurnip</defName>
+		<label>pickled turnips</label>
+		<description>Turnips preserved in vinegar to prevent rotting. Can be eaten by themselves, or used in meals.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Usable/PickledTurnip</texPath>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="SRV_PickledBase">
+		<defName>SRV_PickledCabbage</defName>
+		<label>pickled cabbage</label>
+		<description>Cabbage preserved in vinegar to prevent rotting. Can be eaten by itself, or used in meals.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Usable/PickledCabbage</texPath>
+		</graphicData>
+	</ThingDef>
 
 	<ThingDef Name="SRV_RimshroomParent" ParentName="PlantFoodRawBase" Abstract="True">
 		<thingCategories/>

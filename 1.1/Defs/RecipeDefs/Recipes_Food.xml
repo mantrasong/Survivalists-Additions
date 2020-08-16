@@ -51,11 +51,6 @@
 		</defaultIngredientFilter>
 	</RecipeDef>
 
-
-	<!--<RecipeDef ParentName="Pemmican">
-		<defName>SRV_MakePemmicanGrill</defName>
-		<workAmount>1000</workAmount>
-	</RecipeDef>-->
 	
 	<RecipeDef ParentName="SRV_GrillMealBase_Meat">
 		<defName>SRV_GrillMealMeat</defName>
@@ -369,6 +364,9 @@
 			<categories>
 				<li>PlantFoodRaw</li>
 			</categories>
+			<disallowedCategories>
+			<li>srv_pickled</li>
+				</disallowedCategories>
 			<specialFiltersToDisallow>
 				<li>AllowPlantFood</li>
 			</specialFiltersToDisallow>
@@ -380,6 +378,7 @@
 			<disallowedCategories>
 				<li>EggsUnfertilized</li>
 				<li>EggsFertilized</li>
+				<li>srv_pickled</li>
 			</disallowedCategories>
 			<disallowedThingDefs>
 				<li>Hay</li>

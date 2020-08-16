@@ -159,9 +159,6 @@
 				<li>RawBerries</li>
 				<li>RawAgave</li>
 			</thingDefs>
-			<categories>
-				<li>FruitFoodRaw</li>
-			</categories>
 			<disallowedThingDefs>
 				<li>SRV_PickledGeneric</li>
 			</disallowedThingDefs>
